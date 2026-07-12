@@ -1,3 +1,16 @@
 [gd_scene format=3 uid="uid://bawdwfuoal7tn"]
 
+[ext_resource type="PackedScene" uid="uid://drh0a8hys81w6" path="res://scenes/ground.tscn" id="1_o5qli"]
+[ext_resource type="Script" uid="uid://2o8rwl18xb2v" path="res://scripts/character_body_2d.gd" id="2_0wfyh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_srqkv"]
+
 [node name="Main" type="Node2D" unique_id=65176123]
+
+[node name="Level 1" parent="." unique_id=1672064429 instance=ExtResource("1_o5qli")]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1304755598]
+script = ExtResource("2_0wfyh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=50781607]
+shape = SubResource("RectangleShape2D_srqkv")
