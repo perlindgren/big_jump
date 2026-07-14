@@ -1,13 +1,38 @@
 [gd_scene format=3 uid="uid://ctvg0c1ktf5fw"]
 
 [ext_resource type="Script" uid="uid://2o8rwl18xb2v" path="res://scripts/character_body_2d.gd" id="1_3vyb7"]
+[ext_resource type="Texture2D" uid="uid://ckqlp7vmbp3hr" path="res://assets/sprites/player.png" id="2_g2els"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_srqkv"]
 size = Vector2(32, 32)
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1635808929]
+[sub_resource type="SpriteFrames" id="SpriteFrames_y0dqn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_g2els")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D" unique_id=1635808929]
 script = ExtResource("1_3vyb7")
+jump_velocity = null
+acceleration = null
+air_acceleration = null
+friction = null
+air_friction = null
+max_speed = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1864728684]
 shape = SubResource("RectangleShape2D_srqkv")
 debug_color = Color(1, 1, 0, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1094311021]
+sprite_frames = SubResource("SpriteFrames_y0dqn")
+animation = &"walk"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2106928709]
+zoom = Vector2(2, 2)

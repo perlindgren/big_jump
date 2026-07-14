@@ -1,14 +1,11 @@
 extends CharacterBody2D
 
-
-
-
 @export var jump_velocity: float = 1000.0
 @export var acceleration: float = 1000.0
 @export var air_acceleration: float = 200.0
 @export var friction: float = 600.0
 @export var air_friction: float = 1.0
-@export var max_speed: float = 1000.0
+@export var max_speed: float = 4000.0
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -26,7 +23,7 @@ func _physics_process(delta: float) -> void:
 	if direction:
 		if is_on_floor():
 			velocity.x += direction * acceleration * delta
-			print("floor angle", get_floor_angle())
+			# print("floor angle", get_floor_angle())
 		else:
 			velocity.x += direction * air_acceleration * delta
 	else:
@@ -38,4 +35,5 @@ func _physics_process(delta: float) -> void:
 		
 	### Cap speed
 	velocity = velocity.limit_length(max_speed)
+	GameState.player_velocity = velocity
 	move_and_slide()

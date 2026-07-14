@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dyhydap80532x"]
+
+[ext_resource type="Script" uid="uid://idoxx00tu7s7" path="res://scripts/label.gd" id="1_ahhtf"]
+
+[node name="HUD" type="CanvasLayer" unique_id=785256614]
+
+[node name="Velocity" type="Label" parent="." unique_id=276503178]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Velocity"
+script = ExtResource("1_ahhtf")
