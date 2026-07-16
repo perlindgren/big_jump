@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://2o8rwl18xb2v" path="res://scripts/character_body_2d.gd" id="1_3vyb7"]
 [ext_resource type="Texture2D" uid="uid://ckqlp7vmbp3hr" path="res://assets/sprites/player.png" id="2_g2els"]
-[ext_resource type="Script" uid="uid://pjrcjvyfja5p" path="res://scenes/animated_sprite_2d.gd" id="3_dqkch"]
 [ext_resource type="Script" uid="uid://ck54a7o0k88lq" path="res://scripts/camera_2d.gd" id="3_qhqgy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_srqkv"]
@@ -29,7 +28,6 @@ debug_color = Color(1, 1, 0, 1)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1094311021]
 sprite_frames = SubResource("SpriteFrames_y0dqn")
 animation = &"walk"
-script = ExtResource("3_dqkch")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2106928709]
 ignore_rotation = false

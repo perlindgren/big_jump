@@ -6,24 +6,39 @@ extends CharacterBody2D
 @export var friction: float = 600.0
 @export var air_friction: float = 1.0
 @export var max_speed: float = 4000.0
+@export var rotation_speed: float = 0.05
+
+@export var jump_accum_increment : float = 50.0
+
+# not visible in inspector
+var jump_engaged : bool = false
+var jump_accum : float = 0.0
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+	else: # is_on_floor
+		if jump_engaged:
+			velocity.y = -jump_accum
+			jump_engaged = false
+			jump_accum = 0.0
 
 	# Handle jump.
-	if Input.is_action_just_released("ui_accept") and is_on_floor():
-		velocity.y = -jump_velocity
+	if Input.is_action_just_released(&"jump"):
+		jump_engaged = true
+		
+	if Input.is_action_pressed(&"jump") && jump_accum < jump_velocity:
+		jump_accum += 50.0
+		
+	if Input.is_action_pressed(&"cancel_jump"):
+		jump_accum = 0.0
 
 	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("ui_left", "ui_right")
-	
+	var direction := Input.get_axis(&"left",&"right")
 	if direction:
 		if is_on_floor():
 			velocity.x += direction * acceleration * delta
-			# print("floor angle", get_floor_angle())
 		else:
 			velocity.x += direction * air_acceleration * delta
 	else:
@@ -32,8 +47,18 @@ func _physics_process(delta: float) -> void:
 			velocity -= velocity.normalized() * friction * delta
 		else:
 			velocity = Vector2.ZERO
-		
+	# Handle rotation
+	var rotate_direction : float = Input.get_axis(&"rotate_clockwise", &"rotate_counter_clockwise") 
+	
+	
 	### Cap speed
 	velocity = velocity.limit_length(max_speed)
 	GameState.player_velocity = velocity
+	GameState.player_rotation += rotate_direction * rotation_speed
+	# clamp to angles within one rotation
+	if GameState.player_rotation > TAU:
+		GameState.player_rotation -= TAU
+	elif GameState.player_rotation < -TAU:
+		GameState.player_rotation += TAU
+	
 	move_and_slide()
