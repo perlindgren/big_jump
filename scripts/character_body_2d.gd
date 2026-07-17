@@ -13,6 +13,8 @@ extends CharacterBody2D
 # not visible in inspector
 var jump_engaged : bool = false
 var jump_accum : float = 0.0
+var is_dead : bool = false
+var is_live : bool = true
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -50,9 +52,10 @@ func _physics_process(delta: float) -> void:
 	# Handle rotation
 	var rotate_direction : float = Input.get_axis(&"rotate_clockwise", &"rotate_counter_clockwise") 
 	
-	
-	### Cap speed
+	# Cap speed
 	velocity = velocity.limit_length(max_speed)
+	
+	# GameState update
 	GameState.player_velocity = velocity
 	GameState.player_rotation += rotate_direction * rotation_speed
 	# clamp to angles within one rotation
@@ -63,8 +66,30 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	
-	print("here")
 	# check collision
-	for i in get_slide_collision_count():
-		var collision = get_slide_collision(i)
-		print("Collided with: ", collision.get_collider().name)
+	# Loop through all collisions that happened this frame
+	if is_live:
+		for i in range(get_slide_collision_count()):
+			var collision = get_slide_collision(i)
+			var collider = collision.get_collider()
+		
+			# Check if the collider is a TileMapLayer
+			if collider is TileMapLayer:
+				var tile_position = collider.local_to_map(collision.get_position())
+				if PhysicsServer2D.body_get_collision_layer(collision.get_collider_rid()) == 2:
+					is_dead = true
+					is_live = false
+					print("you died", i)
+
+func _process(_delta: float) -> void:
+	if is_dead:
+		is_dead = false
+		#$Splat.global_position = position
+		$Splat.restart()
+		#$Splat.emitting = true
+		print("is_dead")
+		await $Splat.finished
+		print("revived")
+		position = Vector2(100.0, 100.0)
+		is_live = true
+	

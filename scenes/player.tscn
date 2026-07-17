@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ckqlp7vmbp3hr" path="res://assets/sprites/player.png" id="2_g2els"]
 [ext_resource type="Script" uid="uid://pjrcjvyfja5p" path="res://scenes/animated_sprite_2d.gd" id="3_dqkch"]
 [ext_resource type="Script" uid="uid://ck54a7o0k88lq" path="res://scripts/camera_2d.gd" id="3_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://dq3s23le15uhr" path="res://assets/sprites/blood_drop.png" id="5_qlg0r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_srqkv"]
 size = Vector2(32, 32)
@@ -19,16 +20,43 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Curve" id="Curve_qrkj2"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.49914822, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.008097172), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ydpu5"]
+curve = SubResource("Curve_qrkj2")
+
+[sub_resource type="Curve" id="Curve_5x0i3"]
+_data = [Vector2(1e-05, 0.32793528), 0.0, 0.0, 0, 0, Vector2(0.14821124, 1), 0.18587306, 0.18587306, 0, 0, Vector2(0.99999, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_5x0i3"]
+curve = SubResource("Curve_5x0i3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ifug4"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 8.0
+angle_min = -89.99999
+angle_max = 90.000015
+inherit_velocity_ratio = 100.0
+direction = Vector3(1, -1, 0)
+spread = 180.0
+initial_velocity_min = 235.92
+initial_velocity_max = 502.4
+angular_velocity_min = -172.40001
+angular_velocity_max = 181.88998
+gravity = Vector3(0, 600, 0)
+scale_min = 0.5
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_5x0i3")
+alpha_curve = SubResource("CurveTexture_ydpu5")
+
 [node name="Player" type="CharacterBody2D" unique_id=1635808929]
+collision_mask = 3
 script = ExtResource("1_3vyb7")
-jump_velocity = null
-acceleration = null
-air_acceleration = null
-friction = null
-air_friction = null
-max_speed = null
-rotation_speed = null
-jump_accum_increment = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1864728684]
 shape = SubResource("RectangleShape2D_srqkv")
@@ -43,3 +71,13 @@ script = ExtResource("3_dqkch")
 ignore_rotation = false
 zoom = Vector2(2, 2)
 script = ExtResource("3_qhqgy")
+
+[node name="Splat" type="GPUParticles2D" parent="." unique_id=2009453505]
+z_index = 3
+emitting = false
+amount = 40
+texture = ExtResource("5_qlg0r")
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ifug4")

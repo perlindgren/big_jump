@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://bwev3pebnn8k8"]
+
+[ext_resource type="Texture2D" uid="uid://dq3s23le15uhr" path="res://assets/sprites/blood_drop.png" id="1_5x0i3"]
+
+[sub_resource type="Curve" id="Curve_qrkj2"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.49914822, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.008097172), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ydpu5"]
+curve = SubResource("Curve_qrkj2")
+
+[sub_resource type="Curve" id="Curve_5x0i3"]
+_data = [Vector2(1e-05, 0.32793528), 0.0, 0.0, 0, 0, Vector2(0.14821124, 1), 0.18587306, 0.18587306, 0, 0, Vector2(0.99999, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_5x0i3"]
+curve = SubResource("Curve_5x0i3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ifug4"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 8.0
+angle_min = -89.99999
+angle_max = 90.000015
+inherit_velocity_ratio = 100.0
+direction = Vector3(1, -1, 0)
+spread = 180.0
+initial_velocity_min = 235.92
+initial_velocity_max = 502.4
+angular_velocity_min = -172.40001
+angular_velocity_max = 181.88998
+gravity = Vector3(0, 600, 0)
+scale_min = 0.5
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_5x0i3")
+alpha_curve = SubResource("CurveTexture_ydpu5")
+
+[node name="splat" type="GPUParticles2D" unique_id=224364168]
+top_level = true
+z_index = 3
+emitting = false
+amount = 40
+texture = ExtResource("1_5x0i3")
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ifug4")

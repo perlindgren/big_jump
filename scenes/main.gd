@@ -10,5 +10,4 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	# Create a transform that rotates and then translates around the player's global position
 	var t = Transform2D().rotated(-GameState.player_rotation).translated(%Player.global_position)
-	
 	global_transform = global_transform * %Player.global_transform.affine_inverse() * t
