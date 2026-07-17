@@ -62,3 +62,9 @@ func _physics_process(delta: float) -> void:
 		GameState.player_rotation += TAU
 	
 	move_and_slide()
+	
+	print("here")
+	# check collision
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		print("Collided with: ", collision.get_collider().name)

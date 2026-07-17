@@ -8,7 +8,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	print("player gpos ", $Player.global_position)
 	# Create a transform that rotates and then translates around the player's global position
 	var t = Transform2D().rotated(-GameState.player_rotation).translated(%Player.global_position)
 	

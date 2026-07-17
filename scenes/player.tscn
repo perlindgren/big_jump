@@ -21,6 +21,14 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D" unique_id=1635808929]
 script = ExtResource("1_3vyb7")
+jump_velocity = null
+acceleration = null
+air_acceleration = null
+friction = null
+air_friction = null
+max_speed = null
+rotation_speed = null
+jump_accum_increment = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1864728684]
 shape = SubResource("RectangleShape2D_srqkv")
