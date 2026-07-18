@@ -61,12 +61,12 @@ script = ExtResource("1_3vyb7")
 shape = SubResource("RectangleShape2D_srqkv")
 debug_color = Color(1, 1, 0, 1)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1094311021]
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1094311021]
 sprite_frames = SubResource("SpriteFrames_y0dqn")
 animation = &"walk"
 script = ExtResource("3_dqkch")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=2106928709]
+[node name="Camera" type="Camera2D" parent="." unique_id=2106928709]
 ignore_rotation = false
 zoom = Vector2(2, 2)
 script = ExtResource("3_qhqgy")

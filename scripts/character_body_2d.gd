@@ -37,6 +37,7 @@ func _physics_process(delta: float) -> void:
 		jump_accum += 50.0
 		
 	if Input.is_action_pressed(&"cancel_jump"):
+		jump_engaged = false
 		jump_accum = 0.0
 
 	# Get the input direction and handle the movement/deceleration.
@@ -67,6 +68,8 @@ func _physics_process(delta: float) -> void:
 	elif GameState.player_rotation < -TAU:
 		GameState.player_rotation += TAU
 	
+	GameState.player_jump_accum = jump_accum
+	$Sprite.modulate = Color(1.0, GameState.player_jump_accum / 1000.0, 1.0)
 	move_and_slide()
 	
 	# check collision
@@ -83,6 +86,7 @@ func _physics_process(delta: float) -> void:
 				is_dead = true
 				is_live = false
 				print("you died", i)
+				$Sprite.modulate = Color(0.5, 0.5, 0.5, 0.1)
 
 func _process(_delta: float) -> void:
 	if is_dead:
