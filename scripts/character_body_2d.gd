@@ -17,6 +17,9 @@ var is_dead : bool = false
 var is_live : bool = true
 
 func _physics_process(delta: float) -> void:
+	if is_live == false:
+		return
+		
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -68,18 +71,18 @@ func _physics_process(delta: float) -> void:
 	
 	# check collision
 	# Loop through all collisions that happened this frame
-	if is_live:
-		for i in range(get_slide_collision_count()):
-			var collision = get_slide_collision(i)
-			var collider = collision.get_collider()
-		
-			# Check if the collider is a TileMapLayer
-			if collider is TileMapLayer:
-				var tile_position = collider.local_to_map(collision.get_position())
-				if PhysicsServer2D.body_get_collision_layer(collision.get_collider_rid()) == 2:
-					is_dead = true
-					is_live = false
-					print("you died", i)
+	
+	for i in range(get_slide_collision_count()):
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
+	
+		# Check if the collider is a TileMapLayer
+		if collider is TileMapLayer:
+			var tile_position = collider.local_to_map(collision.get_position())
+			if PhysicsServer2D.body_get_collision_layer(collision.get_collider_rid()) == 2:
+				is_dead = true
+				is_live = false
+				print("you died", i)
 
 func _process(_delta: float) -> void:
 	if is_dead:
@@ -90,6 +93,9 @@ func _process(_delta: float) -> void:
 		print("is_dead")
 		await $Splat.finished
 		print("revived")
+		# Reset Player related parameters
 		position = Vector2(100.0, 100.0)
+		velocity = Vector2(0.0, 0.0)
+		GameState.player_rotation = 0.0
 		is_live = true
 	

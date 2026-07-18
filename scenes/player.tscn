@@ -41,7 +41,6 @@ emission_shape = 1
 emission_sphere_radius = 8.0
 angle_min = -89.99999
 angle_max = 90.000015
-inherit_velocity_ratio = 100.0
 direction = Vector3(1, -1, 0)
 spread = 180.0
 initial_velocity_min = 235.92
