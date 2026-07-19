@@ -1,13 +1,10 @@
 [gd_scene format=3 uid="uid://ctvg0c1ktf5fw"]
 
-[ext_resource type="Script" uid="uid://2o8rwl18xb2v" path="res://scripts/character_body_2d.gd" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://2o8rwl18xb2v" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="Texture2D" uid="uid://ckqlp7vmbp3hr" path="res://assets/sprites/player.png" id="2_g2els"]
-[ext_resource type="Script" uid="uid://pjrcjvyfja5p" path="res://scenes/animated_sprite_2d.gd" id="3_dqkch"]
+[ext_resource type="Script" uid="uid://pjrcjvyfja5p" path="res://scripts/animated_sprite_2d.gd" id="3_dqkch"]
 [ext_resource type="Script" uid="uid://ck54a7o0k88lq" path="res://scripts/camera_2d.gd" id="3_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://dq3s23le15uhr" path="res://assets/sprites/blood_drop.png" id="5_qlg0r"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_srqkv"]
-size = Vector2(32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_y0dqn"]
 animations = [{
@@ -54,12 +51,11 @@ scale_curve = SubResource("CurveTexture_5x0i3")
 alpha_curve = SubResource("CurveTexture_ydpu5")
 
 [node name="Player" type="CharacterBody2D" unique_id=1635808929]
-collision_mask = 3
+collision_mask = 7
 script = ExtResource("1_3vyb7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1864728684]
-shape = SubResource("RectangleShape2D_srqkv")
-debug_color = Color(1, 1, 0, 1)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1012227341]
+polygon = PackedVector2Array(-15, 11, -15, -7, -10, -10, 5, -11, 11, -6, 11, 11, 2, 15, -12, 15)
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1094311021]
 sprite_frames = SubResource("SpriteFrames_y0dqn")

@@ -7,6 +7,6 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	$Jump.text     = "Jump Accum : " + str(GameState.player_jump_accum)
-	$Velocity.text = "velocity   : " + str(GameState.player_velocity)
+	$Velocity.text = "Velocity   : " + str(GameState.player_velocity)

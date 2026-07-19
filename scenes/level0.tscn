@@ -1,0 +1,258 @@
+[gd_scene format=4 uid="uid://be5el4byno25s"]
+
+[ext_resource type="TileSet" uid="uid://cikrd3seb2fug" path="res://assets/tile_sets/ground.tres" id="1_rerym"]
+[ext_resource type="TileSet" uid="uid://sl17pdo66tsv" path="res://assets/tile_sets/lethals.tres" id="2_uijja"]
+[ext_resource type="TileSet" uid="uid://bg5f5unbb1sr0" path="res://assets/tile_sets/objects.tres" id="3_qsrgx"]
+[ext_resource type="Script" uid="uid://b60ncm245lt55" path="res://scenes/area_2d.gd" id="4_x1x1l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_srqkv"]
+size = Vector2(506, 125.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x1x1l"]
+size = Vector2(296, 133.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wrnl3"]
+size = Vector2(33, 42)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2h6oo"]
+size = Vector2(627, 125.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gklfi"]
+size = Vector2(429.5, 125.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cm1v6"]
+size = Vector2(48, 100.9375)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tcqsn"]
+size = Vector2(452, 110.46875)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l3elg"]
+size = Vector2(163.5, 34.46875)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6q6d4"]
+size = Vector2(335, 130.46875)
+
+[node name="Level0" type="Node2D" unique_id=1672064429]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=356370316]
+z_index = -2
+offset_left = 20.0
+offset_top = 10.0
+offset_right = 856.0
+offset_bottom = 550.0
+color = Color(0.21698347, 0.5761758, 0.79854804, 1)
+
+[node name="TileMapLayer L0" type="TileMapLayer" parent="." unique_id=695791404]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAYAAAAAAAAAAAAAAAXAAAAAAAAAAAAAAAWAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAATAAAAAAAAAAAAAAASAAAAAAAAAAAAAAARAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAACAAAAAAAAAAAAAAABAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAZAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAaAAEAAAAAAAAAAAAaAAIAAAAAAAAAAAAaAAMAAAAAAAAAAAAaAAQAAAAAAAAAAAAaAAUAAAAAAAAAAAAaAAYAAAAAAAAAAAABAAQAAAAAAAAAAAACAAQAAAAAAAAAAAADAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAJAAQAAAAAAAAAAAAKAAQAAAAAAAAAAAALAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAANAAQAAAAAAAAAAAAOAAQAAAAAAAAAAAAPAAQAAAAAAAAAAAAQAAQAAAAAAAAAAAARAAQAAAAAAAAAAAASAAQAAAAAAAAAAAATAAQAAAAAAAAAAAAUAAQAAAAAAAAAAAAVAAQAAAAAAAAAAAAWAAQAAAAAAAAAAAAXAAQAAAAAAAAAAAADAAMAAAACAAAAAAAEAAMAAAADAAAAAAAFAAMAAAAAAAAAAAAGAAMAAAAAAAAAAAAHAAMAAAAAAAAAAAAIAAMAAAAAAAAAAAAKAAMAAAACAAAAABAJAAMAAAADAAAAABAUAAMAAAABAAAAAAAVAAMAAAABAAAAABAAAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAADAAsAAAABAAAAAAAEAAsAAAAAAAAAAAAFAAsAAAABAAAAABAKAAsAAAACAAAAAAALAAsAAAADAAAAAAATAAsAAAADAAAAABAUAAsAAAACAAAAABAaAAgAAAAAAAAAAAAaAAkAAAAAAAAAAAAaAAoAAAAAAAAAAAAaAAsAAAAAAAAAAAAaAAwAAAAAAAAAAAAaAA0AAAAAAAAAAAABAAwAAAAAAAAAAAACAAwAAAAAAAAAAAADAAgAAAAAAAAAAAADAAwAAAAAAAAAAAAEAAgAAAAAAAAAAAAEAAwAAAAAAAAAAAAFAAgAAAAAAAAAAAAFAAwAAAAAAAAAAAAGAAgAAAAAAAAAAAAGAAwAAAAAAAAAAAAHAAgAAAAAAAAAAAAHAAwAAAAAAAAAAAAIAAgAAAAAAAAAAAAIAAwAAAAAAAAAAAAJAAgAAAAAAAAAAAAJAAwAAAAAAAAAAAAKAAgAAAAAAAAAAAAKAAwAAAAAAAAAAAALAAgAAAAAAAAAAAALAAwAAAAAAAAAAAAMAAgAAAAAAAAAAAAMAAwAAAAAAAAAAAANAAgAAAAAAAAAAAANAAwAAAAAAAAAAAAOAAgAAAAAAAAAAAAOAAwAAAAAAAAAAAAPAAgAAAAAAAAAAAAPAAwAAAAAAAAAAAAQAAgAAAAAAAAAAAAQAAwAAAAAAAAAAAARAAgAAAAAAAAAAAARAAwAAAAAAAAAAAASAAgAAAAAAAAAAAASAAwAAAAAAAAAAAATAAgAAAAAAAAAAAATAAwAAAAAAAAAAAAUAAgAAAAAAAAAAAAUAAwAAAAAAAAAAAAVAAgAAAAAAAAAAAAVAAwAAAAAAAAAAAAWAAgAAAAAAAAAAAAWAAwAAAAAAAAAAAAXAAgAAAAAAAAAAAAYAAgAAAAAAAAAAAAZAAgAAAAAAAAAAAAaAAcAAAAAAAAAAAAAAAcAAAAAAAAAAAAMAAcAAAABAAAAAAASAAcAAAABAAAAABAAAA8AAAAAAAAAAAAAABAAAAAAAAAAAAAMABAAAAAAAAAAAAASABAAAAAAAAAAAAAaAA8AAAAAAAAAAAAaABAAAAAAAAAAAAAAABEAAAAAAAAAAAABABEAAAAAAAAAAAACABEAAAAAAAAAAAADABEAAAAAAAAAAAAEABEAAAAAAAAAAAAFABEAAAAAAAAAAAAGABEAAAAAAAAAAAAHABEAAAAAAAAAAAAIABEAAAAAAAAAAAAJABEAAAAAAAAAAAAKABEAAAAAAAAAAAALABEAAAAAAAAAAAAMABEAAAAAAAAAAAANABEAAAAAAAAAAAAOABEAAAAAAAAAAAAPABEAAAAAAAAAAAAQABEAAAAAAAAAAAARABEAAAAAAAAAAAASABEAAAAAAAAAAAATABEAAAAAAAAAAAAUABEAAAAAAAAAAAAVABEAAAAAAAAAAAAWABEAAAAAAAAAAAAXABEAAAAAAAAAAAAYABEAAAAAAAAAAAAZABEAAAAAAAAAAAAaABEAAAAAAAAAAAAAAA4AAAAAAAAAAAAaAA4AAAAAAAAAAAASAA8AAAAAAAAAAAAMAA8AAAAAAAAAAAANABAAAAAAAAAAAAAOABAAAAAAAAAAAAAPABAAAAAAAAAAAAAQABAAAAAAAAAAAAARABAAAAAAAAAAAAA=")
+tile_set = ExtResource("1_rerym")
+
+[node name="TileMapLayer L0 Extra" type="TileMapLayer" parent="." unique_id=218393658]
+tile_set = ExtResource("1_rerym")
+
+[node name="TileMapLayer L0 Leathals" type="TileMapLayer" parent="." unique_id=1344527729]
+z_index = 1
+tile_map_data = PackedByteArray("AAAMAAsAAAACAAAAAAANAAsAAAADAAAAAAANAA8AAAADAAAAAAAOAAsAAAACAAAAABAOAA8AAAACAAAAAAAPAAsAAAACAAAAABAPAA8AAAADAAAAAAAQAAsAAAADAAAAABAQAA8AAAADAAAAABARAAsAAAACAAAAAAARAA8AAAACAAAAAAASAAsAAAADAAAAAAAZAAcAAAACAAAAAAANAAcAAAACAAAAAAAOAAcAAAACAAAAAAAPAAcAAAACAAAAABAQAAcAAAACAAAAABARAAcAAAACAAAAAAAZAAkAAAACAAAAAEAZAAoAAAACAAAAAEAZAAsAAAADAAAAAGA=")
+tile_set = ExtResource("2_uijja")
+
+[node name="TileMapLayer L0 Objects" type="TileMapLayer" parent="." unique_id=1925239937]
+z_index = -1
+tile_map_data = PackedByteArray("AAA8AB8AAAAEAAAAAAA9AB8AAAAFAAAAAAACABAAAAACAAAAAAA=")
+tile_set = ExtResource("3_qsrgx")
+
+[node name="Steering" type="Node2D" parent="." unique_id=1548610403]
+visible = false
+
+[node name="SteeringArea" type="Area2D" parent="Steering" unique_id=386247995]
+collision_layer = 4
+script = ExtResource("4_x1x1l")
+
+[node name="Collision" type="CollisionShape2D" parent="Steering/SteeringArea" unique_id=1332755524]
+position = Vector2(280, 64.875)
+shape = SubResource("RectangleShape2D_srqkv")
+
+[node name="Text" type="Label" parent="Steering" unique_id=964409157]
+z_index = 10
+offset_left = 181.0
+offset_top = 7.0
+offset_right = 342.0
+offset_bottom = 134.0
+text = "Steering
+A/Left arrow 
+D/Right arrow
+
+"
+
+[node name="Easy" type="Node2D" parent="." unique_id=1709755771]
+visible = false
+
+[node name="EasyArea" type="Area2D" parent="Easy" unique_id=2062917719]
+position = Vector2(550, 4)
+collision_layer = 4
+script = ExtResource("4_x1x1l")
+
+[node name="Collision" type="CollisionShape2D" parent="Easy/EasyArea" unique_id=49596519]
+position = Vector2(147, 87.75)
+shape = SubResource("RectangleShape2D_x1x1l")
+
+[node name="Text" type="Label" parent="Easy" unique_id=1430835914]
+z_index = 10
+offset_left = 583.0
+offset_top = 3.0
+offset_right = 839.0
+offset_bottom = 130.0
+text = "Easy now
+Descelerate to avoid the spikes
+"
+
+[node name="NotSoEasy" type="Node2D" parent="." unique_id=996252039]
+
+[node name="EasyArea" type="Area2D" parent="NotSoEasy" unique_id=1641438954]
+position = Vector2(550, 4)
+collision_layer = 4
+script = ExtResource("4_x1x1l")
+
+[node name="Collision" type="CollisionShape2D" parent="NotSoEasy/EasyArea" unique_id=326565920]
+position = Vector2(265.5, 232)
+shape = SubResource("RectangleShape2D_wrnl3")
+
+[node name="Text" type="Label" parent="NotSoEasy" unique_id=1976839489]
+z_index = 10
+offset_left = 583.0
+offset_top = 136.0
+offset_right = 839.0
+offset_bottom = 263.0
+text = "... I told you
+Descelerate to avoid the spikes
+"
+
+[node name="Jumping" type="Node2D" parent="." unique_id=1110157222]
+visible = false
+
+[node name="JumpingArea" type="Area2D" parent="Jumping" unique_id=1073786757]
+position = Vector2(534, 161)
+collision_layer = 4
+script = ExtResource("4_x1x1l")
+
+[node name="Collision" type="CollisionShape2D" parent="Jumping/JumpingArea" unique_id=1268828120]
+position = Vector2(-79.5, 42)
+shape = SubResource("RectangleShape2D_2h6oo")
+
+[node name="Jumping" type="Label" parent="Jumping" unique_id=2015101134]
+z_index = 10
+offset_left = 597.0
+offset_top = 134.0
+offset_right = 827.0
+offset_bottom = 261.0
+text = "Jumping
+Press Space to pre-load jump
+Release Space to jump
+Shift to abort jump
+"
+
+[node name="Speed" type="Node2D" parent="." unique_id=1693288928]
+
+[node name="SteeringArea" type="Area2D" parent="Speed" unique_id=200864942]
+position = Vector2(255, 258)
+collision_layer = 4
+script = ExtResource("4_x1x1l")
+
+[node name="Collision" type="CollisionShape2D" parent="Speed/SteeringArea" unique_id=1403433254]
+position = Vector2(-9.25, 62)
+shape = SubResource("RectangleShape2D_gklfi")
+
+[node name="Text" type="Label" parent="Speed" unique_id=1275167362]
+z_index = 10
+offset_left = 108.0
+offset_top = 261.0
+offset_right = 364.0
+offset_bottom = 388.0
+text = "Need for Speed
+Accellerate 
+Jump from ramp
+"
+
+[node name="Beware" type="Node2D" parent="." unique_id=115986144]
+
+[node name="SteeringArea" type="Area2D" parent="Beware" unique_id=1567935411]
+position = Vector2(586, 258)
+collision_layer = 4
+script = ExtResource("4_x1x1l")
+
+[node name="Collision" type="CollisionShape2D" parent="Beware/SteeringArea" unique_id=428024021]
+position = Vector2(234, 80.53125)
+shape = SubResource("RectangleShape2D_cm1v6")
+
+[node name="Text" type="Label" parent="Beware" unique_id=2138862733]
+z_index = 10
+offset_left = 622.0
+offset_top = 264.0
+offset_right = 878.0
+offset_bottom = 391.0
+text = "Beware
+Not jump too long, or
+bounce off the ledge
+
+"
+
+[node name="Timing" type="Node2D" parent="." unique_id=2105510943]
+
+[node name="SteeringArea" type="Area2D" parent="Timing" unique_id=485615052]
+position = Vector2(586, 258)
+collision_layer = 4
+script = ExtResource("4_x1x1l")
+
+[node name="Collision" type="CollisionShape2D" parent="Timing/SteeringArea" unique_id=2116284509]
+position = Vector2(25, 214.76563)
+shape = SubResource("RectangleShape2D_tcqsn")
+
+[node name="Text" type="Label" parent="Timing" unique_id=320722001]
+z_index = 10
+offset_left = 666.0
+offset_top = 392.0
+offset_right = 822.0
+offset_bottom = 519.0
+text = "Timing
+... is everything !!!
+"
+
+[node name="Almost" type="Node2D" parent="." unique_id=1619842796]
+
+[node name="SteeringArea" type="Area2D" parent="Almost" unique_id=1135445814]
+position = Vector2(586, 258)
+collision_layer = 4
+script = ExtResource("4_x1x1l")
+
+[node name="Collision" type="CollisionShape2D" parent="Almost/SteeringArea" unique_id=360532276]
+position = Vector2(-89.75, 238.76563)
+shape = SubResource("RectangleShape2D_l3elg")
+
+[node name="Text" type="Label" parent="Almost" unique_id=1313028531]
+z_index = 10
+offset_left = 390.0
+offset_top = 390.0
+offset_right = 611.0
+offset_bottom = 517.0
+text = "Almost there
+Never give up...
+"
+
+[node name="GoodJob" type="Node2D" parent="." unique_id=463630424]
+
+[node name="SteeringArea" type="Area2D" parent="GoodJob" unique_id=1308336014]
+position = Vector2(586, 258)
+collision_layer = 4
+script = ExtResource("4_x1x1l")
+
+[node name="Collision" type="CollisionShape2D" parent="GoodJob/SteeringArea" unique_id=15130090]
+position = Vector2(-392.5, 221.76563)
+shape = SubResource("RectangleShape2D_6q6d4")
+
+[node name="Text" type="Label" parent="GoodJob" unique_id=1397175347]
+z_index = 10
+offset_left = 54.0
+offset_top = 391.0
+offset_right = 306.0
+offset_bottom = 518.0
+text = "Good Job
+Next level stuff coming up...
+"

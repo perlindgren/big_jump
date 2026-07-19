@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://p2bc0fkvtu0s"]
+
+[ext_resource type="Script" uid="uid://chj5oikegfgq2" path="res://scripts/area_2d.gd" id="1_duv4v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_srqkv"]
+
+[node name="Area2D" type="Area2D" unique_id=1664546516]
+collision_layer = 4
+script = ExtResource("1_duv4v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=321525904]
+shape = SubResource("RectangleShape2D_srqkv")
+
+[node name="Label" type="Label" parent="." unique_id=842126649]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "SomeText
+"

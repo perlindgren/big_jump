@@ -81,12 +81,16 @@ func _physics_process(delta: float) -> void:
 	
 		# Check if the collider is a TileMapLayer
 		if collider is TileMapLayer:
-			var tile_position = collider.local_to_map(collision.get_position())
-			if PhysicsServer2D.body_get_collision_layer(collision.get_collider_rid()) == 2:
-				is_dead = true
-				is_live = false
-				print("you died", i)
-				$Sprite.modulate = Color(0.5, 0.5, 0.5, 0.1)
+			#print("rid ", PhysicsServer2D.body_get_collision_layer(collision.get_collider_rid()))
+			# var tile_position = collider.local_to_map(collision.get_position())
+			match PhysicsServer2D.body_get_collision_layer(collision.get_collider_rid()):
+				2:	# leathal obstacles
+					is_dead = true
+					is_live = false
+					print("you died", i)
+					$Sprite.modulate = Color(0.5, 0.5, 0.5, 0.1)
+				4:  # object such as door
+					print("goal")
 
 func _process(_delta: float) -> void:
 	if is_dead:
@@ -98,7 +102,7 @@ func _process(_delta: float) -> void:
 		await $Splat.finished
 		print("revived")
 		# Reset Player related parameters
-		position = Vector2(100.0, 100.0)
+		position = Vector2(800.0, 500.0)
 		velocity = Vector2(0.0, 0.0)
 		GameState.player_rotation = 0.0
 		is_live = true
