@@ -4,7 +4,7 @@
 [ext_resource type="TileSet" uid="uid://cikrd3seb2fug" path="res://assets/tile_sets/ground.tres" id="1_rerym"]
 [ext_resource type="TileSet" uid="uid://sl17pdo66tsv" path="res://assets/tile_sets/lethals.tres" id="2_uijja"]
 [ext_resource type="TileSet" uid="uid://bg5f5unbb1sr0" path="res://assets/tile_sets/objects.tres" id="3_qsrgx"]
-[ext_resource type="Script" uid="uid://b60ncm245lt55" path="res://scenes/area_2d.gd" id="4_x1x1l"]
+[ext_resource type="Script" uid="uid://b60ncm245lt55" path="res://scripts/text_area.gd" id="4_x1x1l"]
 [ext_resource type="PackedScene" uid="uid://cuno2dho5wljv" path="res://scripts/flag.tscn" id="5_x1x1l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_srqkv"]
@@ -62,17 +62,19 @@ z_index = -1
 tile_map_data = PackedByteArray("AAA8AB8AAAAEAAAAAAA9AB8AAAAFAAAAAAACABAAAAACAAAAAAA=")
 tile_set = ExtResource("3_qsrgx")
 
-[node name="Steering" type="Node2D" parent="." unique_id=1548610403]
+[node name="Labels" type="Node" parent="." unique_id=436233531]
 
-[node name="SteeringArea" type="Area2D" parent="Steering" unique_id=386247995]
+[node name="Steering" type="Node2D" parent="Labels" unique_id=1548610403]
+
+[node name="SteeringArea" type="Area2D" parent="Labels/Steering" unique_id=386247995]
 collision_layer = 4
 script = ExtResource("4_x1x1l")
 
-[node name="Collision" type="CollisionShape2D" parent="Steering/SteeringArea" unique_id=1332755524]
+[node name="Collision" type="CollisionShape2D" parent="Labels/Steering/SteeringArea" unique_id=1332755524]
 position = Vector2(280, 64.875)
 shape = SubResource("RectangleShape2D_srqkv")
 
-[node name="Text" type="Label" parent="Steering" unique_id=964409157]
+[node name="Text" type="Label" parent="Labels/Steering" unique_id=964409157]
 z_index = 10
 offset_left = 181.0
 offset_top = 7.0
@@ -84,18 +86,18 @@ D/Right arrow
 
 "
 
-[node name="Easy" type="Node2D" parent="." unique_id=1709755771]
+[node name="Easy" type="Node2D" parent="Labels" unique_id=1709755771]
 
-[node name="EasyArea" type="Area2D" parent="Easy" unique_id=2062917719]
+[node name="EasyArea" type="Area2D" parent="Labels/Easy" unique_id=2062917719]
 position = Vector2(550, 4)
 collision_layer = 4
 script = ExtResource("4_x1x1l")
 
-[node name="Collision" type="CollisionShape2D" parent="Easy/EasyArea" unique_id=49596519]
+[node name="Collision" type="CollisionShape2D" parent="Labels/Easy/EasyArea" unique_id=49596519]
 position = Vector2(147, 87.75)
 shape = SubResource("RectangleShape2D_x1x1l")
 
-[node name="Text" type="Label" parent="Easy" unique_id=1430835914]
+[node name="Text" type="Label" parent="Labels/Easy" unique_id=1430835914]
 z_index = 10
 offset_left = 583.0
 offset_top = 3.0
@@ -105,18 +107,18 @@ text = "Easy now
 Descelerate to avoid the spikes
 "
 
-[node name="NotSoEasy" type="Node2D" parent="." unique_id=996252039]
+[node name="NotSoEasy" type="Node2D" parent="Labels" unique_id=996252039]
 
-[node name="EasyArea" type="Area2D" parent="NotSoEasy" unique_id=1641438954]
+[node name="EasyArea" type="Area2D" parent="Labels/NotSoEasy" unique_id=1641438954]
 position = Vector2(550, 4)
 collision_layer = 4
 script = ExtResource("4_x1x1l")
 
-[node name="Collision" type="CollisionShape2D" parent="NotSoEasy/EasyArea" unique_id=326565920]
+[node name="Collision" type="CollisionShape2D" parent="Labels/NotSoEasy/EasyArea" unique_id=326565920]
 position = Vector2(265.5, 232)
 shape = SubResource("RectangleShape2D_wrnl3")
 
-[node name="Text" type="Label" parent="NotSoEasy" unique_id=1976839489]
+[node name="Text" type="Label" parent="Labels/NotSoEasy" unique_id=1976839489]
 z_index = 10
 offset_left = 583.0
 offset_top = 136.0
@@ -126,18 +128,18 @@ text = "... I told you
 Descelerate to avoid the spikes
 "
 
-[node name="Jumping" type="Node2D" parent="." unique_id=1110157222]
+[node name="Jumping" type="Node2D" parent="Labels" unique_id=1110157222]
 
-[node name="JumpingArea" type="Area2D" parent="Jumping" unique_id=1073786757]
+[node name="JumpingArea" type="Area2D" parent="Labels/Jumping" unique_id=1073786757]
 position = Vector2(534, 161)
 collision_layer = 4
 script = ExtResource("4_x1x1l")
 
-[node name="Collision" type="CollisionShape2D" parent="Jumping/JumpingArea" unique_id=1268828120]
+[node name="Collision" type="CollisionShape2D" parent="Labels/Jumping/JumpingArea" unique_id=1268828120]
 position = Vector2(-79.5, 42)
 shape = SubResource("RectangleShape2D_2h6oo")
 
-[node name="Jumping" type="Label" parent="Jumping" unique_id=2015101134]
+[node name="Jumping" type="Label" parent="Labels/Jumping" unique_id=2015101134]
 z_index = 10
 offset_left = 597.0
 offset_top = 134.0
@@ -149,18 +151,18 @@ Release Space to jump
 Shift to abort jump
 "
 
-[node name="Speed" type="Node2D" parent="." unique_id=1693288928]
+[node name="Speed" type="Node2D" parent="Labels" unique_id=1693288928]
 
-[node name="SteeringArea" type="Area2D" parent="Speed" unique_id=200864942]
+[node name="SteeringArea" type="Area2D" parent="Labels/Speed" unique_id=200864942]
 position = Vector2(255, 258)
 collision_layer = 4
 script = ExtResource("4_x1x1l")
 
-[node name="Collision" type="CollisionShape2D" parent="Speed/SteeringArea" unique_id=1403433254]
+[node name="Collision" type="CollisionShape2D" parent="Labels/Speed/SteeringArea" unique_id=1403433254]
 position = Vector2(-9.25, 62)
 shape = SubResource("RectangleShape2D_gklfi")
 
-[node name="Text" type="Label" parent="Speed" unique_id=1275167362]
+[node name="Text" type="Label" parent="Labels/Speed" unique_id=1275167362]
 z_index = 10
 offset_left = 108.0
 offset_top = 261.0
@@ -171,18 +173,18 @@ Accellerate
 Jump from ramp
 "
 
-[node name="Beware" type="Node2D" parent="." unique_id=115986144]
+[node name="Beware" type="Node2D" parent="Labels" unique_id=115986144]
 
-[node name="SteeringArea" type="Area2D" parent="Beware" unique_id=1567935411]
+[node name="SteeringArea" type="Area2D" parent="Labels/Beware" unique_id=1567935411]
 position = Vector2(586, 258)
 collision_layer = 4
 script = ExtResource("4_x1x1l")
 
-[node name="Collision" type="CollisionShape2D" parent="Beware/SteeringArea" unique_id=428024021]
+[node name="Collision" type="CollisionShape2D" parent="Labels/Beware/SteeringArea" unique_id=428024021]
 position = Vector2(234, 80.53125)
 shape = SubResource("RectangleShape2D_cm1v6")
 
-[node name="Text" type="Label" parent="Beware" unique_id=2138862733]
+[node name="Text" type="Label" parent="Labels/Beware" unique_id=2138862733]
 z_index = 10
 offset_left = 622.0
 offset_top = 264.0
@@ -194,18 +196,18 @@ bounce off the ledge
 
 "
 
-[node name="Timing" type="Node2D" parent="." unique_id=2105510943]
+[node name="Timing" type="Node2D" parent="Labels" unique_id=2105510943]
 
-[node name="SteeringArea" type="Area2D" parent="Timing" unique_id=485615052]
+[node name="SteeringArea" type="Area2D" parent="Labels/Timing" unique_id=485615052]
 position = Vector2(586, 258)
 collision_layer = 4
 script = ExtResource("4_x1x1l")
 
-[node name="Collision" type="CollisionShape2D" parent="Timing/SteeringArea" unique_id=2116284509]
+[node name="Collision" type="CollisionShape2D" parent="Labels/Timing/SteeringArea" unique_id=2116284509]
 position = Vector2(25, 214.76563)
 shape = SubResource("RectangleShape2D_tcqsn")
 
-[node name="Text" type="Label" parent="Timing" unique_id=320722001]
+[node name="Text" type="Label" parent="Labels/Timing" unique_id=320722001]
 z_index = 10
 offset_left = 666.0
 offset_top = 392.0
@@ -215,18 +217,18 @@ text = "Timing
 ... is everything !!!
 "
 
-[node name="Almost" type="Node2D" parent="." unique_id=1619842796]
+[node name="Almost" type="Node2D" parent="Labels" unique_id=1619842796]
 
-[node name="SteeringArea" type="Area2D" parent="Almost" unique_id=1135445814]
+[node name="SteeringArea" type="Area2D" parent="Labels/Almost" unique_id=1135445814]
 position = Vector2(586, 258)
 collision_layer = 4
 script = ExtResource("4_x1x1l")
 
-[node name="Collision" type="CollisionShape2D" parent="Almost/SteeringArea" unique_id=360532276]
+[node name="Collision" type="CollisionShape2D" parent="Labels/Almost/SteeringArea" unique_id=360532276]
 position = Vector2(-89.75, 238.76563)
 shape = SubResource("RectangleShape2D_l3elg")
 
-[node name="Text" type="Label" parent="Almost" unique_id=1313028531]
+[node name="Text" type="Label" parent="Labels/Almost" unique_id=1313028531]
 z_index = 10
 offset_left = 390.0
 offset_top = 390.0
@@ -236,18 +238,18 @@ text = "Almost there
 Never give up...
 "
 
-[node name="GoodJob" type="Node2D" parent="." unique_id=463630424]
+[node name="GoodJob" type="Node2D" parent="Labels" unique_id=463630424]
 
-[node name="SteeringArea" type="Area2D" parent="GoodJob" unique_id=1308336014]
+[node name="SteeringArea" type="Area2D" parent="Labels/GoodJob" unique_id=1308336014]
 position = Vector2(586, 258)
 collision_layer = 4
 script = ExtResource("4_x1x1l")
 
-[node name="Collision" type="CollisionShape2D" parent="GoodJob/SteeringArea" unique_id=15130090]
+[node name="Collision" type="CollisionShape2D" parent="Labels/GoodJob/SteeringArea" unique_id=15130090]
 position = Vector2(-392.5, 221.76563)
 shape = SubResource("RectangleShape2D_6q6d4")
 
-[node name="Text" type="Label" parent="GoodJob" unique_id=1397175347]
+[node name="Text" type="Label" parent="Labels/GoodJob" unique_id=1397175347]
 z_index = 10
 offset_left = 54.0
 offset_top = 391.0

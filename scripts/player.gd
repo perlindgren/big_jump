@@ -69,7 +69,7 @@ func _physics_process(delta: float) -> void:
 		GameState.player_rotation += TAU
 	
 	GameState.player_jump_accum = jump_accum
-	$Sprite.modulate = Color(1.0, GameState.player_jump_accum / 1000.0, 1.0)
+	$Sprite.modulate = Color(1.0, GameState.player_jump_accum /jump_velocity, 1.0)
 	move_and_slide()
 	
 	# check collision
@@ -91,18 +91,16 @@ func _physics_process(delta: float) -> void:
 					$Sprite.modulate = Color(1.0, 0.0, 0.0, 0.1)
 				4:  # object such as door
 					print("goal")
+					GameState.player_goal = true
 
 func _process(_delta: float) -> void:
 	if is_dead:
 		is_dead = false
-		#$Splat.global_position = position
 		$Splat.restart()
-		#$Splat.emitting = true
-		print("is_dead")
+		#print("is_dead")
 		await $Splat.finished
-		print("revived")
+		#print("revived")
 		respawn()
-		# Reset Player related parameters
 		is_live = true
 
 # Reset Player related parameters

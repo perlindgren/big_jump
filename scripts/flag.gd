@@ -12,6 +12,6 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	var flag : AnimatedSprite2D = $".."
-	print("flag ", body, flag.position)
+	# print("flag ", body, flag.position)
 	GameState.spawn_position = flag.position
 	$"..".modulate = Color(0, 1, 0)
