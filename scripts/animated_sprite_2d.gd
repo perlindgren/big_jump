@@ -7,6 +7,8 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+# TODO, move rotation up
 func _process(_delta: float) -> void:
 	rotation = GameState.player_rotation
+	$"../CollisionPolygon2D".rotation = GameState.player_rotation
 	pass

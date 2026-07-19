@@ -1,9 +1,11 @@
 [gd_scene format=4 uid="uid://be5el4byno25s"]
 
+[ext_resource type="Script" uid="uid://nns7rrpnjvps" path="res://scripts/level_0.gd" id="1_cm1v6"]
 [ext_resource type="TileSet" uid="uid://cikrd3seb2fug" path="res://assets/tile_sets/ground.tres" id="1_rerym"]
 [ext_resource type="TileSet" uid="uid://sl17pdo66tsv" path="res://assets/tile_sets/lethals.tres" id="2_uijja"]
 [ext_resource type="TileSet" uid="uid://bg5f5unbb1sr0" path="res://assets/tile_sets/objects.tres" id="3_qsrgx"]
 [ext_resource type="Script" uid="uid://b60ncm245lt55" path="res://scenes/area_2d.gd" id="4_x1x1l"]
+[ext_resource type="PackedScene" uid="uid://cuno2dho5wljv" path="res://scripts/flag.tscn" id="5_x1x1l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_srqkv"]
 size = Vector2(506, 125.75)
@@ -33,6 +35,7 @@ size = Vector2(163.5, 34.46875)
 size = Vector2(335, 130.46875)
 
 [node name="Level0" type="Node2D" unique_id=1672064429]
+script = ExtResource("1_cm1v6")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=356370316]
 z_index = -2
@@ -60,7 +63,6 @@ tile_map_data = PackedByteArray("AAA8AB8AAAAEAAAAAAA9AB8AAAAFAAAAAAACABAAAAACAAA
 tile_set = ExtResource("3_qsrgx")
 
 [node name="Steering" type="Node2D" parent="." unique_id=1548610403]
-visible = false
 
 [node name="SteeringArea" type="Area2D" parent="Steering" unique_id=386247995]
 collision_layer = 4
@@ -83,7 +85,6 @@ D/Right arrow
 "
 
 [node name="Easy" type="Node2D" parent="." unique_id=1709755771]
-visible = false
 
 [node name="EasyArea" type="Area2D" parent="Easy" unique_id=2062917719]
 position = Vector2(550, 4)
@@ -126,7 +127,6 @@ Descelerate to avoid the spikes
 "
 
 [node name="Jumping" type="Node2D" parent="." unique_id=1110157222]
-visible = false
 
 [node name="JumpingArea" type="Area2D" parent="Jumping" unique_id=1073786757]
 position = Vector2(534, 161)
@@ -256,3 +256,15 @@ offset_bottom = 518.0
 text = "Good Job
 Next level stuff coming up...
 "
+
+[node name="Flag1" parent="." unique_id=482970223 instance=ExtResource("5_x1x1l")]
+position = Vector2(53, 112)
+
+[node name="Flag2" parent="." unique_id=1577285445 instance=ExtResource("5_x1x1l")]
+position = Vector2(763, 240)
+
+[node name="Flag4" parent="." unique_id=524637964 instance=ExtResource("5_x1x1l")]
+position = Vector2(781, 527)
+
+[node name="Flag3" parent="." unique_id=740009402 instance=ExtResource("5_x1x1l")]
+position = Vector2(50, 369)
