@@ -90,6 +90,7 @@ func _physics_process(delta: float) -> void:
 					print("you died", i)
 					$Sprite.modulate = Color(1.0, 0.0, 0.0, 0.1)
 				4:  # object such as door
+					is_live = false
 					print("goal")
 					GameState.player_goal = true
 
@@ -101,7 +102,6 @@ func _process(_delta: float) -> void:
 		await $Splat.finished
 		#print("revived")
 		respawn()
-		is_live = true
 
 # Reset Player related parameters
 func respawn() -> void:
@@ -111,6 +111,7 @@ func respawn() -> void:
 	jump_accum = 0.0
 	GameState.player_rotation = 0.0
 	GameState.player_jump_accum = 0.0
+	is_live = true
 
 #func _on_ready() -> void:
 #	respawn()
