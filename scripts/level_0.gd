@@ -7,6 +7,7 @@ func _ready() -> void:
 	var flag = $Flag1
 	flag.modulate = Color(0.0, 1.0, 0.0)
 	GameState.spawn_position = flag.position
+	GameState.frames = 0
 	
 func _process(_delta) -> void:
 	# this should perhaps be a signal
@@ -20,4 +21,5 @@ func _process(_delta) -> void:
 		
 		GameState.spawn_position = $Flag1.position
 		%Player.respawn()
+		GameState.frames = 0
 		

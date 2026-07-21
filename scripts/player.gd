@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 @export var jump_velocity: float = 1000.0
-@export var acceleration: float = 1000.0
-@export var air_acceleration: float = 200.0
+@export var acceleration: float = 1500.0
+@export var air_acceleration: float = 300.0
 @export var friction: float = 600.0
 @export var air_friction: float = 1.0
 @export var max_speed: float = 4000.0
@@ -15,11 +15,18 @@ var jump_engaged : bool = false
 var jump_accum : float = 0.0
 var is_dead : bool = false
 var is_live : bool = true
+var has_moved : bool = false
 
 func _physics_process(delta: float) -> void:
 	if is_live == false:
 		return
 		
+	if Input.is_anything_pressed():
+		has_moved = true
+		
+	if has_moved:
+		GameState.frames += 1
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -107,11 +114,12 @@ func _process(_delta: float) -> void:
 func respawn() -> void:
 	print(respawn)
 	position = GameState.spawn_position
-	velocity = Vector2(0.0, 0.0)
+	velocity = Vector2.ZERO
 	jump_accum = 0.0
 	GameState.player_rotation = 0.0
 	GameState.player_jump_accum = 0.0
 	is_live = true
+	has_moved = false 
 
 #func _on_ready() -> void:
 #	respawn()

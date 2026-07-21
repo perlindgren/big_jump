@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://d2fuv1guujm7a"]
+
+[ext_resource type="FontFile" uid="uid://censslmv4m6ny" path="res://assets/fonts/Xolonium-Regular.ttf" id="1_1fvms"]
+
+[resource]
+Font/fonts/Xolonium = ExtResource("1_1fvms")
+Label/fonts/font = ExtResource("1_1fvms")
