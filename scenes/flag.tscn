@@ -1,25 +1,26 @@
 [gd_scene format=3 uid="uid://cuno2dho5wljv"]
 
-[ext_resource type="Texture2D" uid="uid://5hc1liustycb" path="res://assets/sprites/flag2_0001.png" id="1_m265g"]
-[ext_resource type="Texture2D" uid="uid://yjri1ub0x1oq" path="res://assets/sprites/flag2_0002.png" id="2_lsd26"]
-[ext_resource type="Texture2D" uid="uid://ctm1l28hnric5" path="res://assets/sprites/flag2_0003.png" id="3_cwq6r"]
-[ext_resource type="Texture2D" uid="uid://c67ybyxl2thtx" path="res://assets/sprites/flag2_0004.png" id="4_oqbji"]
-[ext_resource type="Script" uid="uid://32bvdfrvtu8d" path="res://scripts/flag_animation.gd" id="5_cwq6r"]
+[ext_resource type="Texture2D" uid="uid://5hc1liustycb" path="res://assets/sprites/flag2_0001.png" id="1_s5mf2"]
+[ext_resource type="Texture2D" uid="uid://yjri1ub0x1oq" path="res://assets/sprites/flag2_0002.png" id="2_7kq5u"]
+[ext_resource type="Texture2D" uid="uid://ctm1l28hnric5" path="res://assets/sprites/flag2_0003.png" id="3_msxbw"]
+[ext_resource type="Texture2D" uid="uid://c67ybyxl2thtx" path="res://assets/sprites/flag2_0004.png" id="4_rjvi2"]
+[ext_resource type="Script" uid="uid://32bvdfrvtu8d" path="res://scripts/flag_animation.gd" id="5_7kq5u"]
+[ext_resource type="Script" uid="uid://bkb12dyumwolh" path="res://scripts/flag_collision.gd" id="5_s5mf2"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_srqkv"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_m265g")
+"texture": ExtResource("1_s5mf2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_lsd26")
+"texture": ExtResource("2_7kq5u")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_cwq6r")
+"texture": ExtResource("3_msxbw")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_oqbji")
+"texture": ExtResource("4_rjvi2")
 }],
 "loop": 1,
 "name": &"flag",
@@ -34,10 +35,11 @@ sprite_frames = SubResource("SpriteFrames_srqkv")
 animation = &"flag"
 frame_progress = 0.5440265
 speed_scale = 0.5
-script = ExtResource("5_cwq6r")
+script = ExtResource("5_7kq5u")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=2054580034]
 collision_layer = 4
+script = ExtResource("5_s5mf2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=984281850]
 shape = SubResource("RectangleShape2D_srqkv")
