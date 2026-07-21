@@ -30,14 +30,14 @@ unique_name_in_owner = true
 
 [node name="HUD" parent="." unique_id=785256614 instance=ExtResource("3_sugp2")]
 
-[node name="Levels" type="Node" parent="." unique_id=2058375429]
+[node name="Levels" type="Node2D" parent="." unique_id=963335737]
 
-[node name="Level0" parent="Levels" unique_id=1672064429 instance=ExtResource("4_tefeu")]
+[node name="Level 0" parent="Levels" unique_id=1672064429 instance=ExtResource("4_tefeu")]
 
 [node name="Level 1" parent="Levels" unique_id=1249886807 instance=ExtResource("4_tbgi4")]
 process_mode = 4
 visible = false
 
-[node name="Leve l2" parent="Levels" unique_id=1386021204 instance=ExtResource("1_o5qli")]
+[node name="Level 2" parent="Levels" unique_id=1386021204 instance=ExtResource("1_o5qli")]
 process_mode = 4
 visible = false

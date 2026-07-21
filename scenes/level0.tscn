@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://be5el4byno25s"]
 
-[ext_resource type="Script" uid="uid://nns7rrpnjvps" path="res://scripts/level_0.gd" id="1_cm1v6"]
+[ext_resource type="Script" uid="uid://nns7rrpnjvps" path="res://scripts/level0.gd" id="1_cm1v6"]
 [ext_resource type="TileSet" uid="uid://cikrd3seb2fug" path="res://assets/tile_sets/ground.tres" id="1_rerym"]
 [ext_resource type="TileSet" uid="uid://sl17pdo66tsv" path="res://assets/tile_sets/lethals.tres" id="2_uijja"]
 [ext_resource type="TileSet" uid="uid://bg5f5unbb1sr0" path="res://assets/tile_sets/objects.tres" id="3_qsrgx"]
