@@ -17,6 +17,10 @@ var is_dead : bool = false
 var is_live : bool = true
 var has_moved : bool = false
 var is_jump_pressed : bool = false
+var left : float = 1.0
+var right : float = 1.0
+var rot_clockwise : float = 1.0
+var rot_counter_clockwise : float = 1.0
 
 enum input_state {
 	JUMP_JUST_PRESSED = 1, 
@@ -28,37 +32,10 @@ enum input_state {
 	ROT_CLOCKWISE_JUST_PRESSED = 64,
 	ROT_CLOCKWISE_JUST_RELEASED = 128,
 	ROT_COUNTER_CLOCKWISE_JUST_PRESSED = 256,
-	ROT_COUNTER_CLOCKWISE_JUST_RELEASED = 512
+	ROT_COUNTER_CLOCKWISE_JUST_RELEASED = 512,
+	CANCEL_JUMP_JUST_PRESSED = 1024,
 }
 
-@export var recording : Dictionary[int, int] = {}
-enum mode_states {RECORD, REPLAY}
-var mode : mode_states = mode_states.RECORD
-
-func clear_recording() -> void:
-	recording = {}
-	
-func add_state(input: int) -> void:
-	print("add_state ", input)
-	var frame : int = GameState.frames
-	if recording.get(frame):
-		print("same frame, old ", recording[frame])
-		recording[frame] |= input
-		
-	else:
-		recording[frame] = input
-	print("recording frame ", frame, " data ", recording[frame])
-
-func record_input(input: int, rec_input: bool) -> bool:
-	if mode == mode_states.RECORD:
-		if rec_input:
-			add_state(input)
-		return rec_input
-	else:
-		if recording.get(GameState.frames):
-			return recording[GameState.frames] && input
-		else:
-			return false
 	
 func _physics_process(delta: float) -> void:
 	# Check that we meet timing, not sure if this is entirely correct way
@@ -69,30 +46,33 @@ func _physics_process(delta: float) -> void:
 		return
 	
 	# Record/Playback input actions
-	var jump_just_pressed: bool = record_input(input_state.JUMP_JUST_PRESSED, Input.is_action_just_pressed(&"jump"))
+	var jump_just_pressed: bool = GameState.record_input(input_state.JUMP_JUST_PRESSED, Input.is_action_just_pressed(&"jump"))
 	
-	var jump_just_released: bool = record_input(input_state.JUMP_JUST_RELEASED, Input.is_action_just_released(&"jump"))
+	var jump_just_released: bool = GameState.record_input(input_state.JUMP_JUST_RELEASED, Input.is_action_just_released(&"jump"))
 	
-	var left_just_pressed: bool = record_input(input_state.LEFT_JUST_PRESSED, Input.is_action_just_pressed(&"left"))
+	var left_just_pressed: bool = GameState.record_input(input_state.LEFT_JUST_PRESSED, Input.is_action_just_pressed(&"left"))
 	
-	var left_just_released: bool = record_input(input_state.LEFT_JUST_RELEASED, Input.is_action_just_released(&"left"))
+	var left_just_released: bool = GameState.record_input(input_state.LEFT_JUST_RELEASED, Input.is_action_just_released(&"left"))
 	
-	var right_just_pressed: bool = record_input(input_state.RIGHT_JUST_PRESSED, Input.is_action_just_pressed(&"right"))
+	var right_just_pressed: bool = GameState.record_input(input_state.RIGHT_JUST_PRESSED, Input.is_action_just_pressed(&"right"))
 	
-	var right_just_released: bool = record_input(input_state.RIGHT_JUST_RELEASED, Input.is_action_just_released(&"right"))
+	var right_just_released: bool = GameState.record_input(input_state.RIGHT_JUST_RELEASED, Input.is_action_just_released(&"right"))
 	
-	var rot_clockwise_just_pressed: bool = record_input(input_state.ROT_CLOCKWISE_JUST_PRESSED, Input.is_action_just_pressed(&"rotate_clockwise"))
+	var rot_clockwise_just_pressed: bool = GameState.record_input(input_state.ROT_CLOCKWISE_JUST_PRESSED, Input.is_action_just_pressed(&"rotate_clockwise"))
 	
-	var rot_clockwise_just_released: bool = record_input(input_state.ROT_CLOCKWISE_JUST_RELEASED, Input.is_action_just_released(&"rotate_clockwise"))
+	var rot_clockwise_just_released: bool = GameState.record_input(input_state.ROT_CLOCKWISE_JUST_RELEASED, Input.is_action_just_released(&"rotate_clockwise"))
 	
-	var rot_counter_clockwise_just_pressed: bool = record_input(input_state.ROT_COUNTER_CLOCKWISE_JUST_PRESSED, Input.is_action_just_pressed(&"rotate_counter_clockwise"))
+	var rot_counter_clockwise_just_pressed: bool = GameState.record_input(input_state.ROT_COUNTER_CLOCKWISE_JUST_PRESSED, Input.is_action_just_pressed(&"rotate_counter_clockwise"))
 	
-	var rot_counter_clockwise_just_released: bool = record_input(input_state.ROT_COUNTER_CLOCKWISE_JUST_RELEASED, Input.is_action_just_released(&"rotate_counter_clockwise"))
-		
+	var rot_counter_clockwise_just_released: bool = GameState.record_input(input_state.ROT_COUNTER_CLOCKWISE_JUST_RELEASED, Input.is_action_just_released(&"rotate_counter_clockwise"))
+
+	var cancel_jump_just_pressed: bool = GameState.record_input(input_state.CANCEL_JUMP_JUST_PRESSED, Input.is_action_just_pressed(&"cancel_jump"))
+
+	# Handle re-start and replay
 	if jump_just_pressed or left_just_pressed or right_just_pressed or rot_clockwise_just_pressed or rot_counter_clockwise_just_pressed:
 		has_moved = true
 		
-	if has_moved:
+	if GameState.is_mode_replay() or has_moved:
 		GameState.frames += 1
 	
 	# Add the gravity.
@@ -104,22 +84,35 @@ func _physics_process(delta: float) -> void:
 			jump_engaged = false
 			jump_accum = 0.0
 
-	
-	
 	# Handle jump.
 	if jump_just_released:
 		jump_engaged = true
-		
+		is_jump_pressed = false
+	
+	if jump_just_pressed:
+		is_jump_pressed = true
 			
-	if Input.is_action_pressed(&"jump") && jump_accum < jump_velocity:
+	if is_jump_pressed and jump_accum < jump_velocity:
 		jump_accum += 50.0
 		
-	if Input.is_action_pressed(&"cancel_jump"):
+	if cancel_jump_just_pressed:
 		jump_engaged = false
 		jump_accum = 0.0
 
+	# Handle left/right
+	if left_just_pressed:
+		left = 1.0
+	elif left_just_released:
+		left = 0.0
+		
+	if right_just_pressed:
+		right = 1.0
+	elif right_just_released:
+		right = 0.0
+	
+		
 	# Get the input direction and handle the movement/deceleration.
-	var direction := Input.get_axis(&"left",&"right")
+	var direction : float = right - left
 	if direction:
 		if is_on_floor():
 			velocity.x += direction * acceleration * delta
@@ -131,8 +124,19 @@ func _physics_process(delta: float) -> void:
 			velocity -= velocity.normalized() * friction * delta
 		else:
 			velocity = Vector2.ZERO
+			
 	# Handle rotation
-	var rotate_direction : float = Input.get_axis(&"rotate_clockwise", &"rotate_counter_clockwise") 
+	if rot_clockwise_just_pressed:
+		rot_clockwise = 1.0
+	elif rot_clockwise_just_released:
+		rot_clockwise = 0.0
+		
+	if rot_counter_clockwise_just_pressed:
+		rot_counter_clockwise = 1.0
+	elif rot_counter_clockwise_just_released:
+		rot_counter_clockwise = 0.0
+		
+	var rotate_direction : float = rot_clockwise - rot_counter_clockwise 
 	
 	# Cap speed
 	velocity = velocity.limit_length(max_speed)
@@ -171,6 +175,7 @@ func _physics_process(delta: float) -> void:
 					is_live = false
 					print("goal")
 					GameState.player_goal = true
+					GameState.mode = GameState.mode_states.REPLAY
 
 func _process(_delta: float) -> void:
 	if is_dead:
@@ -190,7 +195,12 @@ func respawn() -> void:
 	GameState.player_rotation = 0.0
 	GameState.player_jump_accum = 0.0
 	is_live = true
-	has_moved = false 
+	has_moved = false
+	is_jump_pressed = false
+	left = 0.0
+	right = 0.0 
+	rot_clockwise = 0.0
+	rot_counter_clockwise = 0.0
 
 #func _on_ready() -> void:
 #	respawn()

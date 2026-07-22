@@ -12,21 +12,28 @@ func _ready() -> void:
 func _process(_delta) -> void:
 	# this should perhaps be a signal
 	if GameState.player_goal:
-		print("recording", %Player.recording)
+		print("recording", GameState.recording)
 		GameState.player_goal = false
 		print("respawn in ", next_level_time, " seconds")
 		await get_tree().create_timer(next_level_time).timeout
 		restart()
-		
+
 func restart() -> void:
 	$Flag2.modulate = Color(1,1,1)
 	$Flag3.modulate = Color(1,1,1)
 	$Flag4.modulate = Color(1,1,1)
 	
 	GameState.spawn_position = $Flag1.position
-	%Player.clear_recording()
+	GameState.clear_recording()
 	%Player.respawn()
 	GameState.frames = 0
 
 func _on_hud_restart() -> void:
+	print(" --- --- on hud restart --- --- ---")
+	restart()
+
+func _on_hud_replay() -> void:
+	print(" --- --- on hud replay --- --- ---")
+	GameState.mode = GameState.mode_states.REPLAY
+	print(" recording ", GameState.recording)
 	restart()

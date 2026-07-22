@@ -1,10 +1,12 @@
 extends CanvasLayer
 
 signal restart
+signal replay
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func _ready() -> void: 
+	pass
+	#GameState.connect("replay", on_replay)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -17,3 +19,7 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed(&"restart"):
 		print("emit restart")
 		restart.emit()
+
+	if Input.is_action_just_pressed(&"replay"):
+		print("emit replay")
+		replay.emit()
