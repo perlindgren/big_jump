@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b1d358p7emhb" path="res://scripts/hud.gd" id="1_oo0fn"]
 [ext_resource type="Theme" uid="uid://d2fuv1guujm7a" path="res://game_theme.tres" id="2_oo0fn"]
 
-[node name="HUD" type="CanvasLayer" unique_id=785256614]
+[node name="HUD" type="CanvasLayer" unique_id=1889445868]
 script = ExtResource("1_oo0fn")
 
 [node name="Labels" type="Control" parent="." unique_id=494003597]
@@ -15,15 +15,23 @@ theme = ExtResource("2_oo0fn")
 
 [node name="Velocity" type="Label" parent="Labels" unique_id=276503178]
 layout_mode = 0
+offset_top = 23.0
+offset_right = 68.0
+offset_bottom = 46.0
+text = "Velocity"
+
+[node name="Missed" type="Label" parent="Labels" unique_id=478061535]
+layout_mode = 0
 offset_right = 68.0
 offset_bottom = 23.0
-text = "Velocity"
+text = "Missed
+"
 
 [node name="Jump" type="Label" parent="Labels" unique_id=1551691021]
 layout_mode = 0
-offset_top = 28.0
+offset_top = 51.0
 offset_right = 111.0
-offset_bottom = 51.0
+offset_bottom = 74.0
 text = "Jump Accum"
 
 [node name="Frames" type="Label" parent="Labels" unique_id=412826789]

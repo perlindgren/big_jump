@@ -16,12 +16,80 @@ var jump_accum : float = 0.0
 var is_dead : bool = false
 var is_live : bool = true
 var has_moved : bool = false
+var is_jump_pressed : bool = false
 
+enum input_state {
+	JUMP_JUST_PRESSED = 1, 
+	JUMP_JUST_RELEASED = 2, 
+	LEFT_JUST_PRESSED = 4, 
+	LEFT_JUST_RELEASED = 8,
+	RIGHT_JUST_PRESSED = 16,
+	RIGHT_JUST_RELEASED = 32,
+	ROT_CLOCKWISE_JUST_PRESSED = 64,
+	ROT_CLOCKWISE_JUST_RELEASED = 128,
+	ROT_COUNTER_CLOCKWISE_JUST_PRESSED = 256,
+	ROT_COUNTER_CLOCKWISE_JUST_RELEASED = 512
+}
+
+@export var recording : Dictionary[int, int] = {}
+enum mode_states {RECORD, REPLAY}
+var mode : mode_states = mode_states.RECORD
+
+func clear_recording() -> void:
+	recording = {}
+	
+func add_state(input: int) -> void:
+	print("add_state ", input)
+	var frame : int = GameState.frames
+	if recording.get(frame):
+		print("same frame, old ", recording[frame])
+		recording[frame] |= input
+		
+	else:
+		recording[frame] = input
+	print("recording frame ", frame, " data ", recording[frame])
+
+func record_input(input: int, rec_input: bool) -> bool:
+	if mode == mode_states.RECORD:
+		if rec_input:
+			add_state(input)
+		return rec_input
+	else:
+		if recording.get(GameState.frames):
+			return recording[GameState.frames] && input
+		else:
+			return false
+	
 func _physics_process(delta: float) -> void:
+	# Check that we meet timing, not sure if this is entirely correct way
+	if delta != 1.0/60.0:
+		GameState.missed_frames += 1
+		
 	if is_live == false:
 		return
+	
+	# Record/Playback input actions
+	var jump_just_pressed: bool = record_input(input_state.JUMP_JUST_PRESSED, Input.is_action_just_pressed(&"jump"))
+	
+	var jump_just_released: bool = record_input(input_state.JUMP_JUST_RELEASED, Input.is_action_just_released(&"jump"))
+	
+	var left_just_pressed: bool = record_input(input_state.LEFT_JUST_PRESSED, Input.is_action_just_pressed(&"left"))
+	
+	var left_just_released: bool = record_input(input_state.LEFT_JUST_RELEASED, Input.is_action_just_released(&"left"))
+	
+	var right_just_pressed: bool = record_input(input_state.RIGHT_JUST_PRESSED, Input.is_action_just_pressed(&"right"))
+	
+	var right_just_released: bool = record_input(input_state.RIGHT_JUST_RELEASED, Input.is_action_just_released(&"right"))
+	
+	var rot_clockwise_just_pressed: bool = record_input(input_state.ROT_CLOCKWISE_JUST_PRESSED, Input.is_action_just_pressed(&"rotate_clockwise"))
+	
+	var rot_clockwise_just_released: bool = record_input(input_state.ROT_CLOCKWISE_JUST_RELEASED, Input.is_action_just_released(&"rotate_clockwise"))
+	
+	var rot_counter_clockwise_just_pressed: bool = record_input(input_state.ROT_COUNTER_CLOCKWISE_JUST_PRESSED, Input.is_action_just_pressed(&"rotate_counter_clockwise"))
+	
+	var rot_counter_clockwise_just_released: bool = record_input(input_state.ROT_COUNTER_CLOCKWISE_JUST_RELEASED, Input.is_action_just_released(&"rotate_counter_clockwise"))
 		
-	if Input.is_anything_pressed():
+	if jump_just_pressed or left_just_pressed or right_just_pressed or rot_clockwise_just_pressed or rot_counter_clockwise_just_pressed:
 		has_moved = true
 		
 	if has_moved:
@@ -36,10 +104,13 @@ func _physics_process(delta: float) -> void:
 			jump_engaged = false
 			jump_accum = 0.0
 
+	
+	
 	# Handle jump.
-	if Input.is_action_just_released(&"jump"):
+	if jump_just_released:
 		jump_engaged = true
 		
+			
 	if Input.is_action_pressed(&"jump") && jump_accum < jump_velocity:
 		jump_accum += 50.0
 		
@@ -112,7 +183,7 @@ func _process(_delta: float) -> void:
 
 # Reset Player related parameters
 func respawn() -> void:
-	print(respawn)
+	print("Player respawn")
 	position = GameState.spawn_position
 	velocity = Vector2.ZERO
 	jump_accum = 0.0

@@ -33,6 +33,7 @@ unique_name_in_owner = true
 [node name="Levels" type="Node2D" parent="." unique_id=963335737]
 
 [node name="Level 0" parent="Levels" unique_id=1672064429 instance=ExtResource("4_tefeu")]
+next_level_time = 4.0
 
 [node name="Level 1" parent="Levels" unique_id=1249886807 instance=ExtResource("4_tbgi4")]
 process_mode = 4
@@ -41,3 +42,5 @@ visible = false
 [node name="Level 2" parent="Levels" unique_id=1386021204 instance=ExtResource("1_o5qli")]
 process_mode = 4
 visible = false
+
+[connection signal="restart" from="HUD" to="Levels/Level 0" method="_on_hud_restart"]

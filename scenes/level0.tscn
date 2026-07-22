@@ -37,6 +37,7 @@ size = Vector2(335, 130.46875)
 
 [node name="Level0" type="Node2D" unique_id=1672064429]
 script = ExtResource("1_cm1v6")
+next_level_time = null
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=356370316]
 z_index = -2
