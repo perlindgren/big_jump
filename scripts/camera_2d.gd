@@ -8,7 +8,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	# Rotate the camera by rotation_speed radians per second
-	rotation = GameState.player_rotation
+	#rotation = %Player.rotation
 	#print("rotation", rotation)
 	pass
 

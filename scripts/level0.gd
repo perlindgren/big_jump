@@ -6,8 +6,7 @@ extends Node2D
 func _ready() -> void:
 	var flag = $Flag1
 	flag.modulate = Color(0.0, 1.0, 0.0)
-	GameState.spawn_position = flag.position
-	GameState.frames = 0
+	restart()
 	
 func _process(_delta) -> void:
 	# this should perhaps be a signal
@@ -16,17 +15,20 @@ func _process(_delta) -> void:
 		GameState.player_goal = false
 		print("respawn in ", next_level_time, " seconds")
 		await get_tree().create_timer(next_level_time).timeout
+		GameState.mode = GameState.mode_states.REPLAY
+		get_tree().reload_current_scene()
 		restart()
 
 func restart() -> void:
+	
 	$Flag2.modulate = Color(1,1,1)
 	$Flag3.modulate = Color(1,1,1)
 	$Flag4.modulate = Color(1,1,1)
 	
 	GameState.spawn_position = $Flag1.position
 	GameState.clear_recording()
-	%Player.respawn()
 	GameState.frames = 0
+	%Player.respawn()
 
 func _on_hud_restart() -> void:
 	print(" --- --- on hud restart --- --- ---")
