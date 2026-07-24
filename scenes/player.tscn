@@ -1,21 +1,17 @@
 [gd_scene format=3 uid="uid://ctvg0c1ktf5fw"]
 
 [ext_resource type="Script" uid="uid://2o8rwl18xb2v" path="res://scripts/player.gd" id="1_3vyb7"]
-[ext_resource type="Texture2D" uid="uid://ckqlp7vmbp3hr" path="res://assets/sprites/player.png" id="2_g2els"]
-[ext_resource type="Script" uid="uid://pjrcjvyfja5p" path="res://scripts/animated_sprite_2d.gd" id="3_dqkch"]
-[ext_resource type="Script" uid="uid://ck54a7o0k88lq" path="res://scripts/camera_2d.gd" id="3_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://dln4c1m0mi3o2" path="res://assets/sprites/Runner.png" id="4_jej6c"]
+[ext_resource type="Texture2D" uid="uid://84ses616axdj" path="res://assets/sprites/Bandana.png" id="5_f1ej7"]
 [ext_resource type="Texture2D" uid="uid://dq3s23le15uhr" path="res://assets/sprites/blood_drop.png" id="5_qlg0r"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_y0dqn"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_g2els")
-}],
-"loop": 1,
-"name": &"walk",
-"speed": 5.0
-}]
+[ext_resource type="Texture2D" uid="uid://b8cnnv1c5fdqx" path="res://assets/sprites/Bandana2.png" id="6_oprun"]
+[ext_resource type="Texture2D" uid="uid://dyjxayfhpcyqb" path="res://assets/sprites/Bandana3.png" id="7_a8ls1"]
+[ext_resource type="Texture2D" uid="uid://wbspf2366jdc" path="res://assets/sprites/Eye1.png" id="8_qfm1y"]
+[ext_resource type="Texture2D" uid="uid://ct1gx1q5mpgxf" path="res://assets/sprites/Eye2.png" id="9_fulsm"]
+[ext_resource type="Texture2D" uid="uid://cduga0r8m2j57" path="res://assets/sprites/Eye3.png" id="10_4r5pv"]
+[ext_resource type="Texture2D" uid="uid://6rlktgl4dbyl" path="res://assets/sprites/Eye4.png" id="11_60mlk"]
+[ext_resource type="Texture2D" uid="uid://ht8vra3bdrwk" path="res://assets/sprites/Eye5.png" id="12_i4ail"]
+[ext_resource type="Texture2D" uid="uid://clu2a1gp6vtgn" path="res://assets/sprites/Eye6.png" id="13_a38lo"]
 
 [sub_resource type="Curve" id="Curve_qrkj2"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.49914822, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.008097172), 0.0, 0.0, 0, 0]
@@ -50,22 +46,52 @@ scale_max = 1.5
 scale_curve = SubResource("CurveTexture_5x0i3")
 alpha_curve = SubResource("CurveTexture_ydpu5")
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_4ni07"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_f1ej7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_oprun")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_a8ls1")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l71n6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_qfm1y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_fulsm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_4r5pv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_60mlk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_i4ail")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_a38lo")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Player" type="CharacterBody2D" unique_id=1635808929]
 collision_mask = 7
 script = ExtResource("1_3vyb7")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1012227341]
-polygon = PackedVector2Array(-15, 11, -15, -7, -10, -10, 5, -11, 11, -6, 11, 11, 2, 15, -12, 15)
-
-[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1094311021]
-sprite_frames = SubResource("SpriteFrames_y0dqn")
-animation = &"walk"
-script = ExtResource("3_dqkch")
-
-[node name="Camera" type="Camera2D" parent="." unique_id=2106928709]
-ignore_rotation = false
-zoom = Vector2(2, 2)
-script = ExtResource("3_qhqgy")
 
 [node name="Splat" type="GPUParticles2D" parent="." unique_id=2009453505]
 z_index = 3
@@ -76,3 +102,21 @@ lifetime = 1.5
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_ifug4")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1925835171]
+scale = Vector2(0.2, 0.2)
+skew = 0.7853982
+polygon = PackedVector2Array(-71, 69, -72, -25, -45, -53, 29, -53, 57, -30, 57, 69, 5, 86, -47, 86)
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1252145851]
+scale = Vector2(0.2, 0.2)
+skew = 0.7853982
+texture = ExtResource("4_jej6c")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite" unique_id=715448723]
+position = Vector2(-13, 0)
+sprite_frames = SubResource("SpriteFrames_4ni07")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Sprite" unique_id=1967680866]
+position = Vector2(20, -4)
+sprite_frames = SubResource("SpriteFrames_l71n6")

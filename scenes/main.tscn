@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dyhydap80532x" path="res://scenes/hud.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://sag4ttalekf1" path="res://scenes/level1.tscn" id="4_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://be5el4byno25s" path="res://scenes/level0.tscn" id="4_tefeu"]
+[ext_resource type="Script" uid="uid://crpgpao4nhds5" path="res://scenes/node_2d.gd" id="6_o6xl0"]
 
 [sub_resource type="GDScript" id="GDScript_tbgi4"]
 script/source = "extends Node2D
@@ -41,6 +42,13 @@ visible = false
 [node name="Level 2" parent="Levels" unique_id=1386021204 instance=ExtResource("1_o5qli")]
 process_mode = 4
 visible = false
+
+[node name="Node2D" type="Node2D" parent="." unique_id=2142045630]
+script = ExtResource("6_o6xl0")
+
+[node name="Camera" type="Camera2D" parent="Node2D" unique_id=1483092846]
+ignore_rotation = false
+zoom = Vector2(2, 2)
 
 [connection signal="replay" from="HUD" to="Levels/Level 0" method="_on_hud_replay"]
 [connection signal="restart" from="HUD" to="Levels/Level 0" method="_on_hud_restart"]

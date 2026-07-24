@@ -136,6 +136,12 @@ func _physics_process(delta: float) -> void:
 		if is_on_floor():
 			velocity.x += direction * acceleration * delta
 			# print("is_on_floor, direction ", direction, ", velocity.x", velocity.x)
+			if velocity.x < 0.0:
+				$Sprite.flip_h = true
+				
+			if velocity.x > 0.0:
+				$Sprite.flip_h = false
+				
 		else:
 			velocity.x += direction * air_acceleration * delta
 	else:
