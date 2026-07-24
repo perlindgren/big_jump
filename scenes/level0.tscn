@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://nns7rrpnjvps" path="res://scripts/level0.gd" id="1_cm1v6"]
 [ext_resource type="TileSet" uid="uid://cikrd3seb2fug" path="res://assets/tile_sets/ground.tres" id="1_rerym"]
+[ext_resource type="Texture2D" uid="uid://dbuvavydifv3e" path="res://assets/sprites/frame_ornament.png" id="2_l3elg"]
 [ext_resource type="TileSet" uid="uid://sl17pdo66tsv" path="res://assets/tile_sets/lethals.tres" id="2_uijja"]
 [ext_resource type="Texture2D" uid="uid://boxi5fe7uq5mk" path="res://assets/sprites/city.png" id="2_wrnl3"]
 [ext_resource type="TileSet" uid="uid://bg5f5unbb1sr0" path="res://assets/tile_sets/objects.tres" id="3_qsrgx"]
@@ -51,6 +52,13 @@ size = Vector2(335, 130.46875)
 
 [node name="Level0" type="Node2D" unique_id=1672064429]
 script = ExtResource("1_cm1v6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1094668164]
+visible = false
+z_index = 10
+position = Vector2(434, 286.00003)
+scale = Vector2(0.51458335, 0.69259256)
+texture = ExtResource("2_l3elg")
 
 [node name="TileMapLayer L0 Frame" type="TileMapLayer" parent="." unique_id=309942369]
 z_index = 1
@@ -325,10 +333,10 @@ offset_bottom = 554.0
 
 [node name="ParallaxBackground" type="Parallax2D" parent="Control" unique_id=968290365]
 z_index = -10
-scroll_scale = Vector2(0.25, 0.25)
-scroll_offset = Vector2(25, 15)
+scroll_scale = Vector2(0.1, 0.1)
 
 [node name="Sprite2D" type="Sprite2D" parent="Control/ParallaxBackground" unique_id=379368338]
-scale = Vector2(0.5, 0.5)
+position = Vector2(400, 200)
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_wrnl3")
 centered = false

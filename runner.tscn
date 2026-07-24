@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://b3jov01mawdqt"]
+
+[ext_resource type="Texture2D" uid="uid://dln4c1m0mi3o2" path="res://assets/sprites/Runner.png" id="1_vhleq"]
+[ext_resource type="Texture2D" uid="uid://84ses616axdj" path="res://assets/sprites/Bandana.png" id="2_fo8n8"]
+[ext_resource type="Texture2D" uid="uid://b8cnnv1c5fdqx" path="res://assets/sprites/Bandana2.png" id="3_46qgg"]
+[ext_resource type="Texture2D" uid="uid://dyjxayfhpcyqb" path="res://assets/sprites/Bandana3.png" id="4_jc8ww"]
+[ext_resource type="Texture2D" uid="uid://wbspf2366jdc" path="res://assets/sprites/Eye1.png" id="5_dbxay"]
+[ext_resource type="Texture2D" uid="uid://ct1gx1q5mpgxf" path="res://assets/sprites/Eye2.png" id="6_66xgs"]
+[ext_resource type="Texture2D" uid="uid://cduga0r8m2j57" path="res://assets/sprites/Eye3.png" id="7_hbom4"]
+[ext_resource type="Texture2D" uid="uid://6rlktgl4dbyl" path="res://assets/sprites/Eye4.png" id="8_wqyqy"]
+[ext_resource type="Texture2D" uid="uid://ht8vra3bdrwk" path="res://assets/sprites/Eye5.png" id="9_uybnx"]
+[ext_resource type="Texture2D" uid="uid://clu2a1gp6vtgn" path="res://assets/sprites/Eye6.png" id="10_eve7s"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_srqkv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_fo8n8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_46qgg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jc8ww")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u6ppd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_dbxay")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_66xgs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_hbom4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_wqyqy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_uybnx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_eve7s")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Runner" type="Node2D" unique_id=1283947046]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2054698482]
+texture = ExtResource("1_vhleq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=243876767]
+position = Vector2(-13, 0)
+sprite_frames = SubResource("SpriteFrames_srqkv")
+frame_progress = 0.5003579
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=1239520915]
+position = Vector2(20, -4)
+sprite_frames = SubResource("SpriteFrames_u6ppd")
+frame_progress = 0.98702854
