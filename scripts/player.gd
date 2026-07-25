@@ -109,7 +109,7 @@ func _physics_process(delta: float) -> void:
 		is_jump_pressed = true
 			
 	if is_jump_pressed and jump_accum < jump_velocity:
-		jump_accum += 50.0
+		jump_accum += jump_accum_increment
 		
 	if cancel_jump_just_pressed:
 		jump_engaged = false
@@ -193,8 +193,16 @@ func _physics_process(delta: float) -> void:
 	$Sprite.modulate = Color(1.0, jump_accum/jump_velocity, 1.0)
 	$Sprite/Mask.speed_scale = velocity.x/max_speed
 	
+	var old_is_on_floor : bool = is_on_floor()	
 	move_and_slide()
+	
+	if is_on_floor() and not old_is_on_floor:
+		print("trigger ", position, global_position)
+		var shockwave_layer = get_node("/root/Main/ShockwaveLayer/ShockwaveEffect")
+		shockwave_layer.trigger_shockwave(position/scale)
+	
 	check_collision()
+	
 
 # Loop through all collisions that happened this frame
 func check_collision() -> void:
