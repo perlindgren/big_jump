@@ -266,6 +266,13 @@ func set_player_skew(skew: float) -> void:
 func set_player_direction(direction: float) -> void:
 	$Sprite.scale.x = player_scale * direction
 	$Collision.scale.x = player_scale * direction
+	$Dust.scale.x = direction * 0.25
+	if abs(velocity.x) > 10 and is_on_floor():
+		$Dust.emitting = true
+		# Scale particle speed/lifetime with movement speed
+		$Dust.speed_scale = remap(abs(velocity.x), 0, 1000, 0.5, 3.0)
+	else:
+		$Dust.emitting = false
 
 func _ready() -> void:
 	$Sprite/Mask.play(&"mask_anim")
