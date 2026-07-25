@@ -14,4 +14,5 @@ func _on_body_entered(body: Node2D) -> void:
 	var flag : AnimatedSprite2D = $".."
 	# print("flag ", body, flag.position)
 	GameState.spawn_position = flag.position
-	$"..".modulate = Color(0, 1, 0)
+	GameState.player_direction = flag.player_direction
+	flag.modulate = Color(0, 1, 0) # make green

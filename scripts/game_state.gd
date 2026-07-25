@@ -3,6 +3,7 @@ extends Node
 # Global game state variables
 
 var spawn_position : Vector2 = Vector2.ZERO 
+var player_direction : float = 0.0
 var player_goal : bool = false
 var frames : int = 0
 var missed_frames : int = 0

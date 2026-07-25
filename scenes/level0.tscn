@@ -8,9 +8,14 @@
 [ext_resource type="TileSet" uid="uid://bg5f5unbb1sr0" path="res://assets/tile_sets/objects.tres" id="3_qsrgx"]
 [ext_resource type="Texture2D" uid="uid://clurg7xncwsx6" path="res://assets/sprites/PerFrame.png" id="3_tcqsn"]
 [ext_resource type="Script" uid="uid://b60ncm245lt55" path="res://scripts/text_area.gd" id="4_x1x1l"]
-[ext_resource type="PackedScene" uid="uid://cuno2dho5wljv" path="res://scenes/flag.tscn" id="5_x1x1l"]
 [ext_resource type="Theme" uid="uid://d2fuv1guujm7a" path="res://game_theme.tres" id="7_wrnl3"]
+[ext_resource type="Texture2D" uid="uid://5hc1liustycb" path="res://assets/sprites/flag2_0001.png" id="9_yoi1k"]
+[ext_resource type="Texture2D" uid="uid://yjri1ub0x1oq" path="res://assets/sprites/flag2_0002.png" id="10_5xwn4"]
 [ext_resource type="Texture2D" uid="uid://cg766bhfgg3cb" path="res://assets/sprites/brickwall.png" id="10_6q6d4"]
+[ext_resource type="Texture2D" uid="uid://ctm1l28hnric5" path="res://assets/sprites/flag2_0003.png" id="11_3i82n"]
+[ext_resource type="Texture2D" uid="uid://c67ybyxl2thtx" path="res://assets/sprites/flag2_0004.png" id="12_3mf5k"]
+[ext_resource type="Script" uid="uid://32bvdfrvtu8d" path="res://scripts/flag_animation.gd" id="13_r2ue6"]
+[ext_resource type="Script" uid="uid://bkb12dyumwolh" path="res://scripts/flag_collision.gd" id="14_l1g8i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6q6d4"]
 texture = ExtResource("3_tcqsn")
@@ -49,6 +54,28 @@ size = Vector2(163.5, 34.46875)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6q6d4"]
 size = Vector2(335, 130.46875)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_srqkv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_yoi1k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_5xwn4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_3i82n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_3mf5k")
+}],
+"loop": 1,
+"name": &"flag",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8qpon"]
 
 [node name="Level0" type="Node2D" unique_id=1672064429]
 script = ExtResource("1_cm1v6")
@@ -300,17 +327,73 @@ text = "Good Job
 Next level stuff coming up...
 "
 
-[node name="Flag1" parent="." unique_id=482970223 instance=ExtResource("5_x1x1l")]
+[node name="Flag1" type="AnimatedSprite2D" parent="." unique_id=482970223]
+z_index = -1
 position = Vector2(57, 112)
+sprite_frames = SubResource("SpriteFrames_srqkv")
+animation = &"flag"
+frame_progress = 0.5440265
+speed_scale = 0.5
+script = ExtResource("13_r2ue6")
+player_direction = 1.0
 
-[node name="Flag2" parent="." unique_id=1577285445 instance=ExtResource("5_x1x1l")]
+[node name="Area2D" type="Area2D" parent="Flag1" unique_id=2054580034]
+collision_layer = 4
+script = ExtResource("14_l1g8i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flag1/Area2D" unique_id=984281850]
+shape = SubResource("RectangleShape2D_8qpon")
+
+[node name="Flag2" type="AnimatedSprite2D" parent="." unique_id=1577285445]
+z_index = -1
 position = Vector2(763, 240)
+sprite_frames = SubResource("SpriteFrames_srqkv")
+animation = &"flag"
+frame_progress = 0.5440265
+speed_scale = 0.5
+script = ExtResource("13_r2ue6")
+player_direction = -1.0
 
-[node name="Flag4" parent="." unique_id=524637964 instance=ExtResource("5_x1x1l")]
-position = Vector2(781, 528)
+[node name="Area2D" type="Area2D" parent="Flag2" unique_id=1673583368]
+collision_layer = 4
+script = ExtResource("14_l1g8i")
 
-[node name="Flag3" parent="." unique_id=740009402 instance=ExtResource("5_x1x1l")]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flag2/Area2D" unique_id=1386848965]
+shape = SubResource("RectangleShape2D_8qpon")
+
+[node name="Flag3" type="AnimatedSprite2D" parent="." unique_id=740009402]
+z_index = -1
 position = Vector2(50, 368)
+sprite_frames = SubResource("SpriteFrames_srqkv")
+animation = &"flag"
+frame_progress = 0.5440265
+speed_scale = 0.5
+script = ExtResource("13_r2ue6")
+player_direction = 1.0
+
+[node name="Area2D" type="Area2D" parent="Flag3" unique_id=2142347020]
+collision_layer = 4
+script = ExtResource("14_l1g8i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flag3/Area2D" unique_id=133490576]
+shape = SubResource("RectangleShape2D_8qpon")
+
+[node name="Flag4" type="AnimatedSprite2D" parent="." unique_id=524637964]
+z_index = -1
+position = Vector2(781, 528)
+sprite_frames = SubResource("SpriteFrames_srqkv")
+animation = &"flag"
+frame_progress = 0.5440265
+speed_scale = 0.5
+script = ExtResource("13_r2ue6")
+player_direction = -1.0
+
+[node name="Area2D" type="Area2D" parent="Flag4" unique_id=1031976169]
+collision_layer = 4
+script = ExtResource("14_l1g8i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flag4/Area2D" unique_id=127175626]
+shape = SubResource("RectangleShape2D_8qpon")
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=915134789]
 z_index = -11

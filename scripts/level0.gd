@@ -4,8 +4,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var flag = $Flag1
-	flag.modulate = Color(0.0, 1.0, 0.0)
+	$Flag1.modulate = Color(0.0, 1.0, 0.0)
 	restart()
 	
 func _process(_delta) -> void:
@@ -26,6 +25,7 @@ func restart() -> void:
 	$Flag4.modulate = Color(1,1,1)
 	
 	GameState.spawn_position = $Flag1.position
+	GameState.player_direction = $Flag1.player_direction
 	GameState.clear_recording()
 	GameState.frames = 0
 	%Player.respawn()

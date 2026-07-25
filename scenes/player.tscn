@@ -59,8 +59,8 @@ animations = [{
 "texture": ExtResource("7_a8ls1")
 }],
 "loop": 1,
-"name": &"default",
-"speed": 5.0
+"name": &"mask_anim",
+"speed": 60.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_l71n6"]
@@ -85,7 +85,7 @@ animations = [{
 "texture": ExtResource("13_a38lo")
 }],
 "loop": 1,
-"name": &"default",
+"name": &"eye_anim",
 "speed": 5.0
 }]
 
@@ -103,20 +103,20 @@ one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_ifug4")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1925835171]
+[node name="Collision" type="CollisionPolygon2D" parent="." unique_id=1925835171]
 scale = Vector2(0.2, 0.2)
-skew = 0.7853982
 polygon = PackedVector2Array(-71, 69, -72, -25, -45, -53, 29, -53, 57, -30, 57, 69, 5, 86, -47, 86)
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1252145851]
 scale = Vector2(0.2, 0.2)
-skew = 0.7853982
 texture = ExtResource("4_jej6c")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite" unique_id=715448723]
+[node name="Mask" type="AnimatedSprite2D" parent="Sprite" unique_id=715448723]
 position = Vector2(-13, 0)
 sprite_frames = SubResource("SpriteFrames_4ni07")
+animation = &"mask_anim"
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Sprite" unique_id=1967680866]
+[node name="Eye" type="AnimatedSprite2D" parent="Sprite" unique_id=1967680866]
 position = Vector2(20, -4)
 sprite_frames = SubResource("SpriteFrames_l71n6")
+animation = &"eye_anim"

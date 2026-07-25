@@ -36,6 +36,7 @@ animation = &"flag"
 frame_progress = 0.5440265
 speed_scale = 0.5
 script = ExtResource("5_7kq5u")
+player_direction = -1.0
 
 [node name="Area2D" type="Area2D" parent="." unique_id=2054580034]
 collision_layer = 4

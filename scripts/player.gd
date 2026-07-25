@@ -7,8 +7,10 @@ extends CharacterBody2D
 @export var air_friction: float = 1.0
 @export var max_speed: float = 4000.0
 @export var rotation_speed: float = 0.05
+@export var player_scale = 0.2
 
 @export var jump_accum_increment : float = 50.0
+@export var max_skew : float = PI 
 
 # not visible in inspector
 var jump_engaged : bool = false
@@ -136,12 +138,6 @@ func _physics_process(delta: float) -> void:
 		if is_on_floor():
 			velocity.x += direction * acceleration * delta
 			# print("is_on_floor, direction ", direction, ", velocity.x", velocity.x)
-			if velocity.x < 0.0:
-				$Sprite.flip_h = true
-				
-			if velocity.x > 0.0:
-				$Sprite.flip_h = false
-				
 		else:
 			velocity.x += direction * air_acceleration * delta
 	else:
@@ -150,7 +146,9 @@ func _physics_process(delta: float) -> void:
 			velocity -= velocity.normalized() * friction * delta
 		else:
 			velocity = Vector2.ZERO
-			
+
+	
+		
 	# Handle rotation
 	if rot_clockwise_just_pressed:
 		rot_clockwise = 1.0
@@ -162,13 +160,28 @@ func _physics_process(delta: float) -> void:
 	elif rot_counter_clockwise_just_released:
 		rot_counter_clockwise = 0.0
 		
-	var rotate_direction : float = rot_clockwise - rot_counter_clockwise 
+	# var rotate_direction : float = rot_clockwise - rot_counter_clockwise 
 	
 	# Cap speed
 	velocity = velocity.limit_length(max_speed)
 	
+	# Face player according to velocity
+	# TODO smoothing?
+	if velocity.x < 0.0: # left
+		set_player_direction(-1.0)
+	elif velocity.x > 0.0: # right
+		set_player_direction(1.0)
+	
+	# Skew player
+	if sign(velocity.x) == sign(direction):
+		set_player_skew(velocity.x/max_speed)
+	else:
+		set_player_skew(-velocity.x/max_speed)
+		
+	# Compress when jumping
+	set_player_compress(jump_accum/jump_velocity)
 	# GameState update
-	#GameState.player_velocity = velocity
+	
 	#GameState.player_rotation += rotate_direction * rotation_speed
 	## clamp to angles within one rotation
 	#if GameState.player_rotation > TAU:
@@ -178,6 +191,8 @@ func _physics_process(delta: float) -> void:
 	#
 	#GameState.player_jump_accum = jump_accum
 	$Sprite.modulate = Color(1.0, jump_accum/jump_velocity, 1.0)
+	$Sprite/Mask.speed_scale = velocity.x/max_speed
+	
 	move_and_slide()
 	check_collision()
 
@@ -197,7 +212,7 @@ func check_collision() -> void:
 				2:	# TileMap leathal obstacles
 					is_live = false
 					print("you died", i)
-					$Sprite.modulate = Color(1.0, 1.0, 1.0, 0.1)
+					$Sprite.modulate = Color(1.0, 1.0, 1.0, 0.2)
 					$Splat.restart()
 					print("is_dead")
 					await $Splat.finished
@@ -209,7 +224,8 @@ func check_collision() -> void:
 					print("goal")
 					GameState.player_goal = true
 					break
-					
+
+	
 # Reset Player related parameters
 func respawn() -> void:
 	print("Player respawn")
@@ -229,3 +245,29 @@ func respawn() -> void:
 	rot_clockwise = 0.0
 	rot_counter_clockwise = 0.0
 	is_respawn = true
+	set_player_direction(GameState.player_direction)
+	set_player_compress(0)
+	set_player_skew(0)
+
+func set_player_compress(compress: float) -> void:
+	if is_jump_pressed:
+		var scale = player_scale * (1.0 - 0.5 * compress)
+		$Sprite.scale.y = scale
+		$Collision.scale.y = scale	
+	else:
+		$Sprite.scale.y = player_scale
+		$Collision.scale.y = player_scale
+		
+
+func set_player_skew(skew: float) -> void:
+	$Sprite.skew = max_skew * skew
+	$Collision.skew = max_skew * skew
+	
+func set_player_direction(direction: float) -> void:
+	$Sprite.scale.x = player_scale * direction
+	$Collision.scale.x = player_scale * direction
+
+func _ready() -> void:
+	$Sprite/Mask.play(&"mask_anim")
+	$Sprite/Eye.play(&"eye_anim")
+	
