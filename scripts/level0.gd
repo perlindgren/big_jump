@@ -2,9 +2,15 @@ extends Node2D
 
 @export var next_level_time : float = 4
 
+@onready var flag1 = $Flag1
+@onready var flag2 = $Flag2
+@onready var flag3 = $Flag3
+@onready var flag4 = $Flag4
+@onready var player = %Player
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$Flag1.modulate = Color(0.0, 1.0, 0.0)
+	flag1.modulate = Color(0.0, 1.0, 0.0)
 	restart()
 	
 func _process(_delta) -> void:
@@ -15,20 +21,20 @@ func _process(_delta) -> void:
 		print("respawn in ", next_level_time, " seconds")
 		await get_tree().create_timer(next_level_time).timeout
 		GameState.mode = GameState.mode_states.REPLAY
-		get_tree().reload_current_scene()
+		#get_tree().reload_current_scene()
 		restart()
 
 func restart() -> void:
 	
-	$Flag2.modulate = Color(1,1,1)
-	$Flag3.modulate = Color(1,1,1)
-	$Flag4.modulate = Color(1,1,1)
+	flag2.modulate = Color(1,1,1)
+	flag3.modulate = Color(1,1,1)
+	flag4.modulate = Color(1,1,1)
 	
-	GameState.spawn_position = $Flag1.position
-	GameState.player_direction = $Flag1.player_direction
+	GameState.spawn_position = flag1.position
+	GameState.player_direction = flag1.player_direction
 	GameState.clear_recording()
 	GameState.frames = 0
-	%Player.respawn()
+	player.respawn()
 
 func _on_hud_restart() -> void:
 	print(" --- --- on hud restart --- --- ---")

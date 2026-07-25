@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bxb3worx5o7sb"]
 
-[ext_resource type="Shader" uid="uid://b1s2oat722ce" path="res://scenes/ShockwaveLayer.gdshader" id="1_yxhc7"]
-[ext_resource type="Script" uid="uid://bo6job1n1326v" path="res://scenes/shockwave_effect.gd" id="2_vhlaa"]
+[ext_resource type="Shader" uid="uid://b1s2oat722ce" path="res://shaders/ShockwaveLayer.gdshader" id="1_yxhc7"]
+[ext_resource type="Script" uid="uid://bo6job1n1326v" path="res://scripts/shockwave_effect.gd" id="2_vhlaa"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u6ppd"]
 shader = ExtResource("1_yxhc7")

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bhb2p4k38udvh"]
 
-[ext_resource type="Shader" uid="uid://b3jyecirn2d8q" path="res://custom_circle.gdshader" id="1_bxuko"]
+[ext_resource type="Shader" uid="uid://b3jyecirn2d8q" path="res://shaders/custom_circle.gdshader" id="1_bxuko"]
 [ext_resource type="Texture2D" uid="uid://cru15ldt720yx" path="res://assets/sprites/dot.png" id="1_n3460"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yaq8p"]

@@ -1,5 +1,6 @@
 extends Area2D
 
+# TODO, fixup paths
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,6 +15,6 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		$"../".visible = true
 	
-func _on_body_exited(body: Node2D) -> void:
+func _on_body_exited(_body: Node2D) -> void:
 	#print("body exited ", body)
 	$"../".visible = false

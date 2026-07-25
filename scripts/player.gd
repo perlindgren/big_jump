@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @export var jump_velocity: float = 1000.0
+@export var jump_accum_increment : float = 50.0
 @export var acceleration: float = 1500.0
 @export var air_acceleration: float = 300.0
 @export var friction: float = 600.0
@@ -8,9 +9,8 @@ extends CharacterBody2D
 @export var max_speed: float = 4000.0
 @export var rotation_speed: float = 0.05
 @export var player_scale = 0.2
-
-@export var jump_accum_increment : float = 50.0
 @export var max_skew : float = PI 
+@export var shockwave_velocity : float = 300
 
 # not visible in inspector
 var jump_engaged : bool = false
@@ -38,6 +38,15 @@ enum input_state {
 	ROT_COUNTER_CLOCKWISE_JUST_RELEASED = 512,
 	CANCEL_JUMP_JUST_PRESSED = 1024,
 }
+
+# Ensure node refs to be instantiated
+@onready var sprite = $Sprite
+@onready var sprite_mask = $Sprite/Mask
+@onready var sprite_eye = $Sprite/Eye
+@onready var collision = $Collision
+@onready var dust = $Dust
+@onready var splat = $Splat
+@onready var shockwave_effect = $"/root/Main/ShockwaveLayer/ShockwaveEffect"
 
 # aims at a fixed 60 fps
 func _physics_process(delta: float) -> void:
@@ -190,40 +199,53 @@ func _physics_process(delta: float) -> void:
 		#GameState.player_rotation += TAU
 	#
 	#GameState.player_jump_accum = jump_accum
-	$Sprite.modulate = Color(1.0, jump_accum/jump_velocity, 1.0)
-	$Sprite/Mask.speed_scale = velocity.x/max_speed
+	sprite.modulate = Color(1.0, jump_accum/jump_velocity, 1.0)
+	sprite_mask.speed_scale = velocity.x/max_speed
 	
-	var old_is_on_floor : bool = is_on_floor()	
+	var old_is_on_any : bool = is_on_any()
+	var old_velocity : Vector2 = velocity
+	
+	# simulate physics	
 	move_and_slide()
 	
-	if is_on_floor() and not old_is_on_floor:
-		print("trigger ", position, global_position)
-		var shockwave_layer = get_node("/root/Main/ShockwaveLayer/ShockwaveEffect")
-		shockwave_layer.trigger_shockwave(position/scale)
+	# Check if shockwave
+	if is_on_any() and not old_is_on_any:
+		var velocity_x = abs(velocity.x)
+		var velocity_y = abs(velocity.y)
+		print("old_velocity ",  old_velocity, " velocity_x ", velocity_x, " velocity_y", velocity_y)
+		if ((is_on_floor() or is_on_ceiling()) and abs(old_velocity.y) > shockwave_velocity) or (is_on_wall() and abs(old_velocity.x) > shockwave_velocity):
+			trigger_shockwave()
 	
 	check_collision()
-	
+
+func trigger_shockwave() -> void:
+	# TODO use @onready
+	#var shockwave_layer = get_node("/root/Main/ShockwaveLayer/ShockwaveEffect")
+	shockwave_effect.trigger_shockwave(position/scale)
+
+func is_on_any() -> bool:
+	return is_on_floor() or is_on_ceiling() or is_on_wall()
 
 # Loop through all collisions that happened this frame
 func check_collision() -> void:
 	for i in range(get_slide_collision_count()):
 		#print(" range i", i)
-		var collision = get_slide_collision(i)
-		var collider = collision.get_collider()
+		var collision_i = get_slide_collision(i)
+		var collider = collision_i.get_collider()
 		#print("collider ", collider.name)
 
 		# Check if the collider is a TileMapLayer
 		if collider is TileMapLayer:
 			#print("rid ", PhysicsServer2D.body_get_collision_layer(collision.get_collider_rid()))
 			# var tile_position = collider.local_to_map(collision.get_position())
-			match PhysicsServer2D.body_get_collision_layer(collision.get_collider_rid()):
+			match PhysicsServer2D.body_get_collision_layer(collision_i.get_collider_rid()):
 				2:	# TileMap leathal obstacles
 					is_live = false
 					print("you died", i)
-					$Sprite.modulate = Color(1.0, 1.0, 1.0, 0.2)
-					$Splat.restart()
+					sprite.modulate = Color(1.0, 1.0, 1.0, 0.2)
+					splat.restart()
 					print("is_dead")
-					await $Splat.finished
+					await splat.finished
 					print("revived")
 					respawn()
 					break # make soure we do not process any other collider in this frame
@@ -233,11 +255,10 @@ func check_collision() -> void:
 					GameState.player_goal = true
 					break
 
-	
 # Reset Player related parameters
 func respawn() -> void:
 	print("Player respawn")
-	$Sprite.modulate = Color(1.0, 0.5, 0.5, 1.0)
+	sprite.modulate = Color(1.0, 0.5, 0.5, 1.0)
 	position.x = GameState.spawn_position.x
 	position.y = GameState.spawn_position.y - 90
 	
@@ -256,33 +277,35 @@ func respawn() -> void:
 	set_player_direction(GameState.player_direction)
 	set_player_compress(0)
 	set_player_skew(0)
+	trigger_shockwave()
+	
 
 func set_player_compress(compress: float) -> void:
 	if is_jump_pressed:
-		var scale = player_scale * (1.0 - 0.5 * compress)
-		$Sprite.scale.y = scale
-		$Collision.scale.y = scale	
+		var compress_scale = player_scale * (1.0 - 0.5 * compress)
+		sprite.scale.y = compress_scale
+		collision.scale.y = compress_scale
 	else:
-		$Sprite.scale.y = player_scale
-		$Collision.scale.y = player_scale
+		sprite.scale.y = player_scale
+		collision.scale.y = player_scale
 		
 
-func set_player_skew(skew: float) -> void:
-	$Sprite.skew = max_skew * skew
-	$Collision.skew = max_skew * skew
+func set_player_skew(player_skew: float) -> void:
+	sprite.skew = max_skew * player_skew
+	collision.skew = max_skew * player_skew
 	
 func set_player_direction(direction: float) -> void:
-	$Sprite.scale.x = player_scale * direction
-	$Collision.scale.x = player_scale * direction
-	$Dust.scale.x = direction * 0.25
+	sprite.scale.x = player_scale * direction
+	collision.scale.x = player_scale * direction
+	dust.scale.x = direction * 0.25
 	if abs(velocity.x) > 10 and is_on_floor():
-		$Dust.emitting = true
+		dust.emitting = true
 		# Scale particle speed/lifetime with movement speed
-		$Dust.speed_scale = remap(abs(velocity.x), 0, 1000, 0.5, 3.0)
+		dust.speed_scale = remap(abs(velocity.x), 0, 1000, 0.5, 3.0)
 	else:
-		$Dust.emitting = false
+		dust.emitting = false
 
 func _ready() -> void:
-	$Sprite/Mask.play(&"mask_anim")
-	$Sprite/Eye.play(&"eye_anim")
+	sprite_mask.play(&"mask_anim")
+	sprite_eye.play(&"eye_anim")
 	

@@ -11,7 +11,7 @@ uniform float thickness = 0.1;       // Width of the shockwave ring
 
 void fragment() {
 	// Correct for aspect ratio to maintain a perfect circle
-    vec2 aspect_ratio = vec2(SCREEN_PIXEL_SIZE.y / SCREEN_PIXEL_SIZE.x, 1.0);
+    vec2 aspect_ratio = vec2( SCREEN_PIXEL_SIZE.y / SCREEN_PIXEL_SIZE.x, 0.5);
     vec2 scaled_uv = SCREEN_UV * aspect_ratio;
     vec2 scaled_center = center * aspect_ratio;
     
