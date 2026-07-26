@@ -13,6 +13,7 @@ func _ready() -> void:
 	flag1.modulate = Color(0.0, 1.0, 0.0)
 	restart()
 	
+# TODO should use signal instead for game state changes
 func _process(_delta) -> void:
 	# this should perhaps be a signal
 	if GameState.player_goal:
