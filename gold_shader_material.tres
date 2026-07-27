@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://yslcsu2hp6h0"]
+
+[ext_resource type="Shader" uid="uid://bej6tqh8sq5q5" path="res://shaders/key.gdshader" id="1_uqhqb"]
+
+[resource]
+shader = ExtResource("1_uqhqb")
+shader_parameter/BloomRadius = 3.0
+shader_parameter/BloomThreshold = 0.4
+shader_parameter/BloomIntensity = 0.0

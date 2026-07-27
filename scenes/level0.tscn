@@ -18,6 +18,7 @@
 [ext_resource type="Script" uid="uid://bkb12dyumwolh" path="res://scripts/flag_collision.gd" id="14_l1g8i"]
 [ext_resource type="PackedScene" uid="uid://hultbfvysbtw" path="res://scenes/portal.tscn" id="17_5xwn4"]
 [ext_resource type="PackedScene" uid="uid://cbs5jr1tyu3ba" path="res://scenes/key.tscn" id="18_3i82n"]
+[ext_resource type="PackedScene" uid="uid://b2uhw8rya3ywa" path="res://scenes/Coins.tscn" id="19_3mf5k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6q6d4"]
 texture = ExtResource("3_tcqsn")
@@ -438,4 +439,15 @@ position = Vector2(80, 528)
 
 [node name="Key" parent="." unique_id=870569732 instance=ExtResource("18_3i82n")]
 z_index = 3
-position = Vector2(365, 61)
+position = Vector2(53, 430)
+
+[node name="Coins" parent="." unique_id=1151582246 instance=ExtResource("19_3mf5k")]
+position = Vector2(482, 123)
+scale = Vector2(0.5, 0.5)
+
+[node name="Coins2" parent="." unique_id=2078427928 instance=ExtResource("19_3mf5k")]
+position = Vector2(494.00003, 121)
+scale = Vector2(0.75, 0.75)
+
+[node name="Coins3" parent="." unique_id=1434238652 instance=ExtResource("19_3mf5k")]
+position = Vector2(512, 118)

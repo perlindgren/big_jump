@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dyhydap80532x" path="res://scenes/hud.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://sag4ttalekf1" path="res://scenes/level1.tscn" id="4_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://be5el4byno25s" path="res://scenes/level0.tscn" id="4_tefeu"]
-[ext_resource type="Script" uid="uid://crpgpao4nhds5" path="res://scenes/node_2d.gd" id="6_o6xl0"]
+[ext_resource type="Script" uid="uid://crpgpao4nhds5" path="res://scripts/node_2d.gd" id="6_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://bxb3worx5o7sb" path="res://scenes/ShockwaveLayer.tscn" id="7_o6xl0"]
 
 [sub_resource type="GDScript" id="GDScript_tbgi4"]
