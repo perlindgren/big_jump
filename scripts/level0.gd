@@ -7,10 +7,12 @@ extends Node2D
 @onready var flag3 = $Flag3
 @onready var flag4 = $Flag4
 @onready var player = %Player
+@onready var key_instance = $Key
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	flag1.modulate = Color(0.0, 1.0, 0.0)
+	key_instance.key.connect(_on_key)
 	restart()
 	
 # TODO should use signal instead for game state changes
@@ -46,3 +48,6 @@ func _on_hud_replay() -> void:
 	GameState.mode = GameState.mode_states.REPLAY
 	print(" recording ", GameState.recording)
 	restart()
+	
+func _on_key() -> void:
+	print("key picked up")

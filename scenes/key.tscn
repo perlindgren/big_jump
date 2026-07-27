@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cbs5jr1tyu3ba"]
+
+[ext_resource type="Script" uid="uid://k1huxo42vghj" path="res://scripts/key.gd" id="1_fttkb"]
+[ext_resource type="Texture2D" uid="uid://xhqexqaldcq3" path="res://assets/sprites/items.png" id="1_yk2u2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y0dqn"]
+size = Vector2(32, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y0dqn"]
+atlas = ExtResource("1_yk2u2")
+region = Rect2(0, 0, 32, 32)
+
+[node name="Area2D" type="Area2D" unique_id=140839041]
+collision_layer = 16
+script = ExtResource("1_fttkb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=212585508]
+shape = SubResource("RectangleShape2D_y0dqn")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=870569732]
+texture = SubResource("AtlasTexture_y0dqn")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
