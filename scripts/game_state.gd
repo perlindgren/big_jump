@@ -37,7 +37,7 @@ func record_input(input: int, rec_input: bool) -> bool:
 		return rec_input
 	else:
 		if recording.get(GameState.frames):
-			print ("event ", GameState.frames, " data", recording[GameState.frames], " input", input, "mask",  recording[GameState.frames] & input)
+			# print ("event ", GameState.frames, " data", recording[GameState.frames], " input", input, "mask",  recording[GameState.frames] & input)
 			return recording[GameState.frames] & input
 		else:
 			return false

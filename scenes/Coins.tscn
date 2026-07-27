@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://xhqexqaldcq3" path="res://assets/sprites/items.png" id="1_0v230"]
 [ext_resource type="Script" uid="uid://88q8bjdsdsns" path="res://scripts/coins.gd" id="1_lts5r"]
-[ext_resource type="Material" uid="uid://yslcsu2hp6h0" path="res://gold_shader_material.tres" id="2_61jmb"]
+[ext_resource type="Material" uid="uid://yslcsu2hp6h0" path="res://materials/gold_shader_material.tres" id="2_61jmb"]
 [ext_resource type="Script" uid="uid://dagpkjdbcu8ix" path="res://scripts/gold_tween.gd" id="4_82ts1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_srqkv"]
@@ -13,6 +13,7 @@ atlas = ExtResource("1_0v230")
 region = Rect2(32, 0, 32, 32)
 
 [node name="Coins" type="Area2D" unique_id=1151582246]
+z_index = -8
 collision_layer = 16
 script = ExtResource("1_lts5r")
 

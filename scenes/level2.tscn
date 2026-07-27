@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://drh0a8hys81w6"]
 
-[ext_resource type="TileSet" uid="uid://cikrd3seb2fug" path="res://assets/tile_sets/ground.tres" id="1_if4l3"]
-[ext_resource type="TileSet" uid="uid://sl17pdo66tsv" path="res://assets/tile_sets/lethals.tres" id="2_4038r"]
+[ext_resource type="TileSet" uid="uid://cikrd3seb2fug" path="res://materials/ground.tres" id="1_if4l3"]
+[ext_resource type="TileSet" uid="uid://sl17pdo66tsv" path="res://materials/lethals.tres" id="2_4038r"]
 [ext_resource type="Texture2D" uid="uid://424tedpdr228" path="res://assets/sprites/objects.png" id="3_4038r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2k3dv"]
