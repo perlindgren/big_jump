@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://hultbfvysbtw"]
+
+[ext_resource type="Shader" uid="uid://dbaqcjc0e14yi" path="res://shaders/portal.gdshader" id="1_1ffj6"]
+[ext_resource type="Texture2D" uid="uid://dg6ldvw6nb3s7" path="res://assets/sprites/open_portal.png" id="2_jr6l0"]
+[ext_resource type="Texture2D" uid="uid://d0as1qeop26ay" path="res://assets/sprites/portal_dust.png" id="3_jr6l0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_srqkv"]
+shader = ExtResource("1_1ffj6")
+shader_parameter/rainbow_speed = 0.50000002375
+shader_parameter/rainbow_frequency = 0.10000000149012
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ffj6"]
+size = Vector2(10, 10)
+
+[sub_resource type="Curve" id="Curve_h0aqt"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.68817204, 1), 0.0, 0.0, 0, 0, Vector2(0.99999, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_61mg0"]
+curve = SubResource("Curve_h0aqt")
+
+[sub_resource type="Curve" id="Curve_prmyu"]
+_data = [Vector2(0, 0.067415714), 0.0, 0.0, 0, 0, Vector2(0.2559524, 1), 0.0, 0.0, 0, 0, Vector2(0.99404764, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_d4jfq"]
+curve = SubResource("Curve_prmyu")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_srqkv"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.0
+emission_ring_radius = 14.0
+emission_ring_inner_radius = 14.0
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, -1, 0)
+spread = 90.0
+initial_velocity_min = 5.0
+initial_velocity_max = 30.0
+angular_velocity_min = -50.000015
+angular_velocity_max = 49.99998
+gravity = Vector3(0, 0, 0)
+scale_min = 0.099999994
+scale_max = 0.75
+scale_curve = SubResource("CurveTexture_d4jfq")
+alpha_curve = SubResource("CurveTexture_61mg0")
+
+[node name="Portal" type="Sprite2D" unique_id=132038420]
+material = SubResource("ShaderMaterial_srqkv")
+texture = ExtResource("2_jr6l0")
+
+[node name="PortalArea2D" type="Area2D" parent="." unique_id=1078318698]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PortalArea2D" unique_id=1103227410]
+shape = SubResource("RectangleShape2D_1ffj6")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1597761440]
+amount = 16
+texture = ExtResource("3_jr6l0")
+lifetime = 3.0
+randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_srqkv")
