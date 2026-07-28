@@ -1,6 +1,12 @@
 extends Node
 
 # Global game state variables
+@export var levels: Array[PackedScene] = [
+	preload("res://scenes/Cave.tscn"),
+	preload("res://scenes/level0.tscn"), 
+]
+
+@export var current_level : int = 1 # we start from level 0
 
 var spawn_position : Vector2 = Vector2.ZERO 
 var player_direction : float = 0.0

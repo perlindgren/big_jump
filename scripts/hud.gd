@@ -1,8 +1,5 @@
 extends CanvasLayer
 
-signal restart
-signal replay
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void: 
 	pass
@@ -17,9 +14,9 @@ func _process(_delta: float) -> void:
 	$Labels/Velocity.text = "Velocity   : " + str(%Player.velocity)
 
 	if Input.is_action_just_pressed(&"restart"):
-		print("emit restart")
-		restart.emit()
+		print("hud: emit restart")
+		Signals.restart.emit()
 
 	if Input.is_action_just_pressed(&"replay"):
 		print("emit replay")
-		replay.emit()
+		Signals.replay.emit()

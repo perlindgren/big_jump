@@ -1,0 +1,66 @@
+[gd_scene format=4 uid="uid://c3f62wlnenbs1"]
+
+[ext_resource type="TileSet" uid="uid://cikrd3seb2fug" path="res://materials/ground.tres" id="1_2kquo"]
+[ext_resource type="Script" uid="uid://786qp1ovr5rj" path="res://scripts/cave.gd" id="1_xxa1h"]
+[ext_resource type="TileSet" uid="uid://sl17pdo66tsv" path="res://materials/lethals.tres" id="2_xwfm4"]
+[ext_resource type="Texture2D" uid="uid://5hc1liustycb" path="res://assets/sprites/flag2_0001.png" id="3_qxwsd"]
+[ext_resource type="Texture2D" uid="uid://yjri1ub0x1oq" path="res://assets/sprites/flag2_0002.png" id="4_xxa1h"]
+[ext_resource type="Texture2D" uid="uid://ctm1l28hnric5" path="res://assets/sprites/flag2_0003.png" id="5_3f5ji"]
+[ext_resource type="Texture2D" uid="uid://c67ybyxl2thtx" path="res://assets/sprites/flag2_0004.png" id="6_rluko"]
+[ext_resource type="Script" uid="uid://32bvdfrvtu8d" path="res://scripts/flag_animation.gd" id="7_6u8ru"]
+[ext_resource type="Script" uid="uid://bkb12dyumwolh" path="res://scripts/flag_collision.gd" id="8_5ypu7"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yeqan"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_qxwsd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xxa1h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_3f5ji")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_rluko")
+}],
+"loop": 1,
+"name": &"flag",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h07oa"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_srqkv"]
+
+[node name="Cave" type="Node2D" unique_id=1523136418]
+script = ExtResource("1_xxa1h")
+
+[node name="Floor" type="TileMapLayer" parent="." unique_id=160976599]
+tile_map_data = PackedByteArray("AAD+/wMAAAAAAAAAAAD+/wQAAAAAAAAAAAD+/wUAAAAAAAAAAAD+/wYAAAAAAAAAAAD+/wcAAAAAAAAAAAD+/wgAAAAAAAAAAAD+/wkAAAAAAAAAAAD//wkAAAAAAAAAAAAAAAkAAAAAAAAAAAABAAkAAAAAAAAAAAACAAkAAAAAAAAAAAACAAgAAAAAAAAAAAACAAcAAAAAAAAAAAACAAYAAAAAAAAAAAACAAUAAAAAAAAAAAACAAQAAAAAAAAAAAACAAMAAAAAAAAAAAA=")
+tile_set = ExtResource("1_2kquo")
+
+[node name="Leathals" type="TileMapLayer" parent="." unique_id=675064779]
+tile_map_data = PackedByteArray("AAD1/xQAAAACAAEAAAD2/xQAAAACAAEAAAD3/xQAAAACAAEAAAD4/xQAAAACAAEAAAD5/xQAAAACAAEAAAD6/xQAAAACAAEAAAD7/xQAAAACAAEAAAD8/xQAAAACAAEAAAD9/xQAAAACAAEAAAD+/xQAAAACAAEAAAD//xQAAAACAAEAAAAAABQAAAACAAEAAAABABQAAAACAAEAAAACABQAAAACAAEAAAADABQAAAACAAEAAAAEABQAAAACAAEAAAAFABQAAAACAAEAAAAFABUAAAACAAEAAAAGABUAAAACAAEAAAAHABUAAAACAAEAAAAIABUAAAACAAEAAAAJABUAAAACAAEAAAAKABUAAAACAAEAAAAKABQAAAACAAEAAAALABQAAAACAAEAAAAMABQAAAACAAEAAAAMABMAAAACAAEAAAANABMAAAACAAEAAAANABIAAAACAAEAAAANABEAAAACAAEAAAAOABEAAAACAAEAAAAOABAAAAACAAEAAAAOAA8AAAACAAEAAAAOAA4AAAACAAEAAAAOAA0AAAACAAEAAAD1/xMAAAACAAEAAAD1/xIAAAACAAEAAAD0/xIAAAACAAEAAAD0/xEAAAACAAEAAAD0/xAAAAACAAEAAAD0/w8AAAACAAEAAAD0/w4AAAACAAEAAADz/w4AAAACAAEAAADz/w0AAAACAAEAAADz/wwAAAACAAEAAADz/wsAAAACAAEAAADz/woAAAACAAEAAADz/wkAAAACAAEAAADz/wgAAAACAAEAAADz/wcAAAACAAEAAADz/wYAAAACAAEAAAAPAAwAAAACAAEAAAAPAAsAAAACAAEAAAAPAAoAAAACAAEAAAAPAAkAAAACAAEAAAAPAAgAAAACAAEAAAAPAAcAAAACAAEAAAAQAAcAAAACAAEAAAAQAAYAAAACAAEAAAAQAAUAAAACAAEAAAAPAAUAAAACAAEAAAA=")
+tile_set = ExtResource("2_xwfm4")
+
+[node name="Flag1" type="AnimatedSprite2D" parent="." unique_id=1951370281]
+z_index = -1
+position = Vector2(12, 278)
+sprite_frames = SubResource("SpriteFrames_yeqan")
+animation = &"flag"
+speed_scale = 0.5
+script = ExtResource("7_6u8ru")
+player_direction = 1.0
+
+[node name="Area2D" type="Area2D" parent="Flag1" unique_id=1392719906]
+collision_layer = 4
+collision_mask = 256
+script = ExtResource("8_5ypu7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flag1/Area2D" unique_id=688994197]
+shape = SubResource("RectangleShape2D_h07oa")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Flag1" unique_id=1658279799]
+sprite_frames = SubResource("SpriteFrames_srqkv")
