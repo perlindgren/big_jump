@@ -4,3 +4,5 @@ extends Node
 
 signal coin(value: int)
 signal key(nr: int)
+signal restart
+signal replay
