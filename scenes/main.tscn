@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://dyhydap80532x" path="res://scenes/hud.tscn" id="3_sugp2"]
 [ext_resource type="Script" uid="uid://dpr3y4r0e8ojh" path="res://scripts/levels.gd" id="3_tbgi4"]
 [ext_resource type="Script" uid="uid://crpgpao4nhds5" path="res://scripts/node_2d.gd" id="6_o6xl0"]
-[ext_resource type="PackedScene" uid="uid://c3f62wlnenbs1" path="res://scenes/Cave.tscn" id="6_tipki"]
 [ext_resource type="PackedScene" uid="uid://bxb3worx5o7sb" path="res://scenes/ShockwaveLayer.tscn" id="7_o6xl0"]
 
 [sub_resource type="GDScript" id="GDScript_tbgi4"]
@@ -34,7 +33,6 @@ unique_name_in_owner = true
 
 [node name="Levels" type="Node2D" parent="." unique_id=963335737]
 script = ExtResource("3_tbgi4")
-level = ExtResource("6_tipki")
 
 [node name="MyCamera" type="Node2D" parent="." unique_id=2142045630]
 script = ExtResource("6_o6xl0")

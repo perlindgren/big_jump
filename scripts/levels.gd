@@ -13,7 +13,7 @@ func _ready() -> void:
 		print("levels: launching", level)
 		var level_instance = level.instantiate()
 		add_child(level_instance)
-		level_instance.spawn_flag.modulate = Color(0.0, 1.0, 0.0)
+		level_instance.flags[0].modulate = Color(0.0, 1.0, 0.0)
 		Signals.key.connect(_on_key_pickup)
 		Signals.coin.connect(_on_coin_pickup)
 		Signals.restart.connect(_on_restart)
@@ -36,11 +36,13 @@ func _process(_delta) -> void:
 		restart()
 
 func restart() -> void:
-	
-	#flag2.modulate = Color(1,1,1)
-	#flag3.modulate = Color(1,1,1)
-	#flag4.modulate = Color(1,1,1)
 	var level_instance = get_child(0)
+	
+	# iterate over flags, but skip first flag that is always checked
+	for index in level_instance.flags.size() -1:
+		print("index ", index)
+		level_instance.flags[index + 1].modulate = Color(1,1,1)
+	
 	GameState.spawn_position = level_instance.spawn_flag.position
 	GameState.player_direction = level_instance.spawn_flag.player_direction
 	GameState.clear_recording()
