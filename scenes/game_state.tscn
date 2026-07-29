@@ -4,3 +4,4 @@
 
 [node name="GameState" type="Node" unique_id=1004209927]
 script = ExtResource("1_321hb")
+current_level = 0

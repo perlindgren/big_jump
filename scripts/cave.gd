@@ -1,4 +1,8 @@
 extends Node2D
 
-# Declares the spawn point of the player
-@onready var spawn_flag = $Flag1
+@onready var flags = [
+	$Flags/SpawnFlag,
+	#$Flags/Flag2,
+	#$Flags/Flag3,
+	#$Flags/Flag4,
+] 

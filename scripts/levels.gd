@@ -43,8 +43,8 @@ func restart() -> void:
 		print("index ", index)
 		level_instance.flags[index + 1].modulate = Color(1,1,1)
 	
-	GameState.spawn_position = level_instance.spawn_flag.position
-	GameState.player_direction = level_instance.spawn_flag.player_direction
+	GameState.spawn_position = level_instance.flags[0].position
+	GameState.player_direction = level_instance.flags[0].player_direction
 	GameState.clear_recording()
 	GameState.frames = 0
 	player.respawn()

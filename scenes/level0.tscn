@@ -21,7 +21,7 @@
 [ext_resource type="Shader" uid="uid://bej6tqh8sq5q5" path="res://shaders/key.gdshader" id="20_r2ue6"]
 [ext_resource type="Texture2D" uid="uid://2jov71uya24t" path="res://assets/sprites/runner2.png" id="21_l1g8i"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6q6d4"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r2ue6"]
 texture = ExtResource("3_tcqsn")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
@@ -30,7 +30,7 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_srqkv"]
 tile_size = Vector2i(32, 32)
-sources/3 = SubResource("TileSetAtlasSource_6q6d4")
+sources/3 = SubResource("TileSetAtlasSource_r2ue6")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_srqkv"]
 size = Vector2(506, 125.75)
@@ -131,7 +131,7 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_wrnl3")
 centered = false
 
-[node name="TileMaps" type="Node" parent="." unique_id=1140149890]
+[node name="TileMaps" type="Node2D" parent="." unique_id=1223297996]
 
 [node name="TileMapLayer L0 Frame" type="TileMapLayer" parent="TileMaps" unique_id=309942369]
 z_index = 1

@@ -34,11 +34,11 @@ unique_name_in_owner = true
 [node name="Levels" type="Node2D" parent="." unique_id=963335737]
 script = ExtResource("3_tbgi4")
 
-[node name="MyCamera" type="Node2D" parent="." unique_id=2142045630]
+[node name="Camera" type="Node2D" parent="." unique_id=2142045630]
 script = ExtResource("6_o6xl0")
 
-[node name="Camera" type="Camera2D" parent="MyCamera" unique_id=1483092846]
+[node name="Camera" type="Camera2D" parent="Camera" unique_id=1483092846]
 ignore_rotation = false
-zoom = Vector2(2, 2)
+zoom = Vector2(1.5, 1.5)
 
 [node name="ShockwaveLayer" parent="." unique_id=329892881 instance=ExtResource("7_o6xl0")]
