@@ -2,7 +2,7 @@
 
 [ext_resource type="Shader" uid="uid://dux83lql062qf" path="res://materials/portal_material.tres" id="1_dyed0"]
 [ext_resource type="Texture2D" uid="uid://dg6ldvw6nb3s7" path="res://assets/sprites/open_portal.png" id="2_jr6l0"]
-[ext_resource type="Script" uid="uid://csjmqsgunc35o" path="res://scenes/portal.gd" id="3_ckw30"]
+[ext_resource type="Script" uid="uid://csjmqsgunc35o" path="res://scripts/portal.gd" id="3_ckw30"]
 [ext_resource type="Texture2D" uid="uid://d0as1qeop26ay" path="res://assets/sprites/portal_dust.png" id="3_jr6l0"]
 [ext_resource type="Texture2D" uid="uid://424tedpdr228" path="res://assets/sprites/objects.png" id="5_4pvrx"]
 
