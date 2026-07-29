@@ -2,6 +2,8 @@ extends Sprite2D
 
 @export var portal_id : int = 0
 
+enum PortalState { LOCKED, RUN, JUMP }
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
