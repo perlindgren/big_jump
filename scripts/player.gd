@@ -198,7 +198,7 @@ func _physics_process(delta: float) -> void:
 	if is_on_any() and not old_is_on_any:
 		var velocity_x = abs(velocity.x)
 		var velocity_y = abs(velocity.y)
-		print("old_velocity ",  old_velocity, " velocity_x ", velocity_x, " velocity_y", velocity_y)
+		# print("old_velocity ",  old_velocity, " velocity_x ", velocity_x, " velocity_y", velocity_y)
 		if ((is_on_floor() or is_on_ceiling()) and abs(old_velocity.y) > shockwave_velocity) or (is_on_wall() and abs(old_velocity.x) > shockwave_velocity):
 			trigger_shockwave()
 	

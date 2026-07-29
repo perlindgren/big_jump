@@ -8,6 +8,10 @@ extends Node2D
 
 func _ready() -> void:
 	# The parent instantiates quickly because the sub-tree does not exist yet.
+	instantiate_level()
+
+func instantiate_level():
+	# The parent instantiates quickly because the sub-tree does not exist yet.
 	var level : PackedScene = GameState.levels[GameState.current_level]
 	if level:
 		print("levels: launching", level)
@@ -18,22 +22,23 @@ func _ready() -> void:
 		Signals.coin.connect(_on_coin_pickup)
 		Signals.restart.connect(_on_restart)
 		Signals.replay.connect(_on_replay)
+		Signals.next_level.connect(_on_next_level)
 		restart()
 	else:
 		print("-- error --")
 		get_tree().quit(0)
-
+	
 # TODO should use signal instead for game state changes
-func _process(_delta) -> void:
-	# this should perhaps be a signal
-	if GameState.player_goal:
-		print("recording", GameState.recording)
-		GameState.player_goal = false
-		print("respawn in ", next_level_time, " seconds")
-		await get_tree().create_timer(next_level_time).timeout
-		GameState.mode = GameState.mode_states.REPLAY
-		#get_tree().reload_current_scene()
-		restart()
+#func _process(_delta) -> void:
+	## this should perhaps be a signal
+	#if GameState.player_goal:
+		#print("recording", GameState.recording)
+		#GameState.player_goal = false
+		#print("respawn in ", next_level_time, " seconds")
+		#await get_tree().create_timer(next_level_time).timeout
+		#GameState.mode = GameState.mode_states.REPLAY
+		##get_tree().reload_current_scene()
+		#restart()
 
 func restart() -> void:
 	var level_instance = get_child(0)
@@ -45,7 +50,8 @@ func restart() -> void:
 	
 	GameState.spawn_position = level_instance.flags[0].position
 	GameState.player_direction = level_instance.flags[0].player_direction
-	GameState.clear_recording()
+	GameState.clear_recording() # if not in replay mode
+	GameState.player_goal = true # prevent user input
 	GameState.frames = 0
 	player.respawn()
 
@@ -64,3 +70,16 @@ func _on_key_pickup(nr: int) -> void:
 
 func _on_coin_pickup(value: int) -> void:
 	print("levels: coins picked up", value)
+
+func _on_next_level(next_level: int) -> void:
+	print("levels: on_next_level ", next_level)
+	GameState.player_goal = true # prevent user input
+	await get_tree().create_timer(next_level_time).timeout
+	# GameState.mode = GameState.mode_states.REPLAY
+	# remove the level instance
+	get_child(0).queue_free()
+	
+	GameState.current_level = next_level
+	instantiate_level()
+	
+	restart()
