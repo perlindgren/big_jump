@@ -27,6 +27,7 @@ func _on_portal_area_2d_body_entered(_body: Node2D) -> void:
 	print("portal: id", portal_id)
 	Signals.portal.emit(portal_id)
 
+### update the portal visual according to new state
 func set_state(new_state : State):
 	state = new_state
 	print("Portal:set_portal_state", state)
@@ -41,5 +42,7 @@ func set_state(new_state : State):
 		State.BARS: bars.visible = true
 		State.BARS2: bars2.visible = true
 		
-func set_active(active: bool) -> void:
-		particles.visible = active
+### update the active state of the particles
+func set_active(new_active: bool) -> void:
+		active = new_active
+		particles.visible = new_active

@@ -1,12 +1,13 @@
 [gd_resource type="TileSet" format=3 uid="uid://cikrd3seb2fug"]
 
-[ext_resource type="Texture2D" uid="uid://dxsqg6lkdaj4d" path="res://assets/sprites/black_tiles2.png" id="1_8o8p5"]
+[ext_resource type="Texture2D" uid="uid://dxsqg6lkdaj4d" path="res://assets/sprites/black_tiles2.png" id="1_glxst"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_8o8p5"]
 tile_data = PackedInt32Array(0, 0, 536870913, 1, 65536, 536870913, 2, 196608, 536870913, 3, 131072, 805306369, 4, 65536, 805306369, 5, 196608, 805306369, 6, 131072, 536870913, 7, 196608, 805306369, 8, 0, 536870913, 9, 65536, 805306369)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_if4l3"]
-texture = ExtResource("1_8o8p5")
+resource_name = "ExtraAtlas"
+texture = ExtResource("1_glxst")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
@@ -60,5 +61,6 @@ texture_region_size = Vector2i(32, 32)
 [resource]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_if4l3")
 pattern_0 = SubResource("TileMapPattern_8o8p5")

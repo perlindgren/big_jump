@@ -21,6 +21,10 @@ config/icon="res://icon.svg"
 GameState="*uid://dj5d5jm0t272q"
 Signals="*uid://jdloandqosmn"
 
+[debug]
+
+gdscript/warnings/unused_signal=0
+
 [display]
 
 window/size/viewport_width=1920
