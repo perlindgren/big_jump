@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://yslcsu2hp6h0"]
 
-[ext_resource type="Shader" uid="uid://bej6tqh8sq5q5" path="res://shaders/key.gdshader" id="1_uqhqb"]
+[ext_resource type="Shader" uid="uid://bej6tqh8sq5q5" path="res://shaders/gold.gdshader" id="1_uqhqb"]
 
 [resource]
 shader = ExtResource("1_uqhqb")

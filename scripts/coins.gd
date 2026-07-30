@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var value : int = 5
+@export var value : int = 1
 
 @onready var coin_sprite = $CoinsSprite2D
 
@@ -11,6 +11,6 @@ func _on_ready() -> void:
 	#coin_sprite.speed = speed
 
 func _on_body_entered(_body: Node2D) -> void:
-	print("coins ", value)
+	print("coin ", value)
 	Signals.coin.emit(value)
 	queue_free()

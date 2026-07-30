@@ -2,11 +2,16 @@
 
 [ext_resource type="Texture2D" uid="uid://xhqexqaldcq3" path="res://assets/sprites/items.png" id="1_0v230"]
 [ext_resource type="Script" uid="uid://88q8bjdsdsns" path="res://scripts/coins.gd" id="1_lts5r"]
-[ext_resource type="Material" uid="uid://yslcsu2hp6h0" path="res://materials/gold_shader_material.tres" id="2_61jmb"]
+[ext_resource type="Shader" uid="uid://bej6tqh8sq5q5" path="res://shaders/gold.gdshader" id="2_lts5r"]
 [ext_resource type="Script" uid="uid://dagpkjdbcu8ix" path="res://scripts/gold_tween.gd" id="4_82ts1"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_srqkv"]
-size = Vector2(28, 19)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_82ts1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_61jmb"]
+shader = ExtResource("2_lts5r")
+shader_parameter/BloomRadius = 3.0
+shader_parameter/BloomThreshold = 0.4
+shader_parameter/BloomIntensity = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_srqkv"]
 atlas = ExtResource("1_0v230")
@@ -18,11 +23,12 @@ collision_layer = 16
 script = ExtResource("1_lts5r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=695299105]
-position = Vector2(0, 1.5)
-shape = SubResource("RectangleShape2D_srqkv")
+position = Vector2(0, 1)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_82ts1")
 
 [node name="CoinsSprite2D" type="Sprite2D" parent="." unique_id=1417604192]
-material = ExtResource("2_61jmb")
+material = SubResource("ShaderMaterial_61jmb")
 texture = SubResource("AtlasTexture_srqkv")
 script = ExtResource("4_82ts1")
 
