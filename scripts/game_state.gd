@@ -14,6 +14,9 @@ var player_goal : bool = false
 var frames : int = 0
 var missed_frames : int = 0
 
+var coins : int = 0 # ground truth
+var coins_display : int = 0 # used for hud display
+
 @export var recording : Dictionary[int, int] = {}
 enum mode_states {RECORD, REPLAY}
 var mode : mode_states = mode_states.RECORD

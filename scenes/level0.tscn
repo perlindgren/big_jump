@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://ctm1l28hnric5" path="res://assets/sprites/flag2_0003.png" id="11_3i82n"]
 [ext_resource type="PackedScene" uid="uid://cedo1w13padh1" path="res://scenes/Coin.tscn" id="11_8qpon"]
 [ext_resource type="Texture2D" uid="uid://c67ybyxl2thtx" path="res://assets/sprites/flag2_0004.png" id="12_3mf5k"]
+[ext_resource type="Texture2D" uid="uid://xhqexqaldcq3" path="res://assets/sprites/items.png" id="13_kjxej"]
 [ext_resource type="Script" uid="uid://32bvdfrvtu8d" path="res://scripts/flag_animation.gd" id="13_r2ue6"]
 [ext_resource type="Script" uid="uid://bkb12dyumwolh" path="res://scripts/flag_collision.gd" id="14_l1g8i"]
 [ext_resource type="PackedScene" uid="uid://hultbfvysbtw" path="res://scenes/portal.tscn" id="17_5xwn4"]
@@ -50,6 +51,16 @@ size = Vector2(163.5, 34.46875)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6q6d4"]
 size = Vector2(335, 130.46875)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r2og0"]
+shader = ExtResource("20_r2ue6")
+shader_parameter/BloomRadius = 3.0
+shader_parameter/BloomThreshold = 0.5
+shader_parameter/BloomIntensity = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_srqkv"]
+atlas = ExtResource("13_kjxej")
+region = Rect2(64, 0, 32, 32)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fu4xf"]
 size = Vector2(28, 19)
 
@@ -58,6 +69,10 @@ shader = ExtResource("20_r2ue6")
 shader_parameter/BloomRadius = 3.0
 shader_parameter/BloomThreshold = 0.5
 shader_parameter/BloomIntensity = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rb68y"]
+atlas = ExtResource("13_kjxej")
+region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8qpon"]
 shader = ExtResource("20_r2ue6")
@@ -149,7 +164,6 @@ tile_map_data = PackedByteArray("AAAMAAsAAAACAAAAAAANAAsAAAADAAAAAAANAA8AAAADAAA
 tile_set = ExtResource("2_uijja")
 
 [node name="CraneDeck" type="Sprite2D" parent="TileMaps" unique_id=1470331332]
-visible = false
 z_index = 1
 position = Vector2(578, 314)
 scale = Vector2(0.27, 0.27)
@@ -430,6 +444,8 @@ collision_mask = 256
 value = 17
 
 [node name="Sprite2D" parent="Loot/Coin" index="2" unique_id=1417604192]
+material = SubResource("ShaderMaterial_r2og0")
+texture = SubResource("AtlasTexture_srqkv")
 speed = 2.5
 
 [node name="Coins1" parent="Loot" unique_id=64762922 instance=ExtResource("19_3mf5k")]
@@ -444,6 +460,7 @@ shape = SubResource("RectangleShape2D_fu4xf")
 
 [node name="Sprite2D" parent="Loot/Coins1" index="1" unique_id=1417604192]
 material = SubResource("ShaderMaterial_l1g8i")
+texture = SubResource("AtlasTexture_rb68y")
 speed = 2.0
 
 [node name="Coins2" parent="Loot" unique_id=2078427928 instance=ExtResource("19_3mf5k")]
@@ -459,6 +476,7 @@ shape = SubResource("RectangleShape2D_fu4xf")
 
 [node name="Sprite2D" parent="Loot/Coins2" index="1" unique_id=1417604192]
 material = SubResource("ShaderMaterial_8qpon")
+texture = SubResource("AtlasTexture_rb68y")
 
 [node name="Coins3" parent="Loot" unique_id=1434238652 instance=ExtResource("19_3mf5k")]
 position = Vector2(512, 118)
@@ -472,6 +490,7 @@ shape = SubResource("RectangleShape2D_fu4xf")
 
 [node name="Sprite2D" parent="Loot/Coins3" index="1" unique_id=1417604192]
 material = SubResource("ShaderMaterial_fu4xf")
+texture = SubResource("AtlasTexture_rb68y")
 speed = 1.5
 
 [node name="Coins4" parent="Loot" unique_id=882580338 instance=ExtResource("19_3mf5k")]
@@ -486,6 +505,7 @@ shape = SubResource("RectangleShape2D_fu4xf")
 
 [node name="Sprite2D" parent="Loot/Coins4" index="1" unique_id=1417604192]
 material = SubResource("ShaderMaterial_fu4xf")
+texture = SubResource("AtlasTexture_rb68y")
 speed = 1.5
 
 [node name="Portals" type="Node2D" parent="." unique_id=128110809]

@@ -26,7 +26,7 @@ func trigger_shockwave(global_impact_position: Vector2):
 	# 3. Normalize the pixel position to a 0.0 - 1.0 vector for the shader
 	var normalized_center = screen_pos / get_viewport_rect().size
 	
-	print("shockwave trigger ", normalized_center)
+	# print("shockwave trigger ", normalized_center)
 	normalized_center = Vector2(0.5, 0.5)
 	
 	# 4. Inject variables and animate properties smoothly via a Tween

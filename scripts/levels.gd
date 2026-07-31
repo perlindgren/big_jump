@@ -5,6 +5,8 @@ extends Node2D
 @export var next_level_time : float = 4
 
 @onready var player = %Player
+var coin_tween : Tween
+var last_coin_update : int = 0
 
 func _ready() -> void:
 	# The parent instantiates quickly because the sub-tree does not exist yet.
@@ -59,7 +61,22 @@ func _on_key_pickup(nr: int) -> void:
 
 func _on_coin_pickup(value: int) -> void:
 	print("levels: coins picked up", value)
+	
+	if coin_tween:
+		# ongoing coin_pickup
+		print("levels: kill tween")
+		coin_tween.kill()
+		
+	GameState.coins += value
+	var tween_time : float = (GameState.coins - last_coin_update) * 0.1
+	print("levels: from ", last_coin_update, ", to", GameState.coins, ", tween time", tween_time)
+	coin_tween = create_tween()
+	coin_tween.tween_method(update_coins, last_coin_update, GameState.coins, tween_time)
 
+func update_coins(value: int) -> void:
+	GameState.coins_display = value
+	last_coin_update = value
+	
 func _on_next_level(next_level: int) -> void:
 	next_level = 1
 	print("levels: on_next_level ", next_level)
