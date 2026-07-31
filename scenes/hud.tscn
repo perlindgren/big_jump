@@ -107,7 +107,7 @@ position = Vector2(0, 1)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_82ts1")
 
-[node name="CoinsSprite2D" type="Sprite2D" parent="CoinCounter/Coins" unique_id=1417604192]
+[node name="Sprite2D" type="Sprite2D" parent="CoinCounter/Coins" unique_id=1417604192]
 material = SubResource("ShaderMaterial_hd3ao")
 texture = SubResource("AtlasTexture_srqkv")
 script = ExtResource("6_apjy4")

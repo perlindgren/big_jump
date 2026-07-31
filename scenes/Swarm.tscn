@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dv22mmwoj4evu"]
+
+[ext_resource type="Texture2D" uid="uid://cru15ldt720yx" path="res://assets/sprites/dot.png" id="1_4jgdp"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_y0dqn"]
+lifetime_randomness = 0.1
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -1.0000023
+radial_accel_max = 25.149998
+turbulence_enabled = true
+turbulence_influence_max = 1.0
+turbulence_initial_displacement_min = 1.490116e-06
+turbulence_initial_displacement_max = 100.0
+
+[node name="Swarm" type="GPUParticles2D" unique_id=246205138]
+amount = 20
+texture = ExtResource("1_4jgdp")
+lifetime = 10.0
+preprocess = 10.0
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_y0dqn")

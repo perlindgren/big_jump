@@ -23,7 +23,7 @@ position = Vector2(0, 1)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_82ts1")
 
-[node name="CoinsSprite2D" type="Sprite2D" parent="." unique_id=1417604192]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1417604192]
 material = ExtResource("2_61jmb")
 texture = SubResource("AtlasTexture_srqkv")
 script = ExtResource("4_82ts1")

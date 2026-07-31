@@ -2,7 +2,7 @@ extends Area2D
 
 @export var value : int = 1
 
-@onready var coin_sprite = $CoinsSprite2D
+@onready var coin_sprite = $Sprite2D
 
 func _on_ready() -> void:
 	print("_on_ready, coin val ", value)
