@@ -15,7 +15,6 @@ extends CharacterBody2D
 # not visible in inspector
 var jump_engaged : bool = false
 var jump_accum : float = 0.0
-#var is_dead : bool = false
 var is_live : bool = true
 var has_moved : bool = false
 var is_jump_pressed : bool = false
@@ -64,6 +63,7 @@ func _physics_process(delta: float) -> void:
 			print("-- respawn reached floor --")
 			is_respawn = false
 			velocity = Vector2.ZERO
+			GameState.player_active = true
 		else:
 			# print("-- respawn in progress --")
 			velocity += get_gravity() * delta	

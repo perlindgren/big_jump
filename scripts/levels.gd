@@ -18,14 +18,22 @@ func _ready() -> void:
 	instantiate_level()
 
 func instantiate_level():
-	# The parent instantiates quickly because the sub-tree does not exist yet.
-	var level: PackedScene = GameState.levels[GameState.current_level]
-	if level:
-		print("levels: launching", level)
-		var level_instance = level.instantiate()
+	print("levels: instantiate level")
+	
+	# free old level if existing
+	var nr_children = get_child_count()
+	print("levels: nr_children", nr_children)
+	if nr_children == 1:
+		print("levels: free old level")
+		get_child(0).queue_free()
+	
+	# instantiate new level
+	var new_level: PackedScene = GameState.levels[GameState.current_level]
+	if new_level:
+		print("levels: launching", new_level)
+		var level_instance = new_level.instantiate()
 		add_child(level_instance)
 		level_instance.flags[0].modulate = Color(0.0, 1.0, 0.0)
-		
 		restart()
 	else:
 		print("-- error --")
@@ -42,24 +50,26 @@ func restart() -> void:
 	GameState.spawn_position = level_instance.flags[0].position
 	GameState.player_direction = level_instance.flags[0].player_direction
 	GameState.clear_recording() # if not in replay mode
-	GameState.player_goal = true # prevent user input
+	GameState.player_active = false # prevent collisions
 	GameState.frames = 0
+	GameState.coins = 0
+	GameState.coins_display = 0
 	player.respawn()
 
 func _on_restart() -> void:
 	print("levels: on_restart")
-	restart()
+	instantiate_level()
 
 func _on_replay() -> void:
 	print("levels: on_replay")
 	GameState.mode = GameState.mode_states.REPLAY
 	print("levels: recording ", GameState.recording)
-	restart()
+	instantiate_level()
 	
 func _on_key_pickup(nr: int) -> void:
 	print("levels: key picked up", nr)
 
-func _on_coin_pickup(value: int) -> void:
+func _on_coin_pickup(value: int, node: Node2D) -> void:
 	print("levels: coins picked up", value)
 	
 	if coin_tween:
@@ -68,25 +78,37 @@ func _on_coin_pickup(value: int) -> void:
 		coin_tween.kill()
 		
 	GameState.coins += value
-	var tween_time : float = (GameState.coins - last_coin_update) * 0.1
+	var tween_time : float = (GameState.coins - last_coin_update) * 0.025
+	
 	print("levels: from ", last_coin_update, ", to", GameState.coins, ", tween time", tween_time)
 	coin_tween = create_tween()
 	coin_tween.tween_method(update_coins, last_coin_update, GameState.coins, tween_time)
+	
+	var pickup_tween = create_tween()
+	print("levels: node.position", node.position)
+	
+	pickup_tween.tween_property(node, "position", Vector2(800, 50), 1.0)
+	pickup_tween.parallel().tween_property(node, "rotation", 2 * TAU, 1.0)
+	await pickup_tween.finished
+	print("levels: pickup_tween finished")
+	# in case of restart the node would be freed
+	if node:
+		node.queue_free()
 
+	
+# Tween function to update the coin counter variable
 func update_coins(value: int) -> void:
 	GameState.coins_display = value
 	last_coin_update = value
-	
+		
 func _on_next_level(next_level: int) -> void:
 	next_level = 1
 	print("levels: on_next_level ", next_level)
-	GameState.player_goal = true # prevent user input
+	player.is_live = false # prevent player input
 	await get_tree().create_timer(next_level_time).timeout
 	GameState.mode = GameState.mode_states.REPLAY
-	# remove the level instance
-	get_child(0).queue_free()
-	
 	GameState.current_level = next_level
 	instantiate_level()
 	
-	restart()
+	
+	

@@ -3,7 +3,8 @@ extends Node
 # Signals
 
 # Pickups
-signal coin(value: int)
+# the target is the node to pickup
+signal coin(value: int, node : Node2D)
 signal key(nr: int)
 
 # Portal
