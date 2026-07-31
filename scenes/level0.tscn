@@ -53,7 +53,7 @@ size = Vector2(335, 130.46875)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l1g8i"]
 shader = ExtResource("20_r2ue6")
 shader_parameter/BloomRadius = 3.0
-shader_parameter/BloomThreshold = 0.4
+shader_parameter/BloomThreshold = 0.5
 shader_parameter/BloomIntensity = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8qpon"]
@@ -65,7 +65,7 @@ shader_parameter/BloomIntensity = 0.0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fu4xf"]
 shader = ExtResource("20_r2ue6")
 shader_parameter/BloomRadius = 3.0
-shader_parameter/BloomThreshold = 0.4
+shader_parameter/BloomThreshold = 0.5
 shader_parameter/BloomIntensity = 0.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_srqkv"]
@@ -95,6 +95,7 @@ script = ExtResource("1_cm1v6")
 
 [node name="Wall" type="Parallax2D" parent="." unique_id=915134789]
 z_index = -11
+scroll_offset = Vector2(293, 494)
 repeat_size = Vector2(256, 256)
 repeat_times = 7
 ignore_camera_scroll = true
@@ -107,9 +108,10 @@ texture = ExtResource("10_6q6d4")
 clip_contents = true
 layout_mode = 3
 anchors_preset = 0
-offset_top = -33.0
-offset_right = 866.0
-offset_bottom = 574.0
+offset_left = 17.0
+offset_top = -42.0
+offset_right = 847.0
+offset_bottom = 560.0
 
 [node name="ParallaxBackground" type="Parallax2D" parent="Painting" unique_id=968290365]
 z_index = -10
@@ -151,6 +153,7 @@ scale = Vector2(0.27, 0.27)
 texture = ExtResource("8_8qpon")
 
 [node name="Labels" type="Control" parent="." unique_id=1558977758]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 theme = ExtResource("7_wrnl3")
@@ -419,11 +422,11 @@ position = Vector2(54, 430)
 
 [node name="Coin" parent="Loot" unique_id=1151582246 instance=ExtResource("11_8qpon")]
 z_index = 1
-position = Vector2(411, 121)
+position = Vector2(411, 122)
 collision_mask = 256
 value = 17
 
-[node name="CoinsSprite2D" parent="Loot/Coin" index="1" unique_id=1417604192]
+[node name="CoinSprite" parent="Loot/Coin" index="2" unique_id=1417604192]
 speed = 2.5
 
 [node name="Coins1" parent="Loot" unique_id=64762922 instance=ExtResource("19_3mf5k")]
@@ -454,7 +457,7 @@ material = SubResource("ShaderMaterial_fu4xf")
 speed = 1.5
 
 [node name="Coins4" parent="Loot" unique_id=882580338 instance=ExtResource("19_3mf5k")]
-position = Vector2(368, 116)
+position = Vector2(369, 118)
 collision_mask = 256
 value = 25
 

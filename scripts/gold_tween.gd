@@ -9,7 +9,7 @@ func _ready() -> void:
 	
 func up() -> void :
 	var t : Tween = create_tween().set_parallel()
-	t.tween_property(material, "shader_parameter/BloomIntensity", 5.0, speed)
+	t.tween_property(material, "shader_parameter/BloomIntensity", 4.0, speed)
 	await t.finished
 	down()
 	

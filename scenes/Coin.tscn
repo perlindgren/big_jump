@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://cedo1w13padh1"]
 
 [ext_resource type="Script" uid="uid://88q8bjdsdsns" path="res://scripts/coins.gd" id="1_bedda"]
+[ext_resource type="Texture2D" uid="uid://dnjqqi802y3wp" path="res://assets/sprites/Cross.png" id="2_2du1a"]
 [ext_resource type="Shader" uid="uid://bej6tqh8sq5q5" path="res://shaders/gold.gdshader" id="2_bedda"]
+[ext_resource type="Material" uid="uid://l2m22k1hrg76" path="res://GoldShimmerProcessMaterial.tres" id="3_61u1m"]
 [ext_resource type="Texture2D" uid="uid://xhqexqaldcq3" path="res://assets/sprites/items.png" id="3_r2og0"]
 [ext_resource type="Script" uid="uid://dagpkjdbcu8ix" path="res://scripts/gold_tween.gd" id="4_61u1m"]
 
@@ -9,10 +11,10 @@
 radius = 6.0
 height = 28.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2du1a"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r2og0"]
 shader = ExtResource("2_bedda")
 shader_parameter/BloomRadius = 3.0
-shader_parameter/BloomThreshold = 0.4
+shader_parameter/BloomThreshold = 0.5
 shader_parameter/BloomIntensity = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_srqkv"]
@@ -24,13 +26,22 @@ z_index = -8
 collision_layer = 16
 script = ExtResource("1_bedda")
 
+[node name="GoldShimmer" type="GPUParticles2D" parent="." unique_id=1027163612]
+z_index = 1
+position = Vector2(0, -5)
+amount = 4
+amount_ratio = 0.5
+texture = ExtResource("2_2du1a")
+lifetime = 4.0
+process_material = ExtResource("3_61u1m")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=695299105]
 position = Vector2(0, 1)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_7om06")
 
-[node name="CoinsSprite2D" type="Sprite2D" parent="." unique_id=1417604192]
-material = SubResource("ShaderMaterial_2du1a")
+[node name="CoinSprite" type="Sprite2D" parent="." unique_id=1417604192]
+material = SubResource("ShaderMaterial_r2og0")
 texture = SubResource("AtlasTexture_srqkv")
 script = ExtResource("4_61u1m")
 

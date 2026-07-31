@@ -2,6 +2,49 @@
 
 [ext_resource type="Script" uid="uid://b1d358p7emhb" path="res://scripts/hud.gd" id="1_oo0fn"]
 [ext_resource type="Theme" uid="uid://d2fuv1guujm7a" path="res://game_theme.tres" id="2_oo0fn"]
+[ext_resource type="Script" uid="uid://88q8bjdsdsns" path="res://scripts/coins.gd" id="3_0i1j5"]
+[ext_resource type="FontFile" uid="uid://censslmv4m6ny" path="res://assets/fonts/Xolonium-Regular.ttf" id="4_6fi6k"]
+[ext_resource type="Shader" uid="uid://bej6tqh8sq5q5" path="res://shaders/gold.gdshader" id="4_mphia"]
+[ext_resource type="Texture2D" uid="uid://xhqexqaldcq3" path="res://assets/sprites/items.png" id="5_0m4u7"]
+[ext_resource type="Script" uid="uid://dagpkjdbcu8ix" path="res://scripts/gold_tween.gd" id="6_apjy4"]
+[ext_resource type="Texture2D" uid="uid://dnjqqi802y3wp" path="res://assets/sprites/Cross.png" id="7_5n1hp"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_82ts1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hd3ao"]
+shader = ExtResource("4_mphia")
+shader_parameter/BloomRadius = 3.0
+shader_parameter/BloomThreshold = 0.5
+shader_parameter/BloomIntensity = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_srqkv"]
+atlas = ExtResource("5_0m4u7")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="Curve" id="Curve_2du1a"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.48256624, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.0065146685), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_r2og0"]
+curve = SubResource("Curve_2du1a")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hd3ao"]
+lifetime_randomness = 0.4
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 12.45
+direction = Vector3(0, 0, 0)
+spread = 0.0
+angular_velocity_min = -100.000015
+angular_velocity_max = 99.999985
+orbit_velocity_min = -0.09999991
+orbit_velocity_max = 0.1000001
+radial_velocity_min = 0.49997765
+radial_velocity_max = 3.9999776
+gravity = Vector3(0, 0, 0)
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_r2og0")
+color = Color(1, 1, 0, 1)
 
 [node name="HUD" type="CanvasLayer" unique_id=1889445868]
 script = ExtResource("1_oo0fn")
@@ -41,6 +84,51 @@ offset_left = 904.0
 offset_top = 4.0
 offset_right = 1086.0
 offset_bottom = 79.333336
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 96
 text = "0000"
 
+[node name="CoinCounter" type="Control" parent="." unique_id=209790925]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1667.0
+offset_top = 47.0
+offset_right = 1667.0
+offset_bottom = 47.0
+
+[node name="Coins" type="Area2D" parent="CoinCounter" unique_id=1151582246]
+z_index = -8
+position = Vector2(-20, 23)
+scale = Vector2(2, 2)
+collision_layer = 16
+script = ExtResource("3_0i1j5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CoinCounter/Coins" unique_id=695299105]
+position = Vector2(0, 1)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_82ts1")
+
+[node name="CoinsSprite2D" type="Sprite2D" parent="CoinCounter/Coins" unique_id=1417604192]
+material = SubResource("ShaderMaterial_hd3ao")
+texture = SubResource("AtlasTexture_srqkv")
+script = ExtResource("6_apjy4")
+speed = 3.0
+
+[node name="GoldShimmer" type="GPUParticles2D" parent="CoinCounter/Coins" unique_id=67250757]
+z_index = 1
+position = Vector2(0, -10)
+amount = 4
+texture = ExtResource("7_5n1hp")
+lifetime = 4.0
+process_material = SubResource("ParticleProcessMaterial_hd3ao")
+
+[node name="Label" type="Label" parent="CoinCounter" unique_id=510302510]
+layout_mode = 0
+offset_left = 23.5
+offset_top = -19.5
+offset_right = 114.5
+offset_bottom = 19.166668
+theme_override_fonts/font = ExtResource("4_6fi6k")
+theme_override_font_sizes/font_size = 64
+text = "0001"
+
+[connection signal="body_entered" from="CoinCounter/Coins" to="CoinCounter/Coins" method="_on_body_entered"]
