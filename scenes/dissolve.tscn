@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://rior1nrmnidx"]
 
-[ext_resource type="Shader" uid="uid://bkcav27fsa3ew" path="res://dissolve.gdshader" id="1_lrlti"]
-[ext_resource type="Script" uid="uid://dxt1rohgy8wkc" path="res://dissolve.gd" id="1_toh77"]
+[ext_resource type="Shader" uid="uid://bkcav27fsa3ew" path="res://shaders/dissolve.gdshader" id="1_lrlti"]
+[ext_resource type="Script" uid="uid://dxt1rohgy8wkc" path="res://scripts/dissolve.gd" id="1_toh77"]
 [ext_resource type="Texture2D" uid="uid://424tedpdr228" path="res://assets/sprites/objects.png" id="2_46y4c"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_toh77"]
@@ -16,7 +16,6 @@ noise = SubResource("FastNoiseLite_toh77")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_toh77"]
 shader = ExtResource("1_lrlti")
 shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_46y4c")
-shader_parameter/dissolve_value = 0.0
 shader_parameter/burn_size = 0.10000000475
 shader_parameter/burn_color = Color(0.5019608, 0.5019608, 0.5019608, 1)
 

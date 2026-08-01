@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://1i3lia6dhhhj"]
 
-[ext_resource type="Script" uid="uid://bwfeuebdyinj1" path="res://dissolve_test.gd" id="1_nb5bk"]
-[ext_resource type="PackedScene" uid="uid://rior1nrmnidx" path="res://dissolve.tscn" id="2_xuye0"]
-[ext_resource type="Shader" uid="uid://bkcav27fsa3ew" path="res://dissolve.gdshader" id="3_xrbwt"]
+[ext_resource type="Script" uid="uid://bwfeuebdyinj1" path="res://test/dissolve_test.gd" id="1_nb5bk"]
+[ext_resource type="PackedScene" uid="uid://rior1nrmnidx" path="res://scenes/dissolve.tscn" id="2_xuye0"]
+[ext_resource type="Shader" uid="uid://bkcav27fsa3ew" path="res://shaders/dissolve.gdshader" id="3_xrbwt"]
 [ext_resource type="Texture2D" uid="uid://424tedpdr228" path="res://assets/sprites/objects.png" id="3_xuye0"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_srqkv"]
@@ -37,13 +37,12 @@ atlas = ExtResource("3_xuye0")
 region = Rect2(0, 32, 32, 32)
 
 [node name="DissolveTest" type="Node2D" unique_id=673739769]
-modulate = Color(0.6750829, 0.7192249, 1.92523e-06, 1)
+modulate = Color(0.80734354, 0.7218216, 0.8560136, 1)
 material = SubResource("CanvasItemMaterial_srqkv")
 script = ExtResource("1_nb5bk")
 
 [node name="DissolveDoor" parent="." unique_id=1344642315 instance=ExtResource("2_xuye0")]
 position = Vector2(399, 153)
-dissolve_time = 2.0
 
 [node name="Sprite" parent="DissolveDoor" index="0" unique_id=616812594]
 material = SubResource("ShaderMaterial_o4eds")

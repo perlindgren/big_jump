@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://88q8bjdsdsns" path="res://scripts/coins.gd" id="1_bedda"]
 [ext_resource type="Texture2D" uid="uid://dnjqqi802y3wp" path="res://assets/sprites/Cross.png" id="2_2du1a"]
 [ext_resource type="Shader" uid="uid://bej6tqh8sq5q5" path="res://shaders/gold.gdshader" id="2_bedda"]
-[ext_resource type="Material" uid="uid://l2m22k1hrg76" path="res://GoldShimmerProcessMaterial.tres" id="3_61u1m"]
+[ext_resource type="Material" uid="uid://l2m22k1hrg76" path="res://materials/GoldShimmerProcessMaterial.tres" id="3_61u1m"]
 [ext_resource type="Texture2D" uid="uid://xhqexqaldcq3" path="res://assets/sprites/items.png" id="3_r2og0"]
 [ext_resource type="Script" uid="uid://dagpkjdbcu8ix" path="res://scripts/gold_tween.gd" id="4_61u1m"]
 

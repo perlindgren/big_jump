@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dhn8tnbmcb77g"]
+
+[ext_resource type="PackedScene" uid="uid://hultbfvysbtw" path="res://scenes/portal.tscn" id="1_7tbgr"]
+[ext_resource type="Script" uid="uid://dotilh7ow23dp" path="res://test/portal_test.gd" id="1_tc1fn"]
+
+[node name="PortalTest" type="Node2D" unique_id=119662797]
+modulate = Color(0.21960784, 0.22745098, 0.22352941, 1)
+script = ExtResource("1_tc1fn")
+
+[node name="Portal" parent="." unique_id=132038420 instance=ExtResource("1_7tbgr")]
+position = Vector2(403, 272)

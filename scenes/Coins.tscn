@@ -5,7 +5,7 @@
 [ext_resource type="Material" uid="uid://yslcsu2hp6h0" path="res://materials/gold_shader_material.tres" id="2_61jmb"]
 [ext_resource type="Script" uid="uid://dagpkjdbcu8ix" path="res://scripts/gold_tween.gd" id="4_82ts1"]
 [ext_resource type="Texture2D" uid="uid://dnjqqi802y3wp" path="res://assets/sprites/Cross.png" id="5_82ts1"]
-[ext_resource type="Material" uid="uid://l2m22k1hrg76" path="res://GoldShimmerProcessMaterial.tres" id="6_82ts1"]
+[ext_resource type="Material" uid="uid://l2m22k1hrg76" path="res://materials/GoldShimmerProcessMaterial.tres" id="6_82ts1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_82ts1"]
 

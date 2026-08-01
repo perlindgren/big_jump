@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dyhydap80532x"]
 
 [ext_resource type="Script" uid="uid://b1d358p7emhb" path="res://scripts/hud.gd" id="1_oo0fn"]
-[ext_resource type="Theme" uid="uid://d2fuv1guujm7a" path="res://game_theme.tres" id="2_oo0fn"]
+[ext_resource type="Theme" uid="uid://d2fuv1guujm7a" path="res://materials/game_theme.tres" id="2_oo0fn"]
 [ext_resource type="Script" uid="uid://88q8bjdsdsns" path="res://scripts/coins.gd" id="3_0i1j5"]
 [ext_resource type="FontFile" uid="uid://censslmv4m6ny" path="res://assets/fonts/Xolonium-Regular.ttf" id="4_6fi6k"]
 [ext_resource type="Shader" uid="uid://bej6tqh8sq5q5" path="res://shaders/gold.gdshader" id="4_mphia"]

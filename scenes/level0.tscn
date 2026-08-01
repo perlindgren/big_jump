@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://boxi5fe7uq5mk" path="res://assets/sprites/city.png" id="2_wrnl3"]
 [ext_resource type="TileSet" uid="uid://cax80lhmvb5x2" path="res://materials/basic_tiles.tres" id="4_l1g8i"]
 [ext_resource type="Script" uid="uid://b60ncm245lt55" path="res://scripts/text_area.gd" id="4_x1x1l"]
-[ext_resource type="Theme" uid="uid://d2fuv1guujm7a" path="res://game_theme.tres" id="7_wrnl3"]
+[ext_resource type="Theme" uid="uid://d2fuv1guujm7a" path="res://materials/game_theme.tres" id="7_wrnl3"]
 [ext_resource type="Texture2D" uid="uid://lqp23ew23l5t" path="res://assets/sprites/crane_deck.png" id="8_8qpon"]
 [ext_resource type="Texture2D" uid="uid://5hc1liustycb" path="res://assets/sprites/flag2_0001.png" id="9_yoi1k"]
 [ext_resource type="Texture2D" uid="uid://yjri1ub0x1oq" path="res://assets/sprites/flag2_0002.png" id="10_5xwn4"]
@@ -164,6 +164,7 @@ tile_map_data = PackedByteArray("AAAMAAsAAAACAAAAAAANAAsAAAADAAAAAAANAA8AAAADAAA
 tile_set = ExtResource("2_uijja")
 
 [node name="CraneDeck" type="Sprite2D" parent="TileMaps" unique_id=1470331332]
+visible = false
 z_index = 1
 position = Vector2(578, 314)
 scale = Vector2(0.27, 0.27)
@@ -509,20 +510,20 @@ texture = SubResource("AtlasTexture_rb68y")
 speed = 1.5
 
 [node name="Portals" type="Node2D" parent="." unique_id=128110809]
+modulate = Color(0.49411765, 0.23921569, 0.30588236, 1)
 
 [node name="Exit" parent="Portals" unique_id=132038420 instance=ExtResource("17_5xwn4")]
 z_index = -1
 position = Vector2(80, 528)
 portal_id = 1
-active = true
 
-[node name="Bars" parent="Portals/Exit" index="2" unique_id=1543659138]
+[node name="Lock2" parent="Portals/Exit" index="3" unique_id=234180744]
 visible = false
 
-[node name="Bars2" parent="Portals/Exit" index="3" unique_id=1361880784]
+[node name="Bars" parent="Portals/Exit" index="4" unique_id=674786432]
 visible = false
 
-[node name="Lock2" parent="Portals/Exit" index="5" unique_id=1338318533]
+[node name="Bars2" parent="Portals/Exit" index="5" unique_id=791699291]
 visible = false
 
 [node name="Flags" type="Node2D" parent="." unique_id=969279589]
@@ -618,3 +619,7 @@ texture = ExtResource("2_l3elg")
 [editable path="Loot/Coins3"]
 [editable path="Loot/Coins4"]
 [editable path="Portals/Exit"]
+[editable path="Portals/Exit/Lock"]
+[editable path="Portals/Exit/Lock2"]
+[editable path="Portals/Exit/Bars"]
+[editable path="Portals/Exit/Bars2"]

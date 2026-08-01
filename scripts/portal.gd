@@ -17,7 +17,7 @@ enum State { UNLOCKED, LOCKED, LOCKED2, BARS, BARS2 }
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	set_state(state)
-	set_active(active)
+	set_active(false)
 	
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:
@@ -29,6 +29,13 @@ func _on_portal_area_2d_body_entered(_body: Node2D) -> void:
 
 ### update the portal visual according to new state
 func set_state(new_state : State):
+	if state != new_state:
+		match state:
+			State.LOCKED: await lock.dissolve_sprite()
+			State.LOCKED2: await lock2.dissolve_sprite()
+			State.BARS: await bars.dissolve_sprite()
+			State.BARS2: await bars2.dissolve_sprite()
+		
 	state = new_state
 	print("Portal:set_portal_state", state)
 	bars.visible = false
