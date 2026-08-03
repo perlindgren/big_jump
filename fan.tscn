@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://b6r42sg6amr2s"]
+
+[ext_resource type="Texture2D" uid="uid://6ni85pb12r2o" path="res://assets/sprites/fan2.png" id="1_7l2ec"]
+[ext_resource type="Script" uid="uid://qvdul2ooqso" path="res://fan.gd" id="2_3ml7w"]
+
+[node name="Fan" type="Node2D" unique_id=1689697759]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1543725078]
+texture = ExtResource("1_7l2ec")
+script = ExtResource("2_3ml7w")
+rotation_speed = 2.0
