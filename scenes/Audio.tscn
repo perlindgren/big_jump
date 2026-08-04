@@ -14,12 +14,22 @@ stream = ExtResource("2_a5f4u")
 volume_db = -11.75
 
 [node name="Hihat" type="AudioStreamPlayer2D" parent="." unique_id=606728540]
+position = Vector2(92, 1057)
 stream = ExtResource("4_8bdof")
+max_distance = 4096.0
+attenuation = 0.0
+panning_strength = 3.0
 
 [node name="Kick" type="AudioStreamPlayer2D" parent="." unique_id=1110540011]
+position = Vector2(1116, 52)
 stream = ExtResource("4_l20ah")
 volume_db = -80.0
 
 [node name="Piano" type="AudioStreamPlayer2D" parent="." unique_id=671012901]
+position = Vector2(1587, 75)
 stream = ExtResource("5_l20ah")
 volume_db = -80.0
+
+[node name="Listener" type="AudioListener2D" parent="." unique_id=79416566]
+position = Vector2(1004, 542)
+current = true

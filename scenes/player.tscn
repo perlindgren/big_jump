@@ -149,3 +149,6 @@ amount = 15
 texture = ExtResource("13_jej6c")
 lifetime = 3.0
 process_material = SubResource("ParticleProcessMaterial_srqkv")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="." unique_id=1468025369]
+process_mode = 4

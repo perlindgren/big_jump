@@ -1,3 +1,5 @@
+class_name AudioLooper
+
 extends Node2D
 
 @onready var arpeggio : AudioStreamPlayer2D = $Arpeggio
@@ -5,7 +7,14 @@ extends Node2D
 @onready var kick : AudioStreamPlayer2D = $Kick
 @onready var piano : AudioStreamPlayer2D = $Piano
 
-@onready var sounds : Array[AudioStreamPlayer2D] = [arpeggio, hihat, kick, piano]
+@onready var audio_listener : AudioListener2D = $Listener
+
+
+@onready var sounds : Array[AudioStreamPlayer2D] = [hihat]
+
+#[arpeggio, hihat, kick, piano]
+ 
+#[arpeggio, hihat, kick, piano]
  
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -19,6 +28,8 @@ func _ready() -> void:
 		sound.play()
 	
 	await get_tree().create_timer(2.0).timeout
+	
+ 	var audio_positon = AudioListener2D
 	
 	
 	

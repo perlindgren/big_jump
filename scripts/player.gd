@@ -46,13 +46,18 @@ enum input_state {
 @onready var dust = $Dust
 @onready var splat = $Splat
 @onready var shockwave_effect = $"/root/Main/ShockwaveLayer/ShockwaveEffect"
+# @onready var audio_listener : AudioListener2D = $AudioListener2D
 
 # aims at a fixed 60 fps
 func _physics_process(delta: float) -> void:
 	# Check that we meet timing, not sure if this is entirely correct way
 	if delta != 1.0/60.0:
 		GameState.missed_frames += 1
-		
+	
+	# Move the listingen position with the player
+	# audio_listener.position = position * 1.5 # TODO scaling is not right
+	# print("listener ", audio_listener.position, " ", global_position)
+	
 	if not is_live:
 		# death animation
 		return
@@ -291,4 +296,5 @@ func set_player_direction(direction: float) -> void:
 func _ready() -> void:
 	sprite_mask.play(&"mask_anim")
 	sprite_eye.play(&"eye_anim")
+	# audio_listener.make_current()
 	
