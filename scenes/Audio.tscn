@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://clbjxoehggfo"]
+
+[ext_resource type="Script" uid="uid://b6ogbangvwbci" path="res://scenes/audio.gd" id="1_jp66d"]
+[ext_resource type="AudioStream" uid="uid://h5r2j2wwb67f" path="res://assets/audio/arpeggio.wav" id="2_a5f4u"]
+[ext_resource type="AudioStream" uid="uid://v7oyqx5qkyx4" path="res://assets/audio/hihat.wav" id="4_8bdof"]
+[ext_resource type="AudioStream" uid="uid://bqsa6y336sdgg" path="res://assets/audio/kick.wav" id="4_l20ah"]
+[ext_resource type="AudioStream" uid="uid://ddep1pnt1msqx" path="res://assets/audio/piano.wav" id="5_l20ah"]
+
+[node name="Audio" type="Node2D" unique_id=659054288]
+script = ExtResource("1_jp66d")
+
+[node name="Arpeggio" type="AudioStreamPlayer2D" parent="." unique_id=1845066711]
+stream = ExtResource("2_a5f4u")
+volume_db = -11.75
+
+[node name="Hihat" type="AudioStreamPlayer2D" parent="." unique_id=606728540]
+stream = ExtResource("4_8bdof")
+
+[node name="Kick" type="AudioStreamPlayer2D" parent="." unique_id=1110540011]
+stream = ExtResource("4_l20ah")
+volume_db = -80.0
+
+[node name="Piano" type="AudioStreamPlayer2D" parent="." unique_id=671012901]
+stream = ExtResource("5_l20ah")
+volume_db = -80.0
