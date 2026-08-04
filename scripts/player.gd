@@ -11,6 +11,7 @@ extends CharacterBody2D
 @export var player_scale = 0.2
 @export var max_skew : float = PI 
 @export var shockwave_velocity : float = 300
+@export var direction_change_speed : float = 0.075
 
 # not visible in inspector
 var jump_engaged : bool = false
@@ -23,6 +24,8 @@ var right : float = 0.0
 var rot_clockwise : float = 0.0
 var rot_counter_clockwise : float = 0.0
 var is_respawn : bool = false
+var current_direction : float = 0.0
+var last_direction : float = 0.0
 
 enum input_state {
 	JUMP_JUST_PRESSED = 1, 
@@ -72,6 +75,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			# print("-- respawn in progress --")
 			velocity += get_gravity() * delta	
+			set_player_direction(0.0)
 		return
 	
 	# Record/Playback input actions
@@ -168,9 +172,13 @@ func _physics_process(delta: float) -> void:
 	# Face player according to velocity
 	# TODO smoothing?
 	if velocity.x < 0.0: # left
+		last_direction = -1.0
 		set_player_direction(-1.0)
 	elif velocity.x > 0.0: # right
+		last_direction = 1.0
 		set_player_direction(1.0)
+	else:
+		set_player_direction(0.0)
 	
 	# Skew player
 	if sign(velocity.x) == sign(direction):
@@ -262,6 +270,8 @@ func respawn() -> void:
 	rot_clockwise = 0.0
 	rot_counter_clockwise = 0.0
 	is_respawn = true
+	current_direction = 0.0
+	last_direction = GameState.player_direction
 	set_player_direction(GameState.player_direction)
 	set_player_compress(0)
 	set_player_skew(0)
@@ -283,8 +293,14 @@ func set_player_skew(player_skew: float) -> void:
 	collision.skew = max_skew * player_skew
 	
 func set_player_direction(direction: float) -> void:
-	sprite.scale.x = player_scale * direction
-	collision.scale.x = player_scale * direction
+	current_direction = clamp(current_direction + last_direction * direction_change_speed, -1.0, 1.0)
+	var x = abs(current_direction)
+	# ease curve, smoothstep 3x²-2x³ 
+	# var scaled_direction = sign(current_direction) * player_scale * (x ** 2) * (3.0 - 2.0 * x) 
+	# ease curve, smootherstep  
+	var scaled_direction = sign(current_direction) * player_scale * x * x * x * (x * (6.0 * x - 15.0) + 10.0)
+	sprite.scale.x = scaled_direction
+	collision.scale.x = scaled_direction
 	dust.scale.x = direction * 0.25
 	if abs(velocity.x) > 10 and is_on_floor():
 		dust.emitting = true
