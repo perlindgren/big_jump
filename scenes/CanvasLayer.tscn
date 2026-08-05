@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bsgd7yp3dvteg"]
+
+[ext_resource type="Shader" uid="uid://bheyxnp88ynry" path="res://canvas_item_shader.gdshader" id="1_714o0"]
+[ext_resource type="Texture2D" uid="uid://cg766bhfgg3cb" path="res://assets/sprites/brickwall.png" id="2_jv3qm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kklnm"]
+shader = ExtResource("1_714o0")
+
+[node name="MagCanvas" type="CanvasLayer" unique_id=168215675]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=515610675]
+material = SubResource("ShaderMaterial_kklnm")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="ColorRect" unique_id=1334121434]
+texture = ExtResource("2_jv3qm")

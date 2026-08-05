@@ -1,5 +1,20 @@
 [gd_scene format=3 uid="uid://bg8vqhdh1fts6"]
 
-[node name="Spike" type="Node2D" unique_id=2062347622]
+[ext_resource type="Shader" uid="uid://q0cvtvtk1gn1" path="res://spike.gdshader" id="1_7k7bx"]
+[ext_resource type="Texture2D" uid="uid://bryqphmw7qeah" path="res://assets/sprites/while_tiles_lethal.png" id="2_tggh8"]
+[ext_resource type="Script" uid="uid://cfs3yrofk4cfp" path="res://spike.gd" id="3_tggh8"]
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=46951483]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tefeu"]
+shader = ExtResource("1_7k7bx")
+shader_parameter/speed = 5.0
+shader_parameter/height = 10.0
+shader_parameter/frequency = 0.1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbgi4"]
+atlas = ExtResource("2_tggh8")
+region = Rect2(0, 0, 32, 32)
+
+[node name="Sprite2D" type="Sprite2D" unique_id=46951483]
+material = SubResource("ShaderMaterial_tefeu")
+texture = SubResource("AtlasTexture_tbgi4")
+script = ExtResource("3_tggh8")
