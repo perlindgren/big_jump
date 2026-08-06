@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://ou3jfqefkw5c"]
+
+[ext_resource type="Shader" uid="uid://cgr6wye7unlpg" path="res://shaders/transparent.gdshader" id="1_787b2"]
+[ext_resource type="Texture2D" uid="uid://cg766bhfgg3cb" path="res://assets/sprites/brickwall.png" id="2_mxt6h"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v2id5"]
+shader = ExtResource("1_787b2")
+shader_parameter/circle_center = Vector2(0, 0)
+shader_parameter/radius = 50.0
+
+[node name="Transparent" type="Node2D" unique_id=104939274]
+
+[node name="sprite" type="Sprite2D" parent="." unique_id=73514662]
+material = SubResource("ShaderMaterial_v2id5")
+texture = ExtResource("2_mxt6h")

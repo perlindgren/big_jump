@@ -53,6 +53,10 @@ enum input_state {
 
 # aims at a fixed 60 fps
 func _physics_process(delta: float) -> void:
+	# Update global state
+	GameState.player_position = position
+	GameState.player_velocity = velocity
+	
 	# Check that we meet timing, not sure if this is entirely correct way
 	if delta != 1.0/60.0:
 		GameState.missed_frames += 1

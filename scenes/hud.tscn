@@ -2,14 +2,17 @@
 
 [ext_resource type="Script" uid="uid://b1d358p7emhb" path="res://scripts/hud.gd" id="1_oo0fn"]
 [ext_resource type="Theme" uid="uid://d2fuv1guujm7a" path="res://materials/game_theme.tres" id="2_oo0fn"]
-[ext_resource type="Script" uid="uid://88q8bjdsdsns" path="res://scripts/coins.gd" id="3_0i1j5"]
+[ext_resource type="Script" uid="uid://i0gi4ie5okjs" path="res://scripts/hud_position.gd" id="3_mphia"]
+[ext_resource type="Script" uid="uid://7ciq37prkleg" path="res://scripts/hud_velocity.gd" id="4_0m4u7"]
 [ext_resource type="FontFile" uid="uid://censslmv4m6ny" path="res://assets/fonts/Xolonium-Regular.ttf" id="4_6fi6k"]
 [ext_resource type="Shader" uid="uid://bej6tqh8sq5q5" path="res://shaders/gold.gdshader" id="4_mphia"]
 [ext_resource type="Texture2D" uid="uid://xhqexqaldcq3" path="res://assets/sprites/items.png" id="5_0m4u7"]
+[ext_resource type="Script" uid="uid://bajh5u3olh065" path="res://scripts/hud_missed.gd" id="5_apjy4"]
 [ext_resource type="Script" uid="uid://dagpkjdbcu8ix" path="res://scripts/gold_tween.gd" id="6_apjy4"]
 [ext_resource type="Texture2D" uid="uid://dnjqqi802y3wp" path="res://assets/sprites/Cross.png" id="7_5n1hp"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_82ts1"]
+[ext_resource type="Script" uid="uid://crfbpb125sm47" path="res://scripts/frames.gd" id="9_0i1j5"]
+[ext_resource type="Script" uid="uid://cjpj3h1i5pfng" path="res://scripts/coin_label.gd" id="9_mphia"]
+[ext_resource type="Script" uid="uid://ihmsetw8v5pk" path="res://scripts/tree.gd" id="13_5n1hp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hd3ao"]
 shader = ExtResource("4_mphia")
@@ -49,43 +52,28 @@ color = Color(1, 1, 0, 1)
 [node name="HUD" type="CanvasLayer" unique_id=1889445868]
 script = ExtResource("1_oo0fn")
 
-[node name="Labels" type="Control" parent="." unique_id=494003597]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Labels" type="VBoxContainer" parent="." unique_id=1185148512]
+offset_left = 5.0
+offset_top = 2.0
+offset_right = 278.0
+offset_bottom = 236.0
 theme = ExtResource("2_oo0fn")
 
-[node name="Velocity" type="Label" parent="Labels" unique_id=276503178]
-layout_mode = 0
-offset_top = 23.0
-offset_right = 68.0
-offset_bottom = 46.0
-text = "Velocity"
-
-[node name="Missed" type="Label" parent="Labels" unique_id=478061535]
-layout_mode = 0
-offset_right = 68.0
-offset_bottom = 23.0
+[node name="Missed Frames" type="Label" parent="Labels" unique_id=478061535]
+layout_mode = 2
 text = "Missed
 "
+script = ExtResource("5_apjy4")
 
-[node name="Jump" type="Label" parent="Labels" unique_id=1551691021]
-layout_mode = 0
-offset_top = 51.0
-offset_right = 111.0
-offset_bottom = 74.0
-text = "Jump Accum"
+[node name="Position" type="Label" parent="Labels" unique_id=490886462]
+layout_mode = 2
+text = "Velocity"
+script = ExtResource("3_mphia")
 
-[node name="Frames" type="Label" parent="Labels" unique_id=412826789]
-layout_mode = 1
-anchors_preset = -1
-offset_left = 904.0
-offset_top = 4.0
-offset_right = 1086.0
-offset_bottom = 79.333336
-theme_override_font_sizes/font_size = 96
-text = "0000"
+[node name="Velocity" type="Label" parent="Labels" unique_id=276503178]
+layout_mode = 2
+text = "Velocity"
+script = ExtResource("4_0m4u7")
 
 [node name="CoinCounter" type="Control" parent="." unique_id=209790925]
 layout_mode = 3
@@ -95,27 +83,18 @@ offset_top = 47.0
 offset_right = 1667.0
 offset_bottom = 47.0
 
-[node name="Coins" type="Area2D" parent="CoinCounter" unique_id=1151582246]
-z_index = -8
+[node name="Sprite2D" type="Sprite2D" parent="CoinCounter" unique_id=1417604192]
+material = SubResource("ShaderMaterial_hd3ao")
 position = Vector2(-20, 23)
 scale = Vector2(2, 2)
-collision_layer = 16
-script = ExtResource("3_0i1j5")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CoinCounter/Coins" unique_id=695299105]
-position = Vector2(0, 1)
-rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_82ts1")
-
-[node name="Sprite2D" type="Sprite2D" parent="CoinCounter/Coins" unique_id=1417604192]
-material = SubResource("ShaderMaterial_hd3ao")
 texture = SubResource("AtlasTexture_rb68y")
 script = ExtResource("6_apjy4")
 speed = 3.0
 
-[node name="GoldShimmer" type="GPUParticles2D" parent="CoinCounter/Coins" unique_id=67250757]
+[node name="GoldShimmer" type="GPUParticles2D" parent="CoinCounter" unique_id=67250757]
 z_index = 1
-position = Vector2(0, -10)
+position = Vector2(-20, 3)
+scale = Vector2(2, 2)
 amount = 4
 texture = ExtResource("7_5n1hp")
 lifetime = 4.0
@@ -130,5 +109,26 @@ offset_bottom = 19.166668
 theme_override_fonts/font = ExtResource("4_6fi6k")
 theme_override_font_sizes/font_size = 64
 text = "0001"
+script = ExtResource("9_mphia")
 
-[connection signal="body_entered" from="CoinCounter/Coins" to="CoinCounter/Coins" method="_on_body_entered"]
+[node name="FrameCounter" type="Label" parent="." unique_id=412826789]
+anchors_preset = -1
+offset_left = 845.0
+offset_top = 1.0
+offset_right = 1118.0
+offset_bottom = 133.0
+theme_override_fonts/font = ExtResource("4_6fi6k")
+theme_override_font_sizes/font_size = 96
+text = "0000"
+script = ExtResource("9_0i1j5")
+
+[node name="Tree2" type="Tree" parent="." unique_id=1554442039]
+custom_minimum_size = Vector2(200, 200)
+custom_maximum_size = Vector2(1000, 1000)
+propagate_maximum_size = true
+offset_left = 7.0
+offset_top = 154.0
+offset_right = 207.0
+offset_bottom = 354.0
+mouse_filter = 1
+script = ExtResource("13_5n1hp")

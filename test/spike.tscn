@@ -1,8 +1,8 @@
-[gd_scene format=3 uid="uid://bg8vqhdh1fts6"]
+[gd_scene format=3 uid="uid://bgb74qdi88njc"]
 
-[ext_resource type="Shader" uid="uid://q0cvtvtk1gn1" path="res://spike.gdshader" id="1_7k7bx"]
+[ext_resource type="Shader" uid="uid://q0cvtvtk1gn1" path="res://test/spike.gdshader" id="1_7k7bx"]
 [ext_resource type="Texture2D" uid="uid://bryqphmw7qeah" path="res://assets/sprites/while_tiles_lethal.png" id="2_tggh8"]
-[ext_resource type="Script" uid="uid://cfs3yrofk4cfp" path="res://spike.gd" id="3_tggh8"]
+[ext_resource type="Script" uid="uid://cfs3yrofk4cfp" path="res://test/spike.gd" id="3_tggh8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tefeu"]
 shader = ExtResource("1_7k7bx")

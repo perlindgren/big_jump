@@ -5,10 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://boxi5fe7uq5mk" path="res://assets/sprites/city.png" id="2_wrnl3"]
 [ext_resource type="TileSet" uid="uid://h03uhaaq10ki" path="res://materials/basic_tiles_white.tres" id="4_fu4xf"]
 [ext_resource type="Script" uid="uid://b60ncm245lt55" path="res://scripts/text_area.gd" id="4_x1x1l"]
-[ext_resource type="TileSet" uid="uid://ctui3g3lneqkq" path="res://extras_white.tres" id="5_fu4xf"]
-[ext_resource type="TileSet" uid="uid://b2av1vue58n5l" path="res://leathals_white.tres" id="6_fu4xf"]
+[ext_resource type="TileSet" uid="uid://ctui3g3lneqkq" path="res://materials/extras_white.tres" id="5_fu4xf"]
+[ext_resource type="TileSet" uid="uid://b2av1vue58n5l" path="res://materials/leathals_white.tres" id="6_fu4xf"]
 [ext_resource type="Theme" uid="uid://d2fuv1guujm7a" path="res://materials/game_theme.tres" id="7_wrnl3"]
 [ext_resource type="Texture2D" uid="uid://lqp23ew23l5t" path="res://assets/sprites/crane_deck.png" id="8_8qpon"]
+[ext_resource type="Script" uid="uid://mvaftfb1sy21" path="res://scripts/transparent.gd" id="8_m5akh"]
+[ext_resource type="Shader" uid="uid://cgr6wye7unlpg" path="res://shaders/transparent.gdshader" id="9_m5akh"]
 [ext_resource type="Texture2D" uid="uid://5hc1liustycb" path="res://assets/sprites/flag2_0001.png" id="9_yoi1k"]
 [ext_resource type="Texture2D" uid="uid://yjri1ub0x1oq" path="res://assets/sprites/flag2_0002.png" id="10_5xwn4"]
 [ext_resource type="Texture2D" uid="uid://cg766bhfgg3cb" path="res://assets/sprites/brickwall.png" id="10_6q6d4"]
@@ -24,13 +26,18 @@
 [ext_resource type="Shader" uid="uid://bej6tqh8sq5q5" path="res://shaders/gold.gdshader" id="20_r2ue6"]
 [ext_resource type="Texture2D" uid="uid://2jov71uya24t" path="res://assets/sprites/runner2.png" id="21_l1g8i"]
 [ext_resource type="Texture2D" uid="uid://424tedpdr228" path="res://assets/sprites/objects.png" id="24_kjxej"]
-[ext_resource type="PackedScene" uid="uid://b6r42sg6amr2s" path="res://fan.tscn" id="25_2oxi0"]
+[ext_resource type="PackedScene" uid="uid://b6r42sg6amr2s" path="res://test/fan.tscn" id="25_2oxi0"]
 [ext_resource type="Texture2D" uid="uid://dtvtkdt7105jy" path="res://assets/sprites/big_cog.png" id="26_jmh5o"]
 [ext_resource type="Texture2D" uid="uid://lttfv8oucfxk" path="res://assets/sprites/small_cog.png" id="27_3e12b"]
 [ext_resource type="AudioStream" uid="uid://v7oyqx5qkyx4" path="res://assets/audio/hihat.wav" id="28_3e12b"]
 [ext_resource type="AudioStream" uid="uid://bqsa6y336sdgg" path="res://assets/audio/kick.wav" id="29_s53dc"]
 [ext_resource type="AudioStream" uid="uid://h5r2j2wwb67f" path="res://assets/audio/arpeggio.wav" id="30_hybo8"]
 [ext_resource type="AudioStream" uid="uid://ddep1pnt1msqx" path="res://assets/audio/piano.wav" id="31_ve1xs"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v2id5"]
+shader = ExtResource("9_m5akh")
+shader_parameter/circle_center = Vector2(0, 0)
+shader_parameter/radius = 50.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_srqkv"]
 size = Vector2(303, 124)
@@ -180,10 +187,22 @@ tile_map_data = PackedByteArray("AAAMAAsAAAACAAAAAAANAAsAAAADAAAAAAANAA8AAAADAAA
 tile_set = ExtResource("6_fu4xf")
 
 [node name="CraneDeck" type="Sprite2D" parent="TileMaps" unique_id=1470331332]
+visible = false
 z_index = 1
 position = Vector2(578, 314)
 scale = Vector2(0.27, 0.27)
 texture = ExtResource("8_8qpon")
+
+[node name="Transparent" type="Node2D" parent="TileMaps" unique_id=104939274]
+z_index = 1
+position = Vector2(124, 463)
+script = ExtResource("8_m5akh")
+
+[node name="Sprite" type="Sprite2D" parent="TileMaps/Transparent" unique_id=73514662]
+material = SubResource("ShaderMaterial_v2id5")
+position = Vector2(-48.000004, -63.999996)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("10_6q6d4")
 
 [node name="Labels" type="Control" parent="." unique_id=1558977758]
 visible = false
@@ -685,5 +704,9 @@ panning_strength = 1.75
 [editable path="Loot/Coins3"]
 [editable path="Loot/Coins4"]
 [editable path="Portals/Exit"]
+[editable path="Portals/Exit/Lock"]
+[editable path="Portals/Exit/Lock2"]
+[editable path="Portals/Exit/Bars"]
+[editable path="Portals/Exit/Bars2"]
 [editable path="Fan"]
 [editable path="Fan2"]

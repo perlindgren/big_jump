@@ -13,6 +13,8 @@ var player_direction : float = 0.0
 var player_active : bool = false
 var frames : int = 0
 var missed_frames : int = 0
+var player_position : Vector2 = Vector2.ZERO
+var player_velocity : Vector2 = Vector2.ZERO
 
 var coins : int = 0 # ground truth
 var coins_display : int = 0 # used for hud display
