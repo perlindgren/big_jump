@@ -3,25 +3,28 @@ extends Node
 # Global game state variables
 @export var levels: Array[PackedScene] = [
 	preload("res://scenes/Cave.tscn"),
-	preload("res://scenes/level0.tscn"), 
+	preload("res://scenes/level0.tscn"),
 ]
 
-@export var current_level : int = 1 # we start from level 0
+@export var current_level: int = 1 # we start from level 0
 
-var spawn_position : Vector2 = Vector2.ZERO 
-var player_direction : float = 0.0
-var player_active : bool = false
-var frames : int = 0
-var missed_frames : int = 0
-var player_position : Vector2 = Vector2.ZERO
-var player_velocity : Vector2 = Vector2.ZERO
+var settings_music_volume: float = 100.0
+var settings_fx_volume: float = 100.0
 
-var coins : int = 0 # ground truth
-var coins_display : int = 0 # used for hud display
+var spawn_position: Vector2 = Vector2.ZERO
+var player_direction: float = 0.0
+var player_active: bool = false
+var frames: int = 0
+var missed_frames: int = 0
+var player_position: Vector2 = Vector2.ZERO
+var player_velocity: Vector2 = Vector2.ZERO
 
-@export var recording : Dictionary[int, int] = {}
+var coins: int = 0 # ground truth
+var coins_display: int = 0 # used for hud display
+
+@export var recording: Dictionary[int, int] = {}
 enum mode_states {RECORD, REPLAY}
-var mode : mode_states = mode_states.RECORD
+var mode: mode_states = mode_states.RECORD
 
 func is_mode_replay() -> bool:
 	return mode == mode_states.REPLAY
@@ -32,7 +35,6 @@ func clear_recording() -> void:
 	
 func add_state(input: int) -> void:
 	#print("add_state ", input)
-	
 	if recording.get(frames):
 		#print("same frame, old ", recording[frames])
 		recording[frames] |= input
@@ -52,4 +54,3 @@ func record_input(input: int, rec_input: bool) -> bool:
 			return recording[GameState.frames] & input
 		else:
 			return false
-				
