@@ -544,11 +544,14 @@ texture = SubResource("AtlasTexture_rb68y")
 speed = 1.5
 
 [node name="Portals" type="Node2D" parent="." unique_id=128110809]
-modulate = Color(0.49411765, 0.23921569, 0.30588236, 1)
 
 [node name="Exit" parent="Portals" unique_id=132038420 instance=ExtResource("17_5xwn4")]
+visible = true
 z_index = -1
 position = Vector2(80, 528)
+
+[node name="GPUParticles2D" parent="Portals/Exit" index="1" unique_id=1597761440]
+visible = true
 
 [node name="Flags" type="Node2D" parent="." unique_id=969279589]
 
@@ -704,5 +707,9 @@ panning_strength = 1.75
 [editable path="Loot/Coins3"]
 [editable path="Loot/Coins4"]
 [editable path="Portals/Exit"]
+[editable path="Portals/Exit/Lock"]
+[editable path="Portals/Exit/Lock2"]
+[editable path="Portals/Exit/Bars"]
+[editable path="Portals/Exit/Bars2"]
 [editable path="Fan"]
 [editable path="Fan2"]

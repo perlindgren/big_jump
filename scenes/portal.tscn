@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://hultbfvysbtw"]
 
-[ext_resource type="Shader" uid="uid://dux83lql062qf" path="res://materials/portal_material.tres" id="1_dyed0"]
+[ext_resource type="Shader" uid="uid://dbaqcjc0e14yi" path="res://shaders/portal.gdshader" id="1_4pvrx"]
 [ext_resource type="Texture2D" uid="uid://dg6ldvw6nb3s7" path="res://assets/sprites/open_portal.png" id="2_jr6l0"]
 [ext_resource type="Script" uid="uid://csjmqsgunc35o" path="res://scripts/portal.gd" id="3_ckw30"]
 [ext_resource type="Texture2D" uid="uid://d0as1qeop26ay" path="res://assets/sprites/portal_dust.png" id="3_jr6l0"]
@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://rior1nrmnidx" path="res://scenes/dissolve.tscn" id="5_ckw30"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_srqkv"]
-shader = ExtResource("1_dyed0")
+shader = ExtResource("1_4pvrx")
 shader_parameter/rainbow_speed = 0.50000002375
 shader_parameter/rainbow_frequency = 0.10000000149012
 
@@ -58,7 +58,6 @@ atlas = ExtResource("5_4pvrx")
 region = Rect2(32, 32, 32, 32)
 
 [node name="Portal" type="Sprite2D" unique_id=132038420]
-visible = false
 material = SubResource("ShaderMaterial_srqkv")
 texture = ExtResource("2_jr6l0")
 script = ExtResource("3_ckw30")
@@ -71,7 +70,6 @@ collision_mask = 256
 shape = SubResource("RectangleShape2D_1ffj6")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1597761440]
-visible = false
 z_index = 1
 material = SubResource("ShaderMaterial_o4eds")
 amount = 16
