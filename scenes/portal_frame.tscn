@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://cqksqy4jxentf"]
+
+[ext_resource type="Script" uid="uid://r615xk76vlga" path="res://scenes/portal_frame.gd" id="1_d44ao"]
+[ext_resource type="Texture2D" uid="uid://d0as1qeop26ay" path="res://assets/sprites/portal_dust.png" id="1_xq0mn"]
+[ext_resource type="Shader" uid="uid://dux83lql062qf" path="res://materials/portal_material.tres" id="2_d44ao"]
+[ext_resource type="Texture2D" uid="uid://drh6tc6xp3vfs" path="res://assets/sprites/tutorial_level.jpg" id="3_j88vu"]
+
+[sub_resource type="Curve" id="Curve_2oxri"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.4870317, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_10q13"]
+curve = SubResource("Curve_2oxri")
+
+[sub_resource type="Curve" id="Curve_4nt4x"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.64553314, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.12200433), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_4xc62"]
+curve = SubResource("Curve_4nt4x")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kklnm"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.0
+emission_ring_radius = 40.0
+emission_ring_inner_radius = 35.0
+emission_ring_cone_angle = 90.0
+angular_velocity_min = -103.47002
+angular_velocity_max = 107.22998
+gravity = Vector3(0, 0, 0)
+radial_accel_min = 1.9999977
+radial_accel_max = 4.9999976
+scale_min = 0.19999999
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_4xc62")
+alpha_curve = SubResource("CurveTexture_10q13")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_srqkv"]
+shader = ExtResource("2_d44ao")
+shader_parameter/rainbow_speed = 0.50000002375
+shader_parameter/rainbow_frequency = 0.10000000149012
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ffj6"]
+size = Vector2(10, 10)
+
+[node name="PortalFrame" type="Node2D" unique_id=1765249110]
+script = ExtResource("1_d44ao")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=2024006973]
+z_index = -2
+position = Vector2(254, 264)
+amount = 16
+texture = ExtResource("1_xq0mn")
+lifetime = 5.0
+process_material = SubResource("ParticleProcessMaterial_kklnm")
+
+[node name="Frame" type="Sprite2D" parent="." unique_id=1613870306]
+z_index = -2
+material = SubResource("ShaderMaterial_srqkv")
+position = Vector2(256, 264)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_j88vu")
+
+[node name="PortalArea2D" type="Area2D" parent="Frame" unique_id=617372521]
+collision_layer = 16
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Frame/PortalArea2D" unique_id=2038596458]
+shape = SubResource("RectangleShape2D_1ffj6")
+
+[connection signal="body_entered" from="Frame/PortalArea2D" to="." method="_on_portal_area_2d_body_entered"]

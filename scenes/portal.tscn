@@ -58,6 +58,7 @@ atlas = ExtResource("5_4pvrx")
 region = Rect2(32, 32, 32, 32)
 
 [node name="Portal" type="Sprite2D" unique_id=132038420]
+visible = false
 material = SubResource("ShaderMaterial_srqkv")
 texture = ExtResource("2_jr6l0")
 script = ExtResource("3_ckw30")

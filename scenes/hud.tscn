@@ -53,6 +53,7 @@ color = Color(1, 1, 0, 1)
 script = ExtResource("1_oo0fn")
 
 [node name="Labels" type="VBoxContainer" parent="." unique_id=1185148512]
+visible = false
 offset_left = 5.0
 offset_top = 2.0
 offset_right = 278.0
@@ -123,6 +124,7 @@ text = "0000"
 script = ExtResource("9_0i1j5")
 
 [node name="Tree2" type="Tree" parent="." unique_id=1554442039]
+visible = false
 custom_minimum_size = Vector2(200, 200)
 custom_maximum_size = Vector2(1000, 1000)
 propagate_maximum_size = true

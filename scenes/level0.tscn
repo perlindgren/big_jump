@@ -187,13 +187,13 @@ tile_map_data = PackedByteArray("AAAMAAsAAAACAAAAAAANAAsAAAADAAAAAAANAA8AAAADAAA
 tile_set = ExtResource("6_fu4xf")
 
 [node name="CraneDeck" type="Sprite2D" parent="TileMaps" unique_id=1470331332]
-visible = false
 z_index = 1
 position = Vector2(578, 314)
 scale = Vector2(0.27, 0.27)
 texture = ExtResource("8_8qpon")
 
 [node name="Transparent" type="Node2D" parent="TileMaps" unique_id=104939274]
+visible = false
 z_index = 1
 position = Vector2(124, 463)
 script = ExtResource("8_m5akh")
@@ -704,9 +704,5 @@ panning_strength = 1.75
 [editable path="Loot/Coins3"]
 [editable path="Loot/Coins4"]
 [editable path="Portals/Exit"]
-[editable path="Portals/Exit/Lock"]
-[editable path="Portals/Exit/Lock2"]
-[editable path="Portals/Exit/Bars"]
-[editable path="Portals/Exit/Bars2"]
 [editable path="Fan"]
 [editable path="Fan2"]

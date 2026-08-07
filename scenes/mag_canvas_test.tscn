@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://yuogv6ddpobr"]
+
+[ext_resource type="Shader" path="res://canvas_item_shader.gdshader" id="1_ssali"]
+[ext_resource type="Script" path="res://scenes/transparency_group.gd" id="1_v2id5"]
+[ext_resource type="Texture2D" uid="uid://cg766bhfgg3cb" path="res://assets/sprites/brickwall.png" id="2_ssali"]
+[ext_resource type="Texture2D" uid="uid://dup20bwenmqh" path="res://assets/sprites/basic_tiles_white.png" id="3_8ibm8"]
+[ext_resource type="Texture2D" uid="uid://boxi5fe7uq5mk" path="res://assets/sprites/city.png" id="4_v2id5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rupo5"]
+shader = ExtResource("1_ssali")
+shader_parameter/alpha_multiplier = 0.0030000001425
+shader_parameter/circle_center = Vector2(0.5, 0.5)
+shader_parameter/circle_radius = 0.258000012255
+shader_parameter/aspect_ratio = 1.0
+
+[node name="MagCanvasTest" type="Node2D" unique_id=104939274]
+
+[node name="TransparencyGroup" type="Node2D" parent="." unique_id=1304483891]
+position = Vector2(409, 404)
+script = ExtResource("1_v2id5")
+
+[node name="CanvasGroup" type="CanvasGroup" parent="TransparencyGroup" unique_id=1825654308]
+material = SubResource("ShaderMaterial_rupo5")
+position = Vector2(469, 90)
+
+[node name="Sprite2D" type="Sprite2D" parent="TransparencyGroup/CanvasGroup" unique_id=1418720489]
+texture = ExtResource("2_ssali")
+
+[node name="Sprite2D2" type="Sprite2D" parent="TransparencyGroup/CanvasGroup" unique_id=1769591129]
+position = Vector2(33, 53)
+texture = ExtResource("3_8ibm8")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1875869725]
+z_index = -1
+texture = ExtResource("4_v2id5")

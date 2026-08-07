@@ -1,0 +1,155 @@
+[gd_scene format=4 uid="uid://7hpfrcums4bf"]
+
+[ext_resource type="Script" uid="uid://k0afqx7qv3gs" path="res://scripts/play_menu.gd" id="1_c0pck"]
+[ext_resource type="Texture2D" uid="uid://cg766bhfgg3cb" path="res://assets/sprites/brickwall.png" id="2_w3s2r"]
+[ext_resource type="Texture2D" uid="uid://boxi5fe7uq5mk" path="res://assets/sprites/city.png" id="3_sj6j5"]
+[ext_resource type="TileSet" uid="uid://h03uhaaq10ki" path="res://materials/basic_tiles_white.tres" id="4_qh470"]
+[ext_resource type="PackedScene" uid="uid://cqksqy4jxentf" path="res://scenes/portal_frame.tscn" id="7_c0pck"]
+[ext_resource type="Theme" uid="uid://d2fuv1guujm7a" path="res://materials/game_theme.tres" id="10_8ntj1"]
+[ext_resource type="Script" uid="uid://b60ncm245lt55" path="res://scripts/text_area.gd" id="11_tmc54"]
+[ext_resource type="Texture2D" uid="uid://5hc1liustycb" path="res://assets/sprites/flag2_0001.png" id="18_0mbe3"]
+[ext_resource type="Texture2D" uid="uid://yjri1ub0x1oq" path="res://assets/sprites/flag2_0002.png" id="19_lev05"]
+[ext_resource type="Texture2D" uid="uid://ctm1l28hnric5" path="res://assets/sprites/flag2_0003.png" id="20_xx5xm"]
+[ext_resource type="Texture2D" uid="uid://c67ybyxl2thtx" path="res://assets/sprites/flag2_0004.png" id="21_51h47"]
+[ext_resource type="Script" uid="uid://32bvdfrvtu8d" path="res://scripts/flag_animation.gd" id="22_7g5fc"]
+[ext_resource type="Script" uid="uid://bkb12dyumwolh" path="res://scripts/flag_collision.gd" id="23_wn21t"]
+[ext_resource type="Texture2D" uid="uid://dbuvavydifv3e" path="res://assets/sprites/frame_ornament.png" id="25_fpv1k"]
+[ext_resource type="AudioStream" uid="uid://v7oyqx5qkyx4" path="res://assets/audio/hihat.wav" id="30_y1oen"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_srqkv"]
+size = Vector2(303, 124)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_srqkv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_0mbe3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_lev05")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_xx5xm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_51h47")
+}],
+"loop": 1,
+"name": &"flag",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8qpon"]
+
+[node name="PlayMenu" type="Node2D" unique_id=1672064429]
+script = ExtResource("1_c0pck")
+
+[node name="Wall" type="Parallax2D" parent="." unique_id=915134789]
+z_index = -11
+scroll_offset = Vector2(293, 494)
+repeat_size = Vector2(256, 256)
+repeat_times = 8
+ignore_camera_scroll = true
+screen_offset = Vector2(500, 0)
+
+[node name="WallSprite" type="Sprite2D" parent="Wall" unique_id=1716913023]
+texture = ExtResource("2_w3s2r")
+
+[node name="Painting" type="Control" parent="." unique_id=547576754]
+visible = false
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = 17.0
+offset_top = -42.0
+offset_right = 847.0
+offset_bottom = 560.0
+
+[node name="ParallaxBackground" type="Parallax2D" parent="Painting" unique_id=968290365]
+z_index = -10
+scroll_scale = Vector2(0.1, 0.1)
+scroll_offset = Vector2(83, 128)
+
+[node name="Sprite2D" type="Sprite2D" parent="Painting/ParallaxBackground" unique_id=379368338]
+texture = ExtResource("3_sj6j5")
+centered = false
+
+[node name="TileMaps" type="Node2D" parent="." unique_id=1223297996]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="TileMaps" unique_id=232419374]
+tile_map_data = PackedByteArray("AAD/////AAAAAAAAAAD//wAAAAAAAAAAAAD//wEAAAAAAAAAAAAAAP//AAAAAAAAAAD//xIAAAAAAAAAAAAbABIAAAAAAAAAAAAbAP//AAAAAAAAAAD//wIAAAAAAAAAAAD//wMAAAAAAAAAAAD//wQAAAAAAAAAAAD//wUAAAAAAAAAAAD//wYAAAAAAAAAAAD//wcAAAAAAAAAAAD//wgAAAAAAAAAAAD//wkAAAAAAAAAAAD//woAAAAAAAAAAAD//wsAAAAAAAAAAAD//wwAAAAAAAAAAAD//w0AAAAAAAAAAAD//w4AAAAAAAAAAAD//w8AAAAAAAAAAAD//xAAAAAAAAAAAAD//xEAAAAAAAAAAAAAABIAAAAAAAAAAAABABIAAAAAAAAAAAACABIAAAAAAAAAAAADABIAAAAAAAAAAAAEABIAAAAAAAAAAAAFABIAAAAAAAAAAAAGABIAAAAAAAAAAAAHABIAAAAAAAAAAAAIABIAAAAAAAAAAAAJABIAAAAAAAAAAAAKABIAAAAAAAAAAAALABIAAAAAAAAAAAAMABIAAAAAAAAAAAANABIAAAAAAAAAAAAOABIAAAAAAAAAAAAPABIAAAAAAAAAAAAQABIAAAAAAAAAAAARABIAAAAAAAAAAAASABIAAAAAAAAAAAATABIAAAAAAAAAAAAUABIAAAAAAAAAAAAVABIAAAAAAAAAAAAWABIAAAAAAAAAAAAXABIAAAAAAAAAAAAYABIAAAAAAAAAAAAZABIAAAAAAAAAAAAaABIAAAAAAAAAAAAbABEAAAAAAAAAAAAbABAAAAAAAAAAAAAbAA8AAAAAAAAAAAAbAA4AAAAAAAAAAAAbAA0AAAAAAAAAAAAbAAwAAAAAAAAAAAAbAAsAAAAAAAAAAAAbAAoAAAAAAAAAAAAbAAkAAAAAAAAAAAAbAAgAAAAAAAAAAAAbAAcAAAAAAAAAAAAbAAYAAAAAAAAAAAAbAAUAAAAAAAAAAAAbAAQAAAAAAAAAAAAbAAMAAAAAAAAAAAAbAAIAAAAAAAAAAAAbAAEAAAAAAAAAAAAbAAAAAAAAAAAAAAABAP//AAAAAAAAAAACAP//AAAAAAAAAAADAP//AAAAAAAAAAAEAP//AAAAAAAAAAAFAP//AAAAAAAAAAAGAP//AAAAAAAAAAAHAP//AAAAAAAAAAAIAP//AAAAAAAAAAAJAP//AAAAAAAAAAAKAP//AAAAAAAAAAALAP//AAAAAAAAAAAMAP//AAAAAAAAAAANAP//AAAAAAAAAAAOAP//AAAAAAAAAAAPAP//AAAAAAAAAAAQAP//AAAAAAAAAAARAP//AAAAAAAAAAASAP//AAAAAAAAAAATAP//AAAAAAAAAAAUAP//AAAAAAAAAAAVAP//AAAAAAAAAAAWAP//AAAAAAAAAAAXAP//AAAAAAAAAAAYAP//AAAAAAAAAAAZAP//AAAAAAAAAAAaAP//AAAAAAAAAAAGAAoAAAAAAAAAAAAHAAoAAAAAAAAAAAAIAAoAAAAAAAAAAAAJAAoAAAAAAAAAAAALAAYAAAAAAAAAAAAMAAYAAAAAAAAAAAANAAYAAAAAAAAAAAAOAAYAAAAAAAAAAAATAAQAAAAAAAAAAAAUAAQAAAAAAAAAAAAVAAQAAAAAAAAAAAAWAAQAAAAAAAAAAAAXAAQAAAAAAAAAAAALAAwAAAAAAAAAAAAMAAwAAAAAAAAAAAANAAwAAAAAAAAAAAAPAAkAAAAAAAAAAAAQAAkAAAAAAAAAAAARAAkAAAAAAAAAAAA=")
+tile_set = ExtResource("4_qh470")
+
+[node name="Labels" type="Control" parent="." unique_id=1558977758]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("10_8ntj1")
+
+[node name="Steering" type="Control" parent="Labels" unique_id=1527591200]
+anchors_preset = 0
+offset_left = -18.0
+offset_top = -16.0
+offset_right = -18.0
+offset_bottom = -16.0
+
+[node name="SteeringArea" type="Area2D" parent="Labels/Steering" unique_id=386247995]
+collision_layer = 4
+collision_mask = 256
+script = ExtResource("11_tmc54")
+
+[node name="Collision" type="CollisionShape2D" parent="Labels/Steering/SteeringArea" unique_id=1332755524]
+position = Vector2(212.5, 77)
+shape = SubResource("RectangleShape2D_srqkv")
+
+[node name="Text" type="Label" parent="Labels/Steering" unique_id=964409157]
+z_index = 10
+layout_mode = 0
+offset_left = 174.0
+offset_top = 10.0
+offset_right = 335.0
+offset_bottom = 137.0
+text = "Steering
+A/Left arrow 
+D/Right arrow
+
+"
+
+[node name="Portals" type="Node2D" parent="." unique_id=128110809]
+
+[node name="Level0" parent="Portals" unique_id=1765249110 instance=ExtResource("7_c0pck")]
+
+[node name="Flags" type="Node2D" parent="." unique_id=969279589]
+
+[node name="SpawnFlag" type="AnimatedSprite2D" parent="Flags" unique_id=482970223]
+z_index = -1
+position = Vector2(415, 176)
+sprite_frames = SubResource("SpriteFrames_srqkv")
+animation = &"flag"
+frame_progress = 0.5440265
+speed_scale = 0.5
+script = ExtResource("22_7g5fc")
+player_direction = 1.0
+
+[node name="Area2D" type="Area2D" parent="Flags/SpawnFlag" unique_id=2054580034]
+collision_layer = 4
+collision_mask = 256
+script = ExtResource("23_wn21t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flags/SpawnFlag/Area2D" unique_id=984281850]
+shape = SubResource("RectangleShape2D_8qpon")
+
+[node name="GoldFrameTest" type="Sprite2D" parent="." unique_id=1094668164]
+z_index = 10
+position = Vector2(434, 286.00003)
+scale = Vector2(0.51458335, 0.69259256)
+texture = ExtResource("25_fpv1k")
+
+[node name="HiHat" type="AudioStreamPlayer2D" parent="." unique_id=846878041]
+position = Vector2(461, 282)
+scale = Vector2(2, 2)
+stream = ExtResource("30_y1oen")
+volume_db = 1.0
+autoplay = true
+attenuation = 0.5
+panning_strength = 3.0

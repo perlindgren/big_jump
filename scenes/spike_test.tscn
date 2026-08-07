@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://b3fh76h8n4mx5"]
-
-[ext_resource type="PackedScene" uid="uid://bg8vqhdh1fts6" path="res://spike.tscn" id="1_bfgfr"]
-
-[node name="SpikeTest" type="Node2D" unique_id=739569384]
-
-[node name="Sprite2D" parent="." unique_id=46951483 instance=ExtResource("1_bfgfr")]
-position = Vector2(100, 100)
-scale = Vector2(2, 2)
