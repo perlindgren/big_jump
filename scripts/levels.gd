@@ -7,6 +7,7 @@ extends Node2D
 @onready var player = %Player
 var coin_tween : Tween
 var last_coin_update : int = 0
+var level_instance 
 
 func _ready() -> void:
 	# The parent instantiates quickly because the sub-tree does not exist yet.
@@ -26,21 +27,23 @@ func instantiate_level():
 	if nr_children == 1:
 		print("levels: free old level")
 		get_child(0).queue_free()
+	print("levels: nr_children", get_child_count())
 	
 	# instantiate new level
 	var new_level: PackedScene = GameState.levels[GameState.current_level]
 	if new_level:
 		print("levels: launching", new_level)
-		var level_instance = new_level.instantiate()
+		level_instance = new_level.instantiate()
 		add_child(level_instance)
 		level_instance.flags[0].modulate = Color(0.0, 1.0, 0.0)
+		print("level_instance.flags[0].position", level_instance.flags[0].position)
 		restart()
 	else:
 		print("-- error --")
 		get_tree().quit(0)
 
 func restart() -> void:
-	var level_instance = get_child(0)
+	print("restart: nr_children", get_child_count())
 	
 	# iterate over flags, but skip first flag that is always checked
 	for index in level_instance.flags.size() -1:
@@ -49,6 +52,7 @@ func restart() -> void:
 	
 	GameState.spawn_position = level_instance.flags[0].position
 	GameState.player_direction = level_instance.flags[0].player_direction
+	print("level_instance.flags[0].position", level_instance.flags[0].position)
 	GameState.clear_recording() # if not in replay mode
 	GameState.player_active = false # prevent collisions
 	GameState.frames = 0
@@ -102,11 +106,11 @@ func update_coins(value: int) -> void:
 	last_coin_update = value
 		
 func _on_next_level(next_level: int) -> void:
-	next_level = 1
+	# next_level = 1
 	print("levels: on_next_level ", next_level)
 	player.is_live = false # prevent player input
 	await get_tree().create_timer(next_level_time).timeout
-	GameState.mode = GameState.mode_states.REPLAY
+	# GameState.mode = GameState.mode_states.REPLAY
 	GameState.current_level = next_level
 	instantiate_level()
 	

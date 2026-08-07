@@ -53,9 +53,13 @@ enum input_state {
 
 # aims at a fixed 60 fps
 func _physics_process(delta: float) -> void:
+	if not is_live:
+		# death animation
+		return
+		
 	# Update global state
-	GameState.player_position = position
-	GameState.player_velocity = velocity
+	# GameState.player_position = position
+	# GameState.player_velocity = velocity
 	
 	# Check that we meet timing, not sure if this is entirely correct way
 	if delta != 1.0/60.0:
@@ -64,10 +68,6 @@ func _physics_process(delta: float) -> void:
 	# Move the listingen position with the player
 	# audio_listener.position = position * 1.5 # TODO scaling is not right
 	# print("listener ", audio_listener.position, " ", global_position)
-	
-	if not is_live:
-		# death animation
-		return
 	
 	if is_respawn:
 		move_and_slide()
