@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bvc12ut8lwj1a"]
+
+[ext_resource type="Shader" uid="uid://dfrwej8nt5ul3" path="res://test/outline.gdshader" id="1_fp3vk"]
+[ext_resource type="Texture2D" uid="uid://bryqphmw7qeah" path="res://assets/sprites/while_tiles_lethal.png" id="2_e3bna"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u6ppd"]
+shader = ExtResource("1_fp3vk")
+shader_parameter/color = Color(0.66208196, 0.70642984, 0.927847, 1)
+shader_parameter/width = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_srqkv"]
+atlas = ExtResource("2_e3bna")
+region = Rect2(64, 0, 32, 32)
+
+[node name="OutlineTest" type="Node2D" unique_id=1646910428]
+position = Vector2(428, 237)
+scale = Vector2(2, 2)
+
+[node name="Outline" type="Sprite2D" parent="." unique_id=36886945]
+modulate = Color(0.686783, 0.8693185, 0.58307654, 1)
+material = SubResource("ShaderMaterial_u6ppd")
+position = Vector2(64.25, 61.5)
+scale = Vector2(5.015625, 4.84375)
+texture = SubResource("AtlasTexture_srqkv")

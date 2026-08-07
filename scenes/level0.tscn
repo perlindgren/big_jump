@@ -6,6 +6,7 @@
 [ext_resource type="TileSet" uid="uid://h03uhaaq10ki" path="res://materials/basic_tiles_white.tres" id="4_fu4xf"]
 [ext_resource type="Script" uid="uid://b60ncm245lt55" path="res://scripts/text_area.gd" id="4_x1x1l"]
 [ext_resource type="TileSet" uid="uid://ctui3g3lneqkq" path="res://materials/extras_white.tres" id="5_fu4xf"]
+[ext_resource type="Shader" uid="uid://dfrwej8nt5ul3" path="res://test/outline.gdshader" id="6_867pa"]
 [ext_resource type="TileSet" uid="uid://b2av1vue58n5l" path="res://materials/leathals_white.tres" id="6_fu4xf"]
 [ext_resource type="Theme" uid="uid://d2fuv1guujm7a" path="res://materials/game_theme.tres" id="7_wrnl3"]
 [ext_resource type="Texture2D" uid="uid://lqp23ew23l5t" path="res://assets/sprites/crane_deck.png" id="8_8qpon"]
@@ -33,6 +34,11 @@
 [ext_resource type="AudioStream" uid="uid://bqsa6y336sdgg" path="res://assets/audio/kick.wav" id="29_s53dc"]
 [ext_resource type="AudioStream" uid="uid://h5r2j2wwb67f" path="res://assets/audio/arpeggio.wav" id="30_hybo8"]
 [ext_resource type="AudioStream" uid="uid://ddep1pnt1msqx" path="res://assets/audio/piano.wav" id="31_ve1xs"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fp3vk"]
+shader = ExtResource("6_867pa")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v2id5"]
 shader = ExtResource("9_m5akh")
@@ -181,8 +187,9 @@ tile_map_data = PackedByteArray("AAABAAUAAAACAAEAAFABAAcAAAADAAEAAFABAA0AAAAAAAE
 tile_set = ExtResource("5_fu4xf")
 
 [node name="TileMapLayer L0 Leathals" type="TileMapLayer" parent="TileMaps" unique_id=1344527729]
-modulate = Color(0.41960785, 0, 0, 1)
+modulate = Color(0.13094085, 0.41263023, 0.31356603, 1)
 z_index = 1
+material = SubResource("ShaderMaterial_fp3vk")
 tile_map_data = PackedByteArray("AAAMAAsAAAACAAAAAAANAAsAAAADAAAAAAANAA8AAAADAAAAAAAOAAsAAAACAAAAABAOAA8AAAACAAAAAAAPAAsAAAACAAAAABAPAA8AAAADAAAAAAAQAAsAAAADAAAAABAQAA8AAAADAAAAABARAAsAAAACAAAAAAARAA8AAAACAAAAAAASAAsAAAADAAAAAAAZAAcAAAACAAAAAAANAAcAAAACAAAAAAAOAAcAAAACAAAAAAAPAAcAAAACAAAAABAQAAcAAAACAAAAABARAAcAAAACAAAAAAAZAAkAAAACAAAAAEAZAAoAAAACAAAAAEAZAAsAAAADAAAAAGACAAwAAAABAAAAAEACAA0AAAABAAAAAGADAA4AAAAAAAAAADAEAA0AAAABAAAAAFA=")
 tile_set = ExtResource("6_fu4xf")
 
@@ -546,12 +553,8 @@ speed = 1.5
 [node name="Portals" type="Node2D" parent="." unique_id=128110809]
 
 [node name="Exit" parent="Portals" unique_id=132038420 instance=ExtResource("17_5xwn4")]
-visible = true
 z_index = -1
 position = Vector2(80, 528)
-
-[node name="GPUParticles2D" parent="Portals/Exit" index="1" unique_id=1597761440]
-visible = true
 
 [node name="Flags" type="Node2D" parent="." unique_id=969279589]
 
