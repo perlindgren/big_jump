@@ -23,8 +23,9 @@ void fragment() {
     vec4 tex_color =  inherited_color * texture(TEXTURE, UV);
 	vec4 col = color;
 	vec2 dist = world_pos * SCREEN_PIXEL_SIZE;
-	float time = mod(TIME, PI);	
-	col.gb = vec2(abs(sin(time + PI * dist.x)), abs(sin(time + PI * dist.y)));
+	float time = mod(TIME * (2.0 + dist.x), PI);	
+	float time2 = mod(TIME * (3.0 + dist.y), PI);	
+	col.gb = vec2(sin(time), sin(time2));
 	
     vec4 final_color = mix(col, tex_color, tex_color.a);
     COLOR = vec4(final_color.rgb, clamp(alpha + tex_color.a, 0.0, 1.0));

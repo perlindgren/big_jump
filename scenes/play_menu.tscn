@@ -141,7 +141,7 @@ shape = SubResource("RectangleShape2D_8qpon")
 
 [node name="GoldFrameTest" type="Sprite2D" parent="." unique_id=1094668164]
 z_index = 10
-position = Vector2(434, 286.00003)
+position = Vector2(430, 289)
 scale = Vector2(0.51458335, 0.69259256)
 texture = ExtResource("25_fpv1k")
 
