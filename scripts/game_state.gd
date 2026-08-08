@@ -2,6 +2,7 @@ extends Node
 
 # Global game state variables
 @export var levels: Array[PackedScene] = [
+	preload("res://scenes/level1.tscn"),
 	preload("res://scenes/play_menu.tscn"),
 	preload("res://scenes/level0.tscn"),
 	preload("res://scenes/Cave.tscn"),
