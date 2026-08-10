@@ -11,12 +11,23 @@
 [ext_resource type="Texture2D" uid="uid://c67ybyxl2thtx" path="res://assets/sprites/flag2_0004.png" id="7_gpdi5"]
 [ext_resource type="Script" uid="uid://32bvdfrvtu8d" path="res://scripts/flag_animation.gd" id="8_8qqim"]
 [ext_resource type="Script" uid="uid://bkb12dyumwolh" path="res://scripts/flag_collision.gd" id="9_44bf0"]
-[ext_resource type="Texture2D" uid="uid://bgl7v1ac21ng8" path="res://assets/iris/blad solid1.png" id="12_w8knq"]
-[ext_resource type="Texture2D" uid="uid://2xn00244s84n" path="res://assets/iris/bladshade1.png" id="13_gpdi5"]
-[ext_resource type="Texture2D" uid="uid://or3rrist7dhf" path="res://assets/iris/blad jagged.png" id="14_8qqim"]
 [ext_resource type="PackedScene" uid="uid://cedo1w13padh1" path="res://scenes/Coin.tscn" id="15_44bf0"]
+[ext_resource type="Texture2D" uid="uid://cujlefk7e0s2f" path="res://assets/iris/TreeTrunk/Spritesheet treetrunk.png" id="15_b4tbw"]
+[ext_resource type="Texture2D" uid="uid://difrq103sonat" path="res://assets/iris/TreeTrunk/LeavesPlants white spritesheet.png" id="16_8v5uw"]
 [ext_resource type="Shader" uid="uid://bej6tqh8sq5q5" path="res://shaders/gold.gdshader" id="16_b4tbw"]
 [ext_resource type="Texture2D" uid="uid://xhqexqaldcq3" path="res://assets/sprites/items.png" id="17_8v5uw"]
+[ext_resource type="Texture2D" uid="uid://rl1upyrf0v43" path="res://assets/iris/TreeTrunk/Shade_Plants spritesheet.png" id="17_h86le"]
+[ext_resource type="Texture2D" uid="uid://dcssttjd3r0xf" path="res://assets/iris/TreeTrunk/Spritesheet treetrunk 2.png" id="18_b4tbw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h86le"]
+shader = ExtResource("16_b4tbw")
+shader_parameter/BloomRadius = 3.0
+shader_parameter/BloomThreshold = 0.5
+shader_parameter/BloomIntensity = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8f73p"]
+atlas = ExtResource("17_8v5uw")
+region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b4tbw"]
 animations = [{
@@ -40,30 +51,300 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8v5uw"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8f73p"]
+load_path = "res://.godot/imported/blad solid1.png-0396113eee0644265e6057e00d9c09b6.ctex"
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_5r7xy"]
-atlas = ExtResource("12_w8knq")
+atlas = SubResource("CompressedTexture2D_8f73p")
 region = Rect2(0, 348.58353, 832.3259, 731.4165)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nrccm"]
+load_path = "res://.godot/imported/bladshade1.png-4c7b2f66221cd751763f11d2571e0897.ctex"
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_0x8ft"]
-atlas = ExtResource("13_gpdi5")
+atlas = SubResource("CompressedTexture2D_nrccm")
 region = Rect2(849.1761, 241.7196, 1070.824, 838.2804)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cx57q"]
+load_path = "res://.godot/imported/blad jagged.png-35dc4c35deea0b3c0cf93b011b379666.ctex"
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_8l6lr"]
-atlas = ExtResource("14_8qqim")
+atlas = SubResource("CompressedTexture2D_cx57q")
 region = Rect2(0, 0, 831.38446, 736.13837)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_h86le"]
-shader = ExtResource("16_b4tbw")
-shader_parameter/BloomRadius = 3.0
-shader_parameter/BloomThreshold = 0.5
-shader_parameter/BloomIntensity = 0.0
+[sub_resource type="AtlasTexture" id="AtlasTexture_myrx5"]
+atlas = ExtResource("15_b4tbw")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8f73p"]
-atlas = ExtResource("17_8v5uw")
-region = Rect2(64, 0, 32, 32)
+[sub_resource type="TileMapPattern" id="TileMapPattern_8v5uw"]
+tile_data = PackedInt32Array(0, 0, 0, 4, 65536, 0, 8, 131072, 0, 12, 196608, 0, 16, 262144, 0, 20, 327680, 0, 24, 393216, 0, 28, 458752, 0, 32, 524288, 0, 36, 589824, 0, 40, 655360, 0)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h86le"]
+texture = ExtResource("18_b4tbw")
+texture_region_size = Vector2i(128, 128)
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+10:2/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+9:3/0 = 0
+10:3/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+10:4/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+9:5/0 = 0
+10:5/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+9:6/0 = 0
+10:6/0 = 0
+1:0/0 = 0
+0:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+1:2/0 = 0
+0:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+1:4/0 = 0
+1:5/0 = 0
+1:6/0 = 0
+0:6/0 = 0
+0:5/0 = 0
+0:4/0 = 0
+2:6/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_myrx5"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_h86le")
+pattern_0 = SubResource("TileMapPattern_8v5uw")
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_b4tbw"]
+tile_data = PackedInt32Array(0, 0, 0, 1, 65536, 0, 2, 131072, 0, 3, 196608, 0, 4, 262144, 0, 5, 327680, 0, 6, 393216, 0, 7, 458752, 0, 8, 524288, 0, 9, 589824, 0, 10, 655360, 0)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8v5uw"]
+texture = ExtResource("18_b4tbw")
+texture_region_size = Vector2i(128, 128)
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+9:5/0 = 0
+10:5/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+9:6/0 = 0
+10:6/0 = 0
+10:4/0 = 0
+9:4/0 = 0
+9:3/0 = 0
+10:3/0 = 0
+8:3/0 = 0
+8:4/0 = 0
+7:3/0 = 0
+7:4/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+6:4/0 = 0
+0:0/next_alternative_id = 3
+0:0/0 = 0
+0:1/0 = 0
+1:0/next_alternative_id = 2
+1:0/0 = 0
+1:1/0 = 0
+2:0/next_alternative_id = 2
+2:0/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:2/0 = 0
+3:0/next_alternative_id = 2
+3:0/0 = 0
+4:0/next_alternative_id = 2
+4:0/0 = 0
+5:0/next_alternative_id = 2
+5:0/0 = 0
+6:0/next_alternative_id = 2
+6:0/0 = 0
+7:0/next_alternative_id = 2
+7:0/0 = 0
+8:0/next_alternative_id = 2
+8:0/0 = 0
+9:0/next_alternative_id = 2
+9:0/0 = 0
+10:0/next_alternative_id = 2
+10:0/0 = 0
+10:1/0 = 0
+9:1/0 = 0
+8:1/0 = 0
+7:1/0 = 0
+6:1/0 = 0
+5:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+2:2/0 = 0
+1:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+2:5/0 = 0
+2:6/0 = 0
+3:5/0 = 0
+3:6/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+10:2/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_8l6lr"]
+tile_size = Vector2i(128, 128)
+sources/0 = SubResource("TileSetAtlasSource_8v5uw")
+pattern_0 = SubResource("TileMapPattern_b4tbw")
 
 [node name="IrisSceneLevel1" type="Node2D" unique_id=1116787749]
 script = ExtResource("1_gt3rj")
+
+[node name="Coin" type="Node2D" parent="." unique_id=922847495]
+
+[node name="Coin" parent="Coin" unique_id=1151582246 instance=ExtResource("15_44bf0")]
+z_index = 1
+position = Vector2(-720, 815)
+collision_mask = 256
+value = 17
+
+[node name="Sprite2D" parent="Coin/Coin" index="2" unique_id=1417604192]
+material = SubResource("ShaderMaterial_h86le")
+texture = SubResource("AtlasTexture_8f73p")
+speed = 2.5
+
+[node name="Coin2" parent="Coin" unique_id=1368936847 instance=ExtResource("15_44bf0")]
+z_index = 1
+position = Vector2(-850, 960)
+collision_mask = 256
+value = 17
+
+[node name="Sprite2D" parent="Coin/Coin2" index="2" unique_id=1417604192]
+material = SubResource("ShaderMaterial_h86le")
+texture = SubResource("AtlasTexture_8f73p")
+speed = 2.5
+
+[node name="Coin3" parent="Coin" unique_id=1699803107 instance=ExtResource("15_44bf0")]
+z_index = 1
+position = Vector2(-1191, 148)
+collision_mask = 256
+value = 17
+
+[node name="Sprite2D" parent="Coin/Coin3" index="2" unique_id=1417604192]
+material = SubResource("ShaderMaterial_h86le")
+texture = SubResource("AtlasTexture_8f73p")
+speed = 2.5
+
+[node name="Coin4" parent="Coin" unique_id=99071365 instance=ExtResource("15_44bf0")]
+z_index = 1
+position = Vector2(-368, 96)
+collision_mask = 256
+value = 17
+
+[node name="Sprite2D" parent="Coin/Coin4" index="2" unique_id=1417604192]
+material = SubResource("ShaderMaterial_h86le")
+texture = SubResource("AtlasTexture_8f73p")
+speed = 2.5
+
+[node name="Coin5" parent="Coin" unique_id=698248090 instance=ExtResource("15_44bf0")]
+z_index = 1
+position = Vector2(-548, 748)
+collision_mask = 256
+value = 17
+
+[node name="Sprite2D" parent="Coin/Coin5" index="2" unique_id=1417604192]
+material = SubResource("ShaderMaterial_h86le")
+texture = SubResource("AtlasTexture_8f73p")
+speed = 2.5
+
+[node name="Coin6" parent="Coin" unique_id=1938650457 instance=ExtResource("15_44bf0")]
+z_index = 1
+position = Vector2(-105, 677)
+collision_mask = 256
+value = 17
+
+[node name="Sprite2D" parent="Coin/Coin6" index="2" unique_id=1417604192]
+material = SubResource("ShaderMaterial_h86le")
+texture = SubResource("AtlasTexture_8f73p")
+speed = 2.5
+
+[node name="Coin7" parent="Coin" unique_id=1773976265 instance=ExtResource("15_44bf0")]
+z_index = 1
+position = Vector2(-245, 104)
+collision_mask = 256
+value = 17
+
+[node name="Sprite2D" parent="Coin/Coin7" index="2" unique_id=1417604192]
+material = SubResource("ShaderMaterial_h86le")
+texture = SubResource("AtlasTexture_8f73p")
+speed = 2.5
 
 [node name="Wall" type="Parallax2D" parent="." unique_id=132322588]
 modulate = Color(0.21176471, 1, 0.2901961, 1)
@@ -188,83 +469,6 @@ rotation = 0.7853982
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_8l6lr")
 
-[node name="Coin" parent="." unique_id=1151582246 instance=ExtResource("15_44bf0")]
-z_index = 1
-position = Vector2(-720, 815)
-collision_mask = 256
-value = 17
-
-[node name="Sprite2D" parent="Coin" index="2" unique_id=1417604192]
-material = SubResource("ShaderMaterial_h86le")
-texture = SubResource("AtlasTexture_8f73p")
-speed = 2.5
-
-[node name="Coin2" parent="." unique_id=1368936847 instance=ExtResource("15_44bf0")]
-z_index = 1
-position = Vector2(-850, 960)
-collision_mask = 256
-value = 17
-
-[node name="Sprite2D" parent="Coin2" index="2" unique_id=1417604192]
-material = SubResource("ShaderMaterial_h86le")
-texture = SubResource("AtlasTexture_8f73p")
-speed = 2.5
-
-[node name="Coin3" parent="." unique_id=1699803107 instance=ExtResource("15_44bf0")]
-z_index = 1
-position = Vector2(-1191, 148)
-collision_mask = 256
-value = 17
-
-[node name="Sprite2D" parent="Coin3" index="2" unique_id=1417604192]
-material = SubResource("ShaderMaterial_h86le")
-texture = SubResource("AtlasTexture_8f73p")
-speed = 2.5
-
-[node name="Coin4" parent="." unique_id=99071365 instance=ExtResource("15_44bf0")]
-z_index = 1
-position = Vector2(-368, 96)
-collision_mask = 256
-value = 17
-
-[node name="Sprite2D" parent="Coin4" index="2" unique_id=1417604192]
-material = SubResource("ShaderMaterial_h86le")
-texture = SubResource("AtlasTexture_8f73p")
-speed = 2.5
-
-[node name="Coin5" parent="." unique_id=698248090 instance=ExtResource("15_44bf0")]
-z_index = 1
-position = Vector2(-548, 748)
-collision_mask = 256
-value = 17
-
-[node name="Sprite2D" parent="Coin5" index="2" unique_id=1417604192]
-material = SubResource("ShaderMaterial_h86le")
-texture = SubResource("AtlasTexture_8f73p")
-speed = 2.5
-
-[node name="Coin6" parent="." unique_id=1938650457 instance=ExtResource("15_44bf0")]
-z_index = 1
-position = Vector2(-105, 677)
-collision_mask = 256
-value = 17
-
-[node name="Sprite2D" parent="Coin6" index="2" unique_id=1417604192]
-material = SubResource("ShaderMaterial_h86le")
-texture = SubResource("AtlasTexture_8f73p")
-speed = 2.5
-
-[node name="Coin7" parent="." unique_id=1773976265 instance=ExtResource("15_44bf0")]
-z_index = 1
-position = Vector2(-245, 104)
-collision_mask = 256
-value = 17
-
-[node name="Sprite2D" parent="Coin7" index="2" unique_id=1417604192]
-material = SubResource("ShaderMaterial_h86le")
-texture = SubResource("AtlasTexture_8f73p")
-speed = 2.5
-
 [node name="Portals2" type="Node2D" parent="." unique_id=1060901393]
 position = Vector2(368, 607)
 
@@ -272,18 +476,85 @@ position = Vector2(368, 607)
 z_index = -1
 position = Vector2(80, 528)
 
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=753894934]
+visible = false
+position = Vector2(-165.99998, 798.00006)
+rotation = -1.6057029
+scale = Vector2(0.405, 0.55)
+texture = SubResource("AtlasTexture_myrx5")
+region_enabled = true
+region_rect = Rect2(73.83765, 97.34872, 1784.3262, 169.34357)
+
+[node name="whiteBlad" type="Sprite2D" parent="." unique_id=1923725768]
+visible = false
+modulate = Color(0.4253977, 0.47532272, 0.11746644, 1)
+position = Vector2(-281, 1062)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("16_8v5uw")
+region_enabled = true
+region_rect = Rect2(1285, 754, 1116, 255)
+
+[node name="ShadeBlad" type="Sprite2D" parent="." unique_id=1047736319]
+visible = false
+modulate = Color(0.4253977, 0.47532272, 0.11746644, 1)
+position = Vector2(189, 850)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("17_h86le")
+region_enabled = true
+region_rect = Rect2(4460, 1351, 1053, 821)
+
+[node name="ShadeBlad2" type="Sprite2D" parent="." unique_id=866616237]
+visible = false
+modulate = Color(0.7414217, 0.22917789, 0.33989117, 1)
+position = Vector2(-737, 1107)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("17_h86le")
+region_enabled = true
+region_rect = Rect2(290, 2495, 229, 488)
+
+[node name="treetrunk" type="Sprite2D" parent="." unique_id=657596356]
+visible = false
+modulate = Color(0.22745098, 0.10980392, 0.09411765, 1)
+position = Vector2(-806, 1160)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("15_b4tbw")
+region_enabled = true
+region_rect = Rect2(61, 270, 1767, 159)
+
+[node name="treetrunk2" type="Sprite2D" parent="." unique_id=1454067118]
+visible = false
+modulate = Color(0.22745098, 0.10980392, 0.09411765, 1)
+position = Vector2(-1095, 1156)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("15_b4tbw")
+region_enabled = true
+region_rect = Rect2(61, 270, 1767, 159)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=773940499]
+modulate = Color(0.69197756, 0.3772652, 0.232169, 1)
+scale = Vector2(0.3, 0.3)
+tile_map_data = PackedByteArray("AACY/3kAAAAAAAAAAACc/3kAAAABAAAAAACg/3kAAAACAAAAAACk/3kAAAADAAAAAACo/3kAAAAEAAAAAACs/3kAAAAFAAAAAACw/3kAAAAGAAAAAAC0/3kAAAAHAAAAAAC4/3kAAAAIAAAAAAC8/3kAAAAJAAAAAADA/3kAAAAKAAAAAADD/3kAAAAAAAAAAADH/3kAAAABAAAAAADL/3kAAAACAAAAAADP/3kAAAADAAAAAADT/3kAAAAEAAAAAADX/3kAAAAFAAAAAADb/3kAAAAGAAAAAADf/3kAAAAHAAAAAADj/3kAAAAIAAAAAADn/3kAAAAJAAAAAADr/3kAAAAKAAAAAADy/3kAAAAAAAAAAAD2/3kAAAABAAAAAAD6/3kAAAACAAAAAAD+/3kAAAADAAAAAAACAHkAAAAEAAAAAAAGAHkAAAAFAAAAAAAKAHkAAAAGAAAAAAAOAHkAAAAHAAAAAAASAHkAAAAIAAAAAAAWAHkAAAAJAAAAAAAaAHkAAAAKAAAAAAAcAHkAAAAAAAAAAAAgAHkAAAABAAAAAAAkAHkAAAACAAAAAAAoAHkAAAADAAAAAAAsAHkAAAAEAAAAAAAwAHkAAAAFAAAAAAA0AHkAAAAGAAAAAAA4AHkAAAAHAAAAAAA8AHkAAAAIAAAAAABAAHkAAAAJAAAAAABEAHkAAAAKAAAAAABw/3gAAAAAAAAAAAB0/3gAAAABAAAAAAB4/3gAAAACAAAAAAB8/3gAAAADAAAAAACA/3gAAAAEAAAAAACE/3gAAAAFAAAAAACI/3gAAAAGAAAAAACM/3gAAAAHAAAAAACQ/3gAAAAIAAAAAACU/3gAAAAJAAAAAACY/3gAAAAKAAAAAACa/3wAAAAAAAAAAACe/3wAAAABAAAAAACi/3wAAAACAAAAAACm/3wAAAADAAAAAACq/3wAAAAEAAAAAACu/3wAAAAFAAAAAACy/3wAAAAGAAAAAAC2/3wAAAAHAAAAAAC6/3wAAAAIAAAAAAC+/3wAAAAJAAAAAADC/3wAAAAKAAAAAADa/30AAAAAAAAAAADe/30AAAABAAAAAADi/30AAAACAAAAAADm/30AAAADAAAAAADq/30AAAAEAAAAAADu/30AAAAFAAAAAADy/30AAAAGAAAAAAD2/30AAAAHAAAAAAD6/30AAAAIAAAAAAD+/30AAAAJAAAAAAACAH0AAAAKAAAAAAAEAHwAAAAAAAAAAAAIAHwAAAABAAAAAAAMAHwAAAACAAAAAAAQAHwAAAADAAAAAAAUAHwAAAAEAAAAAAAYAHwAAAAFAAAAAAAcAHwAAAAGAAAAAAAgAHwAAAAHAAAAAAAkAHwAAAAIAAAAAAAoAHwAAAAJAAAAAAAsAHwAAAAKAAAAAAAcAH8AAAAAAAAAAAAgAH8AAAABAAAAAAAkAH8AAAACAAAAAAAoAH8AAAADAAAAAAAsAH8AAAAEAAAAAAAwAH8AAAAFAAAAAAA0AH8AAAAGAAAAAAA4AH8AAAAHAAAAAAA8AH8AAAAIAAAAAABAAH8AAAAJAAAAAABEAH8AAAAKAAAAAABw/3wAAAAAAAAAAAB0/3wAAAABAAAAAAB4/3wAAAACAAAAAAB8/3wAAAADAAAAAACA/3wAAAAEAAAAAACE/3wAAAAFAAAAAACI/3wAAAAGAAAAAACM/3wAAAAHAAAAAACQ/3wAAAAIAAAAAACU/3wAAAAJAAAAAACY/3wAAAAKAAAAAADE/3wAAAAAAAAAAADI/3wAAAABAAAAAADM/3wAAAACAAAAAADQ/3wAAAADAAAAAADU/3wAAAAEAAAAAADY/3wAAAAFAAAAAADc/3wAAAAGAAAAAADg/3wAAAAHAAAAAADk/3wAAAAIAAAAAADo/3wAAAAJAAAAAADs/3wAAAAKAAAAAAA=")
+tile_set = SubResource("TileSet_myrx5")
+
+[node name="TileMaptreetrunk" type="TileMapLayer" parent="." unique_id=1241223698]
+modulate = Color(0.37688377, 0.1834251, 0.09984019, 1)
+position = Vector2(-1095, 1156)
+scale = Vector2(0.3, 0.3)
+tile_map_data = PackedByteArray("AAD8/wAAAAAAAAAAAAD9/wAAAAABAAAAAAD+/wAAAAACAAAAAAD//wAAAAADAAAAAAAAAAAAAAAEAAAAAAABAAAAAAAFAAAAAAACAAAAAAAGAAAAAAADAAAAAAAHAAAAAAAEAAAAAAAIAAAAAAAFAAAAAAAJAAAAAAAGAAAAAAAKAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAABAAAAAAAJAAAAAAACAAAAAAAKAAAAAAADAAAAAAALAAAAAAAEAAAAAAAMAAAAAAAFAAAAAAANAAAAAAAGAAAAAAAOAAAAAAAHAAAAAAAPAAAAAAAIAAAAAAAQAAAAAAAJAAAAAAARAAAAAAAKAAAAAAASAAAAAAAAAAAAAAATAAAAAAABAAAAAAAUAAAAAAACAAAAAAAVAAAAAAADAAAAAAAWAAAAAAAEAAAAAAAXAAAAAAAFAAAAAAAYAAAAAAAGAAAAAAAZAAAAAAAHAAAAAAAaAAAAAAAIAAAAAAAbAAAAAAAJAAAAAAAcAAAAAAAKAAAAAAAdAAAAAAAAAAAAAAAeAAAAAAABAAAAAAAfAAAAAAACAAAAAAAgAAAAAAADAAAAAAAhAAAAAAAEAAAAAAAiAAAAAAAFAAAAAAAjAAAAAAAGAAAAAAAkAAAAAAAHAAAAAAAlAAAAAAAIAAAAAAAmAAAAAAAJAAAAAAAnAAAAAAAKAAAAAAD8/wEAAAAAAAAAAAD9/wEAAAABAAAAAAD+/wEAAAACAAAAAAD//wEAAAADAAAAAAAAAAEAAAAEAAAAAAABAAEAAAAFAAAAAAACAAEAAAAGAAAAAAADAAEAAAAHAAAAAAAEAAEAAAAIAAAAAAAFAAEAAAAJAAAAAAAGAAEAAAAKAAAAAAANAAEAAAAAAAAAAAAOAAEAAAABAAAAAAAPAAEAAAACAAAAAAAQAAEAAAADAAAAAAARAAEAAAAEAAAAAAASAAEAAAAFAAAAAAATAAEAAAAGAAAAAAAUAAEAAAAHAAAAAAAVAAEAAAAIAAAAAAAWAAEAAAAJAAAAAAAXAAEAAAAKAAAAAAAZAAEAAAAAAAAAAAAaAAEAAAABAAAAAAAbAAEAAAACAAAAAAAcAAEAAAADAAAAAAAdAAEAAAAEAAAAAAAeAAEAAAAFAAAAAAAfAAEAAAAGAAAAAAAgAAEAAAAHAAAAAAAhAAEAAAAIAAAAAAAiAAEAAAAJAAAAAAAjAAEAAAAKAAAAAAA=")
+tile_set = SubResource("TileSet_8l6lr")
+
+[editable path="Coin/Coin"]
+[editable path="Coin/Coin2"]
+[editable path="Coin/Coin3"]
+[editable path="Coin/Coin4"]
+[editable path="Coin/Coin5"]
+[editable path="Coin/Coin6"]
+[editable path="Coin/Coin7"]
 [editable path="Portals/Exit"]
 [editable path="Portals/Exit/Lock"]
 [editable path="Portals/Exit/Lock2"]
 [editable path="Portals/Exit/Bars"]
 [editable path="Portals/Exit/Bars2"]
-[editable path="Coin"]
-[editable path="Coin2"]
-[editable path="Coin3"]
-[editable path="Coin4"]
-[editable path="Coin5"]
-[editable path="Coin6"]
-[editable path="Coin7"]
 [editable path="Portals2/Exit"]
 [editable path="Portals2/Exit/Lock"]
 [editable path="Portals2/Exit/Lock2"]
