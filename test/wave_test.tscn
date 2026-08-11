@@ -46,12 +46,12 @@ shader_parameter/speed = 1.0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_64xa8"]
 shader = ExtResource("8_66vvi")
 shader_parameter/source_point = 0.442000020995
-shader_parameter/frequency = 29.31200091732
-shader_parameter/speed = 1.0990000522025
+shader_parameter/frequency = 21.5710005496225
+shader_parameter/speed = 0.0
 shader_parameter/height = 0.2
-shader_parameter/width = 0.0400000019
-shader_parameter/tail = 4.0
-shader_parameter/damp = 1.4410000684475
+shader_parameter/width = 0.1390000066025
+shader_parameter/tail = 3.806000133285
+shader_parameter/damp = 1.7370000825075
 shader_parameter/curr_time = 0.3830000181925
 
 [node name="WaveTest" type="Node2D" unique_id=1478126043]
