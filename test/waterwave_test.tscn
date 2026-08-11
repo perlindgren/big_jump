@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cirphvau2bxqt"]
+
+[ext_resource type="Shader" uid="uid://c1uv1m6672h4b" path="res://test/waterwave_test.gdshader" id="1_6gs2v"]
+[ext_resource type="Script" uid="uid://chlldusx76a8b" path="res://test/water_with_wave.gd" id="1_q3ymr"]
+[ext_resource type="Script" uid="uid://dmbq5svg44ld6" path="res://test/water_rect.gd" id="2_v5v2n"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ek2a2"]
+shader = ExtResource("1_6gs2v")
+shader_parameter/surface = 5.0
+shader_parameter/impact_x = 0.7
+shader_parameter/impact_time = 0.0
+
+[node name="WaterwaveTest" type="Node2D" unique_id=1710020593]
+
+[node name="WaterWithWave" type="Node2D" parent="." unique_id=1884263716]
+script = ExtResource("1_q3ymr")
+
+[node name="WaterRect" type="ColorRect" parent="WaterWithWave" unique_id=1468396910]
+material = SubResource("ShaderMaterial_ek2a2")
+offset_right = 600.0
+offset_bottom = 400.0
+color = Color(0.16078432, 0.36862746, 1, 1)
+script = ExtResource("2_v5v2n")
+trigger_action = true
