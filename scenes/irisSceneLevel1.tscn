@@ -7,6 +7,7 @@
 [ext_resource type="TileSet" uid="uid://b2av1vue58n5l" path="res://materials/leathals_white.tres" id="4_j771h"]
 [ext_resource type="Texture2D" uid="uid://5hc1liustycb" path="res://assets/sprites/flag2_0001.png" id="4_w7bh4"]
 [ext_resource type="Texture2D" uid="uid://yjri1ub0x1oq" path="res://assets/sprites/flag2_0002.png" id="5_esoo1"]
+[ext_resource type="Texture2D" uid="uid://dbg0xtwr357md" path="res://assets/iris/TreeTrunk/LevelArt/Background wood level.png" id="6_nrccm"]
 [ext_resource type="Texture2D" uid="uid://ctm1l28hnric5" path="res://assets/sprites/flag2_0003.png" id="6_w8knq"]
 [ext_resource type="Texture2D" uid="uid://c67ybyxl2thtx" path="res://assets/sprites/flag2_0004.png" id="7_gpdi5"]
 [ext_resource type="Script" uid="uid://32bvdfrvtu8d" path="res://scripts/flag_animation.gd" id="8_8qqim"]
@@ -357,6 +358,11 @@ screen_offset = Vector2(500, 0)
 [node name="WallSprite" type="Sprite2D" parent="Wall" unique_id=1408913285]
 texture = ExtResource("1_3rc0v")
 
+[node name="BackgroundWoodLevel" type="Sprite2D" parent="." unique_id=874473483]
+position = Vector2(127, 345)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_nrccm")
+
 [node name="TileMaps" type="Node2D" parent="." unique_id=1373778646]
 modulate = Color(0.29562598, 0.63290817, 0.5170334, 1)
 
@@ -558,7 +564,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("20_h86le")
 
 [node name="LevelArtWoodSmutsigutkant" type="Sprite2D" parent="." unique_id=215472878]
-position = Vector2(-350, 587)
+position = Vector2(-351, 585)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("21_8f73p")
 
