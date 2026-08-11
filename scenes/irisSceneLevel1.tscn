@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://dcssttjd3r0xf" path="res://assets/iris/TreeTrunk/Spritesheet treetrunk 2.png" id="18_b4tbw"]
 [ext_resource type="Texture2D" uid="uid://xo6jibaa0rc" path="res://assets/sprites/iris_level.png" id="19_8v5uw"]
 [ext_resource type="Texture2D" uid="uid://c47u5bws73v3r" path="res://assets/iris/TreeTrunk/LevelArt/Level wood.png" id="20_h86le"]
+[ext_resource type="Texture2D" uid="uid://dxjm1we82imtx" path="res://assets/iris/TreeTrunk/LevelArt/LevelArt wood smutsigutkant.png" id="21_8f73p"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h86le"]
 shader = ExtResource("16_b4tbw")
@@ -551,9 +552,15 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("19_8v5uw")
 
 [node name="LevelWood" type="Sprite2D" parent="." unique_id=1555413714]
+visible = false
 position = Vector2(-351, 587)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("20_h86le")
+
+[node name="LevelArtWoodSmutsigutkant" type="Sprite2D" parent="." unique_id=215472878]
+position = Vector2(-350, 587)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("21_8f73p")
 
 [editable path="Coin/Coin"]
 [editable path="Coin/Coin2"]
