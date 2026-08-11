@@ -297,7 +297,7 @@ speed = 2.5
 
 [node name="Coin3" parent="Coin" unique_id=1699803107 instance=ExtResource("15_44bf0")]
 z_index = 1
-position = Vector2(-1191, 148)
+position = Vector2(-1189, 148)
 collision_mask = 256
 value = 17
 
@@ -362,25 +362,17 @@ screen_offset = Vector2(500, 0)
 texture = ExtResource("1_3rc0v")
 
 [node name="WhiteBackground" type="Sprite2D" parent="." unique_id=218837731]
+visible = false
 position = Vector2(127, 341)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_rwqve")
 
-[node name="Bluebackground" type="Sprite2D" parent="." unique_id=807242594]
-position = Vector2(115, 333)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("7_fkbb8")
-
 [node name="BackgroundWoodLevel" type="Sprite2D" parent="." unique_id=874473483]
 visible = false
+z_index = -2
 position = Vector2(127, 345)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_nrccm")
-
-[node name="Clouds" type="Sprite2D" parent="." unique_id=1758855442]
-position = Vector2(126, 343)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("9_ca32g")
 
 [node name="TileMaps" type="Node2D" parent="." unique_id=1373778646]
 modulate = Color(0.29562598, 0.63290817, 0.5170334, 1)
@@ -511,7 +503,6 @@ region_enabled = true
 region_rect = Rect2(73.83765, 97.34872, 1784.3262, 169.34357)
 
 [node name="whiteBlad" type="Sprite2D" parent="." unique_id=1923725768]
-visible = false
 modulate = Color(0.4253977, 0.47532272, 0.11746644, 1)
 position = Vector2(-281, 1062)
 scale = Vector2(0.4, 0.4)
@@ -520,7 +511,6 @@ region_enabled = true
 region_rect = Rect2(1285, 754, 1116, 255)
 
 [node name="ShadeBlad" type="Sprite2D" parent="." unique_id=1047736319]
-visible = false
 modulate = Color(0.4253977, 0.47532272, 0.11746644, 1)
 position = Vector2(189, 850)
 scale = Vector2(0.1, 0.1)
@@ -529,7 +519,6 @@ region_enabled = true
 region_rect = Rect2(4460, 1351, 1053, 821)
 
 [node name="ShadeBlad2" type="Sprite2D" parent="." unique_id=866616237]
-visible = false
 modulate = Color(0.7414217, 0.22917789, 0.33989117, 1)
 position = Vector2(-737, 1107)
 scale = Vector2(0.2, 0.2)
@@ -583,6 +572,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("20_h86le")
 
 [node name="LevelArtWoodSmutsigutkant" type="Sprite2D" parent="." unique_id=215472878]
+visible = false
 position = Vector2(-351, 585)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("21_8f73p")
@@ -591,6 +581,35 @@ texture = ExtResource("21_8f73p")
 position = Vector2(-351, 585)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("21_8f73p")
+
+[node name="Control" type="Control" parent="." unique_id=226093831]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -1236.0
+offset_top = 58.0
+offset_right = 536.0
+offset_bottom = 1173.0
+
+[node name="Parallax2D" type="Parallax2D" parent="Control" unique_id=1440771912]
+scale = Vector2(0.5, 0.5)
+scroll_scale = Vector2(0.9, 0.9)
+scroll_offset = Vector2(900, 540)
+
+[node name="Clouds" type="Sprite2D" parent="Control/Parallax2D" unique_id=1758855442]
+z_index = -3
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_ca32g")
+
+[node name="Parallax2D2" type="Parallax2D" parent="Control" unique_id=1236821173]
+scale = Vector2(0.5, 0.5)
+scroll_scale = Vector2(0.95, 0.95)
+scroll_offset = Vector2(895, 531)
+
+[node name="Bluebackground" type="Sprite2D" parent="Control/Parallax2D2" unique_id=807242594]
+z_index = -4
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_fkbb8")
 
 [editable path="Coin/Coin"]
 [editable path="Coin/Coin2"]
