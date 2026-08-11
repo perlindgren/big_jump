@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://rl1upyrf0v43" path="res://assets/iris/TreeTrunk/Shade_Plants spritesheet.png" id="17_h86le"]
 [ext_resource type="Texture2D" uid="uid://dcssttjd3r0xf" path="res://assets/iris/TreeTrunk/Spritesheet treetrunk 2.png" id="18_b4tbw"]
 [ext_resource type="Texture2D" uid="uid://xo6jibaa0rc" path="res://assets/sprites/iris_level.png" id="19_8v5uw"]
+[ext_resource type="Texture2D" uid="uid://c47u5bws73v3r" path="res://assets/iris/TreeTrunk/LevelArt/Level wood.png" id="20_h86le"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h86le"]
 shader = ExtResource("16_b4tbw")
@@ -53,21 +54,18 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8v5uw"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8f73p"]
-load_path = "res://.godot/imported/blad solid1.png-0396113eee0644265e6057e00d9c09b6.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5r7xy"]
 atlas = SubResource("CompressedTexture2D_8f73p")
 region = Rect2(0, 348.58353, 832.3259, 731.4165)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nrccm"]
-load_path = "res://.godot/imported/bladshade1.png-4c7b2f66221cd751763f11d2571e0897.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0x8ft"]
 atlas = SubResource("CompressedTexture2D_nrccm")
 region = Rect2(849.1761, 241.7196, 1070.824, 838.2804)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cx57q"]
-load_path = "res://.godot/imported/blad jagged.png-35dc4c35deea0b3c0cf93b011b379666.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8l6lr"]
 atlas = SubResource("CompressedTexture2D_cx57q")
@@ -547,9 +545,15 @@ tile_map_data = PackedByteArray("AAD8/wAAAAAAAAAAAAD9/wAAAAABAAAAAAD+/wAAAAACAAA
 tile_set = SubResource("TileSet_8l6lr")
 
 [node name="IrisLevel" type="Sprite2D" parent="." unique_id=1648581435]
+visible = false
 position = Vector2(-350, 631)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("19_8v5uw")
+
+[node name="LevelWood" type="Sprite2D" parent="." unique_id=1555413714]
+position = Vector2(-351, 587)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("20_h86le")
 
 [editable path="Coin/Coin"]
 [editable path="Coin/Coin2"]
