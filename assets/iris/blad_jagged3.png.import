@@ -1,0 +1,14 @@
+[remap]
+
+importer="custom.autocrop"
+type="ImageTexture"
+uid="uid://2gbfc2c1o6s5"
+path="res://.godot/imported/blad_jagged3.png-b2db1fa438b3788d0e3d2ea081449a83.res"
+
+[deps]
+
+source_file="res://assets/iris/blad_jagged3.png"
+dest_files=["res://.godot/imported/blad_jagged3.png-b2db1fa438b3788d0e3d2ea081449a83.res"]
+
+[params]
+

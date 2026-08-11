@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bh6d5c6yu25vj"]
+
+[ext_resource type="PackedScene" uid="uid://dw3xpogbqedkd" path="res://scenes/irisSceneLevel1.tscn" id="1_nvt5w"]
+[ext_resource type="Texture2D" uid="uid://cw8artx3i21gn" path="res://assets/iris/blad_solid3.png" id="2_y1dpx"]
+
+[node name="Renderlevel" type="Node2D" unique_id=604696214]
+position = Vector2(1245, -108)
+
+[node name="IrisSceneLevel1" parent="." unique_id=1116787749 instance=ExtResource("1_nvt5w")]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=578837597]
+position = Vector2(-72.99999, 323)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_y1dpx")

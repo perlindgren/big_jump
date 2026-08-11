@@ -13,10 +13,12 @@
 [ext_resource type="Script" uid="uid://bkb12dyumwolh" path="res://scripts/flag_collision.gd" id="9_44bf0"]
 [ext_resource type="PackedScene" uid="uid://cedo1w13padh1" path="res://scenes/Coin.tscn" id="15_44bf0"]
 [ext_resource type="Texture2D" uid="uid://cujlefk7e0s2f" path="res://assets/iris/TreeTrunk/Spritesheet treetrunk.png" id="15_b4tbw"]
+[ext_resource type="Texture2D" uid="uid://difrq103sonat" path="res://assets/iris/TreeTrunk/LeavesPlants white spritesheet.png" id="16_8v5uw"]
 [ext_resource type="Shader" uid="uid://bej6tqh8sq5q5" path="res://shaders/gold.gdshader" id="16_b4tbw"]
 [ext_resource type="Texture2D" uid="uid://xhqexqaldcq3" path="res://assets/sprites/items.png" id="17_8v5uw"]
-[ext_resource type="Texture2D" uid="uid://c47u5bws73v3r" path="res://assets/iris/TreeTrunk/LevelArt/Level wood.png" id="17_44bf0"]
+[ext_resource type="Texture2D" uid="uid://rl1upyrf0v43" path="res://assets/iris/TreeTrunk/Shade_Plants spritesheet.png" id="17_h86le"]
 [ext_resource type="Texture2D" uid="uid://dcssttjd3r0xf" path="res://assets/iris/TreeTrunk/Spritesheet treetrunk 2.png" id="18_b4tbw"]
+[ext_resource type="Texture2D" uid="uid://xo6jibaa0rc" path="res://assets/sprites/iris_level.png" id="19_8v5uw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h86le"]
 shader = ExtResource("16_b4tbw")
@@ -484,6 +486,51 @@ texture = SubResource("AtlasTexture_myrx5")
 region_enabled = true
 region_rect = Rect2(73.83765, 97.34872, 1784.3262, 169.34357)
 
+[node name="whiteBlad" type="Sprite2D" parent="." unique_id=1923725768]
+visible = false
+modulate = Color(0.4253977, 0.47532272, 0.11746644, 1)
+position = Vector2(-281, 1062)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("16_8v5uw")
+region_enabled = true
+region_rect = Rect2(1285, 754, 1116, 255)
+
+[node name="ShadeBlad" type="Sprite2D" parent="." unique_id=1047736319]
+visible = false
+modulate = Color(0.4253977, 0.47532272, 0.11746644, 1)
+position = Vector2(189, 850)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("17_h86le")
+region_enabled = true
+region_rect = Rect2(4460, 1351, 1053, 821)
+
+[node name="ShadeBlad2" type="Sprite2D" parent="." unique_id=866616237]
+visible = false
+modulate = Color(0.7414217, 0.22917789, 0.33989117, 1)
+position = Vector2(-737, 1107)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("17_h86le")
+region_enabled = true
+region_rect = Rect2(290, 2495, 229, 488)
+
+[node name="treetrunk" type="Sprite2D" parent="." unique_id=657596356]
+visible = false
+modulate = Color(0.22745098, 0.10980392, 0.09411765, 1)
+position = Vector2(-806, 1160)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("15_b4tbw")
+region_enabled = true
+region_rect = Rect2(61, 270, 1767, 159)
+
+[node name="treetrunk2" type="Sprite2D" parent="." unique_id=1454067118]
+visible = false
+modulate = Color(0.22745098, 0.10980392, 0.09411765, 1)
+position = Vector2(-1095, 1156)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("15_b4tbw")
+region_enabled = true
+region_rect = Rect2(61, 270, 1767, 159)
+
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=773940499]
 visible = false
 modulate = Color(0.69197756, 0.3772652, 0.232169, 1)
@@ -499,10 +546,10 @@ scale = Vector2(0.3, 0.3)
 tile_map_data = PackedByteArray("AAD8/wAAAAAAAAAAAAD9/wAAAAABAAAAAAD+/wAAAAACAAAAAAD//wAAAAADAAAAAAAAAAAAAAAEAAAAAAABAAAAAAAFAAAAAAACAAAAAAAGAAAAAAADAAAAAAAHAAAAAAAEAAAAAAAIAAAAAAAFAAAAAAAJAAAAAAAGAAAAAAAKAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAABAAAAAAAJAAAAAAACAAAAAAAKAAAAAAADAAAAAAALAAAAAAAEAAAAAAAMAAAAAAAFAAAAAAANAAAAAAAGAAAAAAAOAAAAAAAHAAAAAAAPAAAAAAAIAAAAAAAQAAAAAAAJAAAAAAARAAAAAAAKAAAAAAASAAAAAAAAAAAAAAATAAAAAAABAAAAAAAUAAAAAAACAAAAAAAVAAAAAAADAAAAAAAWAAAAAAAEAAAAAAAXAAAAAAAFAAAAAAAYAAAAAAAGAAAAAAAZAAAAAAAHAAAAAAAaAAAAAAAIAAAAAAAbAAAAAAAJAAAAAAAcAAAAAAAKAAAAAAAdAAAAAAAAAAAAAAAeAAAAAAABAAAAAAAfAAAAAAACAAAAAAAgAAAAAAADAAAAAAAhAAAAAAAEAAAAAAAiAAAAAAAFAAAAAAAjAAAAAAAGAAAAAAAkAAAAAAAHAAAAAAAlAAAAAAAIAAAAAAAmAAAAAAAJAAAAAAAnAAAAAAAKAAAAAAD8/wEAAAAAAAAAAAD9/wEAAAABAAAAAAD+/wEAAAACAAAAAAD//wEAAAADAAAAAAAAAAEAAAAEAAAAAAABAAEAAAAFAAAAAAACAAEAAAAGAAAAAAADAAEAAAAHAAAAAAAEAAEAAAAIAAAAAAAFAAEAAAAJAAAAAAAGAAEAAAAKAAAAAAANAAEAAAAAAAAAAAAOAAEAAAABAAAAAAAPAAEAAAACAAAAAAAQAAEAAAADAAAAAAARAAEAAAAEAAAAAAASAAEAAAAFAAAAAAATAAEAAAAGAAAAAAAUAAEAAAAHAAAAAAAVAAEAAAAIAAAAAAAWAAEAAAAJAAAAAAAXAAEAAAAKAAAAAAAZAAEAAAAAAAAAAAAaAAEAAAABAAAAAAAbAAEAAAACAAAAAAAcAAEAAAADAAAAAAAdAAEAAAAEAAAAAAAeAAEAAAAFAAAAAAAfAAEAAAAGAAAAAAAgAAEAAAAHAAAAAAAhAAEAAAAIAAAAAAAiAAEAAAAJAAAAAAAjAAEAAAAKAAAAAAA=")
 tile_set = SubResource("TileSet_8l6lr")
 
-[node name="LevelWood" type="Sprite2D" parent="." unique_id=2002840245]
-position = Vector2(-350, 586)
+[node name="IrisLevel" type="Sprite2D" parent="." unique_id=1648581435]
+position = Vector2(-350, 631)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("17_44bf0")
+texture = ExtResource("19_8v5uw")
 
 [editable path="Coin/Coin"]
 [editable path="Coin/Coin2"]
