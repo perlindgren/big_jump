@@ -3,11 +3,15 @@
 [ext_resource type="Shader" uid="uid://bb61vigj2ucqy" path="res://test/wave_test.gdshader" id="1_qf5gs"]
 [ext_resource type="Shader" uid="uid://brdottwir4bby" path="res://test/wave.gdshader" id="1_rgrsc"]
 [ext_resource type="Texture2D" uid="uid://cg766bhfgg3cb" path="res://assets/sprites/brickwall.png" id="1_ypoif"]
-[ext_resource type="Texture2D" uid="uid://co88fv0iositq" path="res://assets/iris/Untitled_Artwork-8 4.png" id="2_26o1e"]
+[ext_resource type="Script" uid="uid://cwjxx0d3ondw6" path="res://test/wave_control.gd" id="3_t6nm4"]
+[ext_resource type="Texture2D" uid="uid://2xn00244s84n" path="res://assets/iris/blad jagged2.png" id="4_ypoif"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ypoif"]
 shader = ExtResource("1_qf5gs")
 shader_parameter/surface_level = 0.1730000082175
+shader_parameter/impact_x = 0.5130000243675
+shader_parameter/curr_time = 0.28400001349
+shader_parameter/size = 0.21600001026
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_26o1e"]
 
@@ -54,17 +58,17 @@ position = Vector2(389, 706)
 [node name="ColorRect" type="ColorRect" parent="Node2D" unique_id=374987326]
 z_index = -2
 material = SubResource("ShaderMaterial_ypoif")
-offset_left = 158.0
-offset_top = -329.0
-offset_right = 758.0
-offset_bottom = 71.0
+offset_left = 142.0
+offset_top = -330.0
+offset_right = 742.0
+offset_bottom = 70.0
 color = Color(0.16862746, 0.44705883, 1, 0.34509805)
+script = ExtResource("3_t6nm4")
 
 [node name="Sprite2D" type="Sprite2D" parent="Node2D" unique_id=1978174094]
 z_index = -1
 material = SubResource("ShaderMaterial_srqkv")
 position = Vector2(596, -48)
 scale = Vector2(0.26, 0.26)
-texture = ExtResource("2_26o1e")
-region_enabled = true
+texture = ExtResource("4_ypoif")
 region_rect = Rect2(865.5, 316.125, 1054.5, 763.875)

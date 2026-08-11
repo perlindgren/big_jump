@@ -1,0 +1,14 @@
+[remap]
+
+importer="custom.autocrop"
+type="ImageTexture"
+uid="uid://cxuepiff1dww1"
+path="res://.godot/imported/blad_solid2.png-90a6cff4380553c1de2294cb9f9ac619.res"
+
+[deps]
+
+source_file="res://assets/iris/blad_solid2.png"
+dest_files=["res://.godot/imported/blad_solid2.png-90a6cff4380553c1de2294cb9f9ac619.res"]
+
+[params]
+
