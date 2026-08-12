@@ -7,9 +7,10 @@ extends Node
 	preload("res://scenes/level0.tscn"),
 	preload("res://scenes/Cave.tscn"),
 	preload("res://scenes/irisSceneLevel1.tscn"),
+	preload("res://scenes/Level3.tscn"),
 ]
 
-@export var current_level: int = 4 # we start from level 0
+@export var current_level: int = 5 # we start from level 0
 
 var settings_music_volume: float = 100.0
 var settings_fx_volume: float = 100.0
