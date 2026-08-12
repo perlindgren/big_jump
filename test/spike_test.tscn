@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b3fh76h8n4mx5"]
 
-[ext_resource type="PackedScene" uid="uid://bgb74qdi88njc" path="res://test/spike.tscn" id="1_5cejq"]
+[ext_resource type="PackedScene" uid="uid://buwci0v83tnij" path="res://test/spike.tscn" id="1_5cejq"]
 
 [node name="SpikeTest" type="Node2D" unique_id=739569384]
 

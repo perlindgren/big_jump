@@ -13,6 +13,8 @@
 [ext_resource type="Script" uid="uid://crfbpb125sm47" path="res://scripts/frames.gd" id="9_0i1j5"]
 [ext_resource type="Script" uid="uid://cjpj3h1i5pfng" path="res://scripts/coin_label.gd" id="9_mphia"]
 [ext_resource type="Script" uid="uid://ihmsetw8v5pk" path="res://scripts/tree.gd" id="13_5n1hp"]
+[ext_resource type="Shader" uid="uid://ccld3i0pe64pb" path="res://scenes/hud_avatar.gdshader" id="14_3swnk"]
+[ext_resource type="Script" uid="uid://bpvkltgg6vj74" path="res://scripts/hud_texture_rect.gd" id="14_eld54"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hd3ao"]
 shader = ExtResource("4_mphia")
@@ -48,6 +50,10 @@ gravity = Vector3(0, 0, 0)
 scale_max = 3.0
 scale_curve = SubResource("CurveTexture_r2og0")
 color = Color(1, 1, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kklnm"]
+shader = ExtResource("14_3swnk")
+shader_parameter/radius = 0.4
 
 [node name="HUD" type="CanvasLayer" unique_id=1889445868]
 script = ExtResource("1_oo0fn")
@@ -134,3 +140,12 @@ offset_right = 207.0
 offset_bottom = 354.0
 mouse_filter = 1
 script = ExtResource("13_5n1hp")
+
+[node name="Avatar" type="TextureRect" parent="." unique_id=905465146]
+material = SubResource("ShaderMaterial_kklnm")
+anchors_preset = -1
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 68.0
+offset_bottom = 68.0
+script = ExtResource("14_eld54")
