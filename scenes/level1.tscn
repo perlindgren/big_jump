@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://cjwwfcb5if7hg"]
+[gd_scene format=4 uid="uid://bsj3nl2khir6c"]
 
 [ext_resource type="Script" uid="uid://dkxb21wmf2mdv" path="res://scripts/level1.gd" id="1_6ovph"]
 [ext_resource type="Texture2D" uid="uid://cg766bhfgg3cb" path="res://assets/sprites/brickwall.png" id="2_odhdn"]

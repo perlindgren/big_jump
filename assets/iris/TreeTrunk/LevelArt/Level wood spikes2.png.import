@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c47u5bws73v3r"
-path="res://.godot/imported/Level wood.png-843356e6b872e69ff0316471f67d340c.ctex"
+uid="uid://b5ykltkm0vq44"
+path="res://.godot/imported/Level wood spikes2.png-b6fa795f2c2b8f84079d372d83d9e949.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/iris/TreeTrunk/LevelArt/Level wood.png"
-dest_files=["res://.godot/imported/Level wood.png-843356e6b872e69ff0316471f67d340c.ctex"]
+source_file="res://assets/iris/TreeTrunk/LevelArt/Level wood spikes2.png"
+dest_files=["res://.godot/imported/Level wood spikes2.png-b6fa795f2c2b8f84079d372d83d9e949.ctex"]
 
 [params]
 
