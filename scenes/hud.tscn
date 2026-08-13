@@ -15,6 +15,8 @@
 [ext_resource type="Script" uid="uid://ihmsetw8v5pk" path="res://scripts/tree.gd" id="13_5n1hp"]
 [ext_resource type="Shader" uid="uid://ccld3i0pe64pb" path="res://scenes/hud_avatar.gdshader" id="14_3swnk"]
 [ext_resource type="Script" uid="uid://bpvkltgg6vj74" path="res://scripts/hud_texture_rect.gd" id="14_eld54"]
+[ext_resource type="SpriteFrames" uid="uid://bme3kxyabkwct" path="res://materials/flag_animation.tres" id="16_qkknv"]
+[ext_resource type="Script" uid="uid://bxov7h8glk47a" path="res://scripts/hud_flag_label.gd" id="17_uxdf7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hd3ao"]
 shader = ExtResource("4_mphia")
@@ -144,8 +146,33 @@ script = ExtResource("13_5n1hp")
 [node name="Avatar" type="TextureRect" parent="." unique_id=905465146]
 material = SubResource("ShaderMaterial_kklnm")
 anchors_preset = -1
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 68.0
-offset_bottom = 68.0
+offset_left = 13.0
+offset_top = 13.0
+offset_right = 77.0
+offset_bottom = 77.0
 script = ExtResource("14_eld54")
+
+[node name="Control" type="Control" parent="." unique_id=1585715289]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 202.0
+offset_top = 14.0
+offset_right = 242.0
+offset_bottom = 54.0
+
+[node name="Flag" type="AnimatedSprite2D" parent="Control" unique_id=1803256517]
+position = Vector2(48, 43)
+sprite_frames = ExtResource("16_qkknv")
+animation = &"flag"
+speed_scale = 0.5
+
+[node name="Label" type="Label" parent="Control" unique_id=2046829594]
+layout_mode = 0
+offset_left = 83.0
+offset_top = 6.0
+offset_right = 129.0
+offset_bottom = 83.333336
+theme_override_fonts/font = ExtResource("4_6fi6k")
+theme_override_font_sizes/font_size = 64
+text = "0"
+script = ExtResource("17_uxdf7")

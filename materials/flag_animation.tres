@@ -1,0 +1,26 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://bme3kxyabkwct"]
+
+[ext_resource type="Texture2D" uid="uid://5hc1liustycb" path="res://assets/sprites/flag2_0001.png" id="1_pdmwt"]
+[ext_resource type="Texture2D" uid="uid://yjri1ub0x1oq" path="res://assets/sprites/flag2_0002.png" id="2_7la6v"]
+[ext_resource type="Texture2D" uid="uid://ctm1l28hnric5" path="res://assets/sprites/flag2_0003.png" id="3_ukpql"]
+[ext_resource type="Texture2D" uid="uid://c67ybyxl2thtx" path="res://assets/sprites/flag2_0004.png" id="4_t7rb2"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_pdmwt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_7la6v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ukpql")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_t7rb2")
+}],
+"loop": 1,
+"name": &"flag",
+"speed": 5.0
+}]
