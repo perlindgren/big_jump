@@ -18,7 +18,6 @@
 [ext_resource type="Texture2D" uid="uid://dr0t0apixpo66" path="res://assets/iris/TreeTrunk/LevelArt/White background.png" id="16_4tsjn"]
 [ext_resource type="Texture2D" uid="uid://cw3l8ojn8if5m" path="res://assets/iris/TreeTrunk/LevelArt/clouds.png" id="17_yx6dr"]
 [ext_resource type="Texture2D" uid="uid://bfkauw3xgkqlo" path="res://assets/iris/TreeTrunk/LevelArt/bluebackground.png" id="18_c7vha"]
-[ext_resource type="Texture2D" path="res://assets/iris/Level3/Test l3.png" id="19_07lh1"]
 [ext_resource type="Texture2D" uid="uid://dfyjl07ktj0s2" path="res://assets/iris/Level3/L3test2.png" id="20_6uuvf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lygnx"]
@@ -301,13 +300,12 @@ z_index = -4
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("18_c7vha")
 
-[node name="TestL3" type="Sprite2D" parent="." unique_id=381654793]
-visible = false
-position = Vector2(-795.99994, 905.99994)
-scale = Vector2(0.175, 0.175)
-texture = ExtResource("19_07lh1")
-
 [node name="L3Test2" type="Sprite2D" parent="." unique_id=1497265913]
+position = Vector2(-795, 906)
+scale = Vector2(0.175, 0.175)
+texture = ExtResource("20_6uuvf")
+
+[node name="L3Test3" type="Sprite2D" parent="." unique_id=1548827265]
 position = Vector2(-795, 906)
 scale = Vector2(0.175, 0.175)
 texture = ExtResource("20_6uuvf")
