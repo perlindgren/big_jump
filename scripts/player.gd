@@ -39,6 +39,7 @@ enum input_state {
 	ROT_COUNTER_CLOCKWISE_JUST_PRESSED = 256,
 	ROT_COUNTER_CLOCKWISE_JUST_RELEASED = 512,
 	CANCEL_JUMP_JUST_PRESSED = 1024,
+	PLACE_FLAG_JUST_PRESSED = 2048,
 }
 
 # Ensure node refs to be instantiated
@@ -94,6 +95,12 @@ func _physics_process(delta: float) -> void:
 	var rot_counter_clockwise_just_pressed: bool = GameState.record_input(input_state.ROT_COUNTER_CLOCKWISE_JUST_PRESSED, Input.is_action_just_pressed(&"rotate_counter_clockwise"))
 	var rot_counter_clockwise_just_released: bool = GameState.record_input(input_state.ROT_COUNTER_CLOCKWISE_JUST_RELEASED, Input.is_action_just_released(&"rotate_counter_clockwise"))
 	var cancel_jump_just_pressed: bool = GameState.record_input(input_state.CANCEL_JUMP_JUST_PRESSED, Input.is_action_just_pressed(&"cancel_jump"))
+	var place_flag_just_pressed: bool = GameState.record_input(input_state.PLACE_FLAG_JUST_PRESSED, Input.is_action_just_pressed(&"flag"))
+	
+	# Handle flag
+	if place_flag_just_pressed:
+		print("place_flag_just_pressed")
+		Signals.flag.emit(position)
 
 	# Handle re-start and replay
 	if jump_just_pressed or left_just_pressed or right_just_pressed or rot_clockwise_just_pressed or rot_counter_clockwise_just_pressed:
@@ -259,8 +266,7 @@ func check_collision() -> void:
 func respawn() -> void:
 	print("Player respawn")
 	sprite.modulate = Color(1.0, 0.5, 0.5, 1.0)
-	position.x = GameState.spawn_position.x
-	position.y = GameState.spawn_position.y - 90
+	position= GameState.spawn_position
 	
 	velocity = Vector2.ZERO
 	rotation = 0.0

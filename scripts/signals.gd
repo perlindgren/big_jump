@@ -6,6 +6,7 @@ extends Node
 # the target is the node to pickup
 signal coin(value: int, node : Node2D)
 signal key(nr: int)
+signal flag(pos: Vector2)
 
 # Portal
 signal set_portal_state(portal_id: int)

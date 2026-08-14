@@ -3,6 +3,7 @@ extends Node2D
 # Assign 'heavy_sub_tree.tscn' to this slot in the Inspector
 
 @export var next_level_time : float = 4
+const flag = preload("res://scenes/flag.tscn")
 
 @onready var player = %Player
 var coin_tween : Tween
@@ -16,8 +17,21 @@ func _ready() -> void:
 	Signals.restart.connect(_on_restart)
 	Signals.replay.connect(_on_replay)
 	Signals.next_level.connect(_on_next_level)
+	Signals.flag.connect(_on_flag)
 	instantiate_level()
 
+func _on_flag(pos: Vector2) -> void: 
+	print("place flag @", pos)
+	var flag_instance : Flag = flag.instantiate()
+	flag_instance.play()
+	flag_instance.position = pos
+	flag_instance.modulate = Color(0.0, 1.0, 0.0)
+	# level_instance.flags.push_back(flag_instance)
+	level_instance.add_child(flag_instance)
+	GameState.flags_used += 1
+	GameState.spawn_position = pos
+	# GameState.player_direction = flag.player_direction
+	
 func instantiate_level():
 	print("levels: instantiate level")
 	

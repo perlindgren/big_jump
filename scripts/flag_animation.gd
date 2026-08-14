@@ -1,3 +1,5 @@
+class_name Flag
+
 extends AnimatedSprite2D
 
 @export var player_direction : float
