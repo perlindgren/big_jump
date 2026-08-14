@@ -250,6 +250,7 @@ func check_collision() -> void:
 					is_live = false
 					print("you died", i)
 					sprite.modulate = Color(1.0, 1.0, 1.0, 0.2)
+					GameState.blood_donated += 1
 					splat.restart()
 					print("is_dead")
 					await splat.finished

@@ -16,7 +16,9 @@
 [ext_resource type="Shader" uid="uid://ccld3i0pe64pb" path="res://scenes/hud_avatar.gdshader" id="14_3swnk"]
 [ext_resource type="Script" uid="uid://bpvkltgg6vj74" path="res://scripts/hud_texture_rect.gd" id="14_eld54"]
 [ext_resource type="SpriteFrames" uid="uid://bme3kxyabkwct" path="res://materials/flag_animation.tres" id="16_qkknv"]
+[ext_resource type="Script" uid="uid://bnxp45jxm4g2r" path="res://scripts/hud_blood_label.gd" id="17_5357l"]
 [ext_resource type="Script" uid="uid://bxov7h8glk47a" path="res://scripts/hud_flag_label.gd" id="17_uxdf7"]
+[ext_resource type="Texture2D" uid="uid://dq3s23le15uhr" path="res://assets/sprites/blood_drop.png" id="18_5357l"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hd3ao"]
 shader = ExtResource("4_mphia")
@@ -152,7 +154,7 @@ offset_right = 77.0
 offset_bottom = 77.0
 script = ExtResource("14_eld54")
 
-[node name="Control" type="Control" parent="." unique_id=1585715289]
+[node name="Flag" type="Control" parent="." unique_id=1585715289]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 202.0
@@ -160,13 +162,13 @@ offset_top = 14.0
 offset_right = 242.0
 offset_bottom = 54.0
 
-[node name="Flag" type="AnimatedSprite2D" parent="Control" unique_id=1803256517]
+[node name="Flag" type="AnimatedSprite2D" parent="Flag" unique_id=1803256517]
 position = Vector2(48, 43)
 sprite_frames = ExtResource("16_qkknv")
 animation = &"flag"
 speed_scale = 0.5
 
-[node name="Label" type="Label" parent="Control" unique_id=2046829594]
+[node name="Label" type="Label" parent="Flag" unique_id=2046829594]
 layout_mode = 0
 offset_left = 83.0
 offset_top = 6.0
@@ -176,3 +178,27 @@ theme_override_fonts/font = ExtResource("4_6fi6k")
 theme_override_font_sizes/font_size = 64
 text = "0"
 script = ExtResource("17_uxdf7")
+
+[node name="Blood" type="Control" parent="." unique_id=97951587]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 445.0
+offset_top = 13.0
+offset_right = 485.0
+offset_bottom = 53.0
+
+[node name="Blood" type="Sprite2D" parent="Blood" unique_id=142835765]
+position = Vector2(48, 43)
+scale = Vector2(8, 8)
+texture = ExtResource("18_5357l")
+
+[node name="Label" type="Label" parent="Blood" unique_id=2062924171]
+layout_mode = 0
+offset_left = 83.0
+offset_top = 6.0
+offset_right = 129.0
+offset_bottom = 83.333336
+theme_override_fonts/font = ExtResource("4_6fi6k")
+theme_override_font_sizes/font_size = 64
+text = "0"
+script = ExtResource("17_5357l")

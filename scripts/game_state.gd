@@ -26,6 +26,7 @@ var player_velocity: Vector2 = Vector2.ZERO
 var coins: int = 0 # ground truth
 var coins_display: int = 0 # used for hud display
 var flags_used: int = 0
+var blood_donated: int = 0
 
 @export var recording: Dictionary[int, int] = {}
 enum mode_states {RECORD, REPLAY}
