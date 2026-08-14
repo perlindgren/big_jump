@@ -40,6 +40,7 @@ enum input_state {
 	ROT_COUNTER_CLOCKWISE_JUST_RELEASED = 512,
 	CANCEL_JUMP_JUST_PRESSED = 1024,
 	PLACE_FLAG_JUST_PRESSED = 2048,
+	FLIP_JUST_PRESSED = 4096,
 }
 
 # Ensure node refs to be instantiated
@@ -96,6 +97,7 @@ func _physics_process(delta: float) -> void:
 	var rot_counter_clockwise_just_released: bool = GameState.record_input(input_state.ROT_COUNTER_CLOCKWISE_JUST_RELEASED, Input.is_action_just_released(&"rotate_counter_clockwise"))
 	var cancel_jump_just_pressed: bool = GameState.record_input(input_state.CANCEL_JUMP_JUST_PRESSED, Input.is_action_just_pressed(&"cancel_jump"))
 	var place_flag_just_pressed: bool = GameState.record_input(input_state.PLACE_FLAG_JUST_PRESSED, Input.is_action_just_pressed(&"flag"))
+	var flip_just_pressed: bool = GameState.record_input(input_state.FLIP_JUST_PRESSED, Input.is_action_just_pressed(&"flip"))
 	
 	# Handle flag
 	if place_flag_just_pressed:
@@ -183,13 +185,18 @@ func _physics_process(delta: float) -> void:
 	# Face player according to velocity
 	# TODO smoothing?
 	if velocity.x < 0.0: # left
-		last_direction = -1.0
+		#last_direction = -1.0
 		set_player_direction(-1.0)
 	elif velocity.x > 0.0: # right
-		last_direction = 1.0
+		#last_direction = 1.0
 		set_player_direction(1.0)
+	elif flip_just_pressed:
+		print("player: flip_just_pressed")
+		#last_direction = -last_direction
+		set_player_direction(-last_direction)
 	else:
-		set_player_direction(0.0)
+		# do not change direction, but keep on animating change
+		set_player_direction(0.0) 
 	
 	# Skew player
 	if sign(velocity.x) == sign(direction):
@@ -304,6 +311,9 @@ func set_player_skew(player_skew: float) -> void:
 	collision.skew = max_skew * player_skew
 	
 func set_player_direction(direction: float) -> void:
+	if direction != 0.0:
+		last_direction = direction
+	print("player: last_direction", last_direction)
 	current_direction = clamp(current_direction + last_direction * direction_change_speed, -1.0, 1.0)
 	var x = abs(current_direction)
 	# ease curve, smoothstep 3x²-2x³ 
