@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3ua0fni7btxv"
-path="res://.godot/imported/Test l3.png-88c8ac1f8eb19b5b117b5db187132521.ctex"
+uid="uid://dfyjl07ktj0s2"
+path="res://.godot/imported/L3test2.png-185233179cad7a0e110fed1c01b79be1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/iris/Level3/Test l3.png"
-dest_files=["res://.godot/imported/Test l3.png-88c8ac1f8eb19b5b117b5db187132521.ctex"]
+source_file="res://assets/iris/Level3/L3test2.png"
+dest_files=["res://.godot/imported/L3test2.png-185233179cad7a0e110fed1c01b79be1.ctex"]
 
 [params]
 
