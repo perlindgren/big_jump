@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://cgjln8pr33an7"]
+
+[ext_resource type="Texture2D" uid="uid://daafh824kxe56" path="res://assets/sprites/Bubble.png" id="1_5qywg"]
+[ext_resource type="Texture2D" uid="uid://c4t0ch7fvtj2f" path="res://assets/sprites/Pop.png" id="2_iv2bq"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_iwfsq"]
+
+[sub_resource type="Curve" id="Curve_iv2bq"]
+_data = [Vector2(0, 0.3752181), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_5qywg"]
+curve = SubResource("Curve_iv2bq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_y0dqn"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(100, 1, 1)
+gravity = Vector3(0, -30, 0)
+scale_min = 0.19999999
+scale_max = 0.29999998
+scale_curve = SubResource("CurveTexture_5qywg")
+turbulence_enabled = true
+turbulence_noise_scale = 5.0
+turbulence_influence_min = 0.05
+sub_emitter_mode = 2
+sub_emitter_amount_at_end = 1
+sub_emitter_keep_velocity = true
+
+[sub_resource type="Curve" id="Curve_5qywg"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1e-05, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_aw15o"]
+curve = SubResource("Curve_5qywg")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_iwfsq"]
+particle_flag_disable_z = true
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+angular_velocity_min = -115.20001
+angular_velocity_max = 182.55998
+gravity = Vector3(0, -30, 0)
+scale_min = 0.099999994
+scale_max = 0.25
+scale_curve = SubResource("CurveTexture_aw15o")
+
+[node name="BubbleTest" type="Node2D" unique_id=1569305620]
+
+[node name="Bubble" type="Node2D" parent="." unique_id=525622998]
+position = Vector2(176, 128)
+
+[node name="BubbleEmitter" type="GPUParticles2D" parent="Bubble" unique_id=292843407]
+material = SubResource("CanvasItemMaterial_iwfsq")
+amount = 10
+sub_emitter = NodePath("../BubblePop")
+texture = ExtResource("1_5qywg")
+lifetime = 10.0
+process_material = SubResource("ParticleProcessMaterial_y0dqn")
+
+[node name="BubblePop" type="GPUParticles2D" parent="Bubble" unique_id=1784653013]
+emitting = false
+texture = ExtResource("2_iv2bq")
+lifetime = 0.3
+process_material = SubResource("ParticleProcessMaterial_iwfsq")
