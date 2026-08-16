@@ -19,6 +19,8 @@
 [ext_resource type="Texture2D" uid="uid://cw3l8ojn8if5m" path="res://assets/iris/TreeTrunk/LevelArt/clouds.png" id="17_yx6dr"]
 [ext_resource type="Texture2D" uid="uid://bfkauw3xgkqlo" path="res://assets/iris/TreeTrunk/LevelArt/bluebackground.png" id="18_c7vha"]
 [ext_resource type="Texture2D" uid="uid://bpfpdsacb2rob" path="res://assets/iris/Level3/Del_1level3outline.png" id="19_07lh1"]
+[ext_resource type="Texture2D" uid="uid://8u3y4b0khpb0" path="res://assets/iris/Level3/Bricksbackground.png" id="19_x008a"]
+[ext_resource type="Texture2D" uid="uid://vy5u1c5n6v7o" path="res://assets/iris/Level3/Del2level3medbakgrund.png" id="21_atr84"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lygnx"]
 shader = ExtResource("3_rfnoc")
@@ -299,10 +301,20 @@ z_index = -4
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("18_c7vha")
 
+[node name="Bricksbackground" type="Sprite2D" parent="." unique_id=239595347]
+position = Vector2(-312, 549)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("19_x008a")
+
 [node name="Del1Level3" type="Sprite2D" parent="." unique_id=874656927]
 position = Vector2(-576.00006, 999)
 scale = Vector2(0.231, 0.231)
 texture = ExtResource("19_07lh1")
+
+[node name="Del2Level3Medbakgrund" type="Sprite2D" parent="." unique_id=1088962068]
+position = Vector2(-639, 289)
+scale = Vector2(0.215, 0.215)
+texture = ExtResource("21_atr84")
 
 [editable path="Coin/Coin"]
 [editable path="Coin/Coin2"]
