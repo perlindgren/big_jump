@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://bpfpdsacb2rob" path="res://assets/iris/Level3/Del_1level3outline.png" id="19_07lh1"]
 [ext_resource type="Texture2D" uid="uid://8u3y4b0khpb0" path="res://assets/iris/Level3/Bricksbackground.png" id="19_x008a"]
 [ext_resource type="Texture2D" uid="uid://l3hx75l0vc5o" path="res://assets/iris/Level3/Del2levelb.png" id="21_x008a"]
+[ext_resource type="Texture2D" uid="uid://8wur2wdugykq" path="res://assets/iris/Level3/Eye_Candytest.png" id="22_atr84"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lygnx"]
 shader = ExtResource("3_rfnoc")
@@ -166,6 +167,7 @@ tile_map_data = PackedByteArray("AAADACIAAAADAAIAAAACACIAAAABAAAAAAD//ygAAAABAAA
 tile_set = ExtResource("6_ee8u3")
 
 [node name="TileMaps" type="Node2D" parent="." unique_id=1769054271]
+visible = false
 modulate = Color(0.29562598, 0.63290817, 0.5170334, 1)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="TileMaps" unique_id=1987822261]
@@ -302,7 +304,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("18_c7vha")
 
 [node name="Bricksbackground" type="Sprite2D" parent="." unique_id=239595347]
-visible = false
+modulate = Color(0.50129205, 0.22126657, 0.047585838, 0.32941177)
 position = Vector2(-312, 549)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("19_x008a")
@@ -316,6 +318,11 @@ texture = ExtResource("19_07lh1")
 position = Vector2(-637.99994, 287.99997)
 scale = Vector2(0.215, 0.215)
 texture = ExtResource("21_x008a")
+
+[node name="EyeCandytest" type="Sprite2D" parent="." unique_id=331490713]
+position = Vector2(-579, 997.99994)
+scale = Vector2(0.23, 0.23)
+texture = ExtResource("22_atr84")
 
 [editable path="Coin/Coin"]
 [editable path="Coin/Coin2"]
