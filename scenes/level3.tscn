@@ -302,6 +302,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("18_c7vha")
 
 [node name="Bricksbackground" type="Sprite2D" parent="." unique_id=239595347]
+visible = false
 position = Vector2(-312, 549)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("19_x008a")
@@ -312,7 +313,7 @@ scale = Vector2(0.231, 0.231)
 texture = ExtResource("19_07lh1")
 
 [node name="Del2Level3Medbakgrund" type="Sprite2D" parent="." unique_id=1088962068]
-position = Vector2(-639, 289)
+position = Vector2(-636, 289)
 scale = Vector2(0.215, 0.215)
 texture = ExtResource("21_atr84")
 
