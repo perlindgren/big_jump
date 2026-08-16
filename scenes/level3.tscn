@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://dr0t0apixpo66" path="res://assets/iris/TreeTrunk/LevelArt/White background.png" id="16_4tsjn"]
 [ext_resource type="Texture2D" uid="uid://cw3l8ojn8if5m" path="res://assets/iris/TreeTrunk/LevelArt/clouds.png" id="17_yx6dr"]
 [ext_resource type="Texture2D" uid="uid://bfkauw3xgkqlo" path="res://assets/iris/TreeTrunk/LevelArt/bluebackground.png" id="18_c7vha"]
-[ext_resource type="Texture2D" uid="uid://bs0snfy4cqvdp" path="res://assets/iris/Level3/Del_1Level3.png" id="19_07lh1"]
+[ext_resource type="Texture2D" uid="uid://hg6rlopu7rxp" path="res://assets/iris/Level3/Del_1level3utkant.png" id="19_07lh1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lygnx"]
 shader = ExtResource("3_rfnoc")
@@ -300,7 +300,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("18_c7vha")
 
 [node name="Del1Level3" type="Sprite2D" parent="." unique_id=874656927]
-position = Vector2(-575.00006, 999)
+position = Vector2(-576.00006, 999)
 scale = Vector2(0.231, 0.231)
 texture = ExtResource("19_07lh1")
 
