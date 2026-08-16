@@ -41,7 +41,7 @@ shadow_filter_smooth = 0.9
 texture = SubResource("GradientTexture2D_y0dqn")
 
 [node name="PointLight2D2" type="PointLight2D" parent="." unique_id=1295959885]
-position = Vector2(855, 557)
+position = Vector2(895.00006, 617)
 scale = Vector2(6.398438, 4.8007813)
 shadow_enabled = true
 shadow_filter = 1
@@ -49,7 +49,7 @@ shadow_filter_smooth = 0.9
 texture = SubResource("GradientTexture2D_y0dqn")
 
 [node name="Node2D" type="Node2D" parent="." unique_id=1153373544]
-position = Vector2(781, 731)
+position = Vector2(773, 716)
 scale = Vector2(0.5, 0.5)
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Node2D" unique_id=13305913]
