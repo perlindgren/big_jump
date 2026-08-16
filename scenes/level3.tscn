@@ -313,7 +313,7 @@ scale = Vector2(0.231, 0.231)
 texture = ExtResource("19_07lh1")
 
 [node name="Del2Level3Medbakgrund" type="Sprite2D" parent="." unique_id=1088962068]
-position = Vector2(-636, 289)
+position = Vector2(-637, 287.99997)
 scale = Vector2(0.215, 0.215)
 texture = ExtResource("21_atr84")
 
