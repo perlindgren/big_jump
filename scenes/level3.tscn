@@ -20,7 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://bpfpdsacb2rob" path="res://assets/iris/Level3/Del_1level3outline.png" id="19_07lh1"]
 [ext_resource type="Texture2D" uid="uid://8u3y4b0khpb0" path="res://assets/iris/Level3/Bricksbackground.png" id="19_x008a"]
 [ext_resource type="Texture2D" uid="uid://l3hx75l0vc5o" path="res://assets/iris/Level3/Del2levelb.png" id="21_x008a"]
-[ext_resource type="Texture2D" uid="uid://8wur2wdugykq" path="res://assets/iris/Level3/Eye_Candytest.png" id="22_atr84"]
+[ext_resource type="Texture2D" uid="uid://8wur2wdugykq" path="res://assets/iris/Level3/Eyecandytest.png" id="22_atr84"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lygnx"]
 shader = ExtResource("3_rfnoc")
