@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfyjl07ktj0s2"
-path="res://.godot/imported/L3_test2.png-42ad25e0dde020be8949afe15cbd069c.ctex"
+uid="uid://bpfpdsacb2rob"
+path="res://.godot/imported/Del_1level3outline.png-0de2fab01aeba18c7a5a929c0204d0e8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/iris/Level3/L3_test2.png"
-dest_files=["res://.godot/imported/L3_test2.png-42ad25e0dde020be8949afe15cbd069c.ctex"]
+source_file="res://assets/iris/Level3/Del_1level3outline.png"
+dest_files=["res://.godot/imported/Del_1level3outline.png-0de2fab01aeba18c7a5a929c0204d0e8.ctex"]
 
 [params]
 
