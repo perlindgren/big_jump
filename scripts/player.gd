@@ -3,9 +3,9 @@ extends CharacterBody2D
 @export var jump_velocity: float = 1000.0
 @export var jump_accum_increment : float = 50.0
 @export var acceleration: float = 1500.0
-@export var air_acceleration: float = 300.0
-@export var friction: float = 600.0
-@export var air_friction: float = 1.0
+@export var air_acceleration: float = 500.0
+@export var friction: float = 800.0
+@export var air_friction: float = 800.0
 @export var max_speed: float = 4000.0
 @export var rotation_speed: float = 0.05
 @export var player_scale = 0.2
@@ -160,12 +160,15 @@ func _physics_process(delta: float) -> void:
 			# print("is_on_floor, direction ", direction, ", velocity.x", velocity.x)
 		else:
 			velocity.x += direction * air_acceleration * delta
-	else:
-		# Apply friction if there is no input
+	elif is_on_floor():
+		# Apply floor friction if there is no input
 		if velocity.length() > (friction * delta):
 			velocity -= velocity.normalized() * friction * delta
 		else:
 			velocity = Vector2.ZERO
+	else:
+		# Apply air friction if there is no input
+		velocity.normalized() * air_friction * delta 
 
 	# Handle rotation
 	if rot_clockwise_just_pressed:
@@ -313,7 +316,7 @@ func set_player_skew(player_skew: float) -> void:
 func set_player_direction(direction: float) -> void:
 	if direction != 0.0:
 		last_direction = direction
-	print("player: last_direction", last_direction)
+	# print("player: last_direction", last_direction)
 	current_direction = clamp(current_direction + last_direction * direction_change_speed, -1.0, 1.0)
 	var x = abs(current_direction)
 	# ease curve, smoothstep 3x²-2x³ 
