@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://ngj7p4h7e6t0"]
+
+[ext_resource type="Script" uid="uid://dm3h0d18ncrr4" path="res://test/test_load_save.gd" id="1_2y748"]
+[ext_resource type="Texture2D" uid="uid://daafh824kxe56" path="res://assets/sprites/Bubble.png" id="2_2dx7b"]
+[ext_resource type="Script" uid="uid://btp84c72eqgma" path="res://test/load_save_pos.gd" id="2_12cs0"]
+
+[node name="TestLoadSave" type="Node2D" unique_id=304893204]
+script = ExtResource("1_2y748")
+
+[node name="Load" type="Button" parent="." unique_id=509266465]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Load
+"
+
+[node name="Save" type="Button" parent="." unique_id=1887976705]
+offset_left = 83.0
+offset_right = 127.0
+offset_bottom = 31.0
+text = "Save"
+
+[node name="LoadSavePos" type="Sprite2D" parent="." unique_id=1886080190]
+texture = ExtResource("2_2dx7b")
+script = ExtResource("2_12cs0")
+
+[connection signal="button_down" from="Load" to="." method="_on_load_button_down"]
+[connection signal="button_down" from="Save" to="." method="_on_save_button_down"]
