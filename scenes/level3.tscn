@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://8u3y4b0khpb0" path="res://assets/iris/Level3/Bricksbackground.png" id="19_x008a"]
 [ext_resource type="Texture2D" uid="uid://l3hx75l0vc5o" path="res://assets/iris/Level3/Del2levelb.png" id="21_x008a"]
 [ext_resource type="Texture2D" uid="uid://8wur2wdugykq" path="res://assets/iris/Level3/Eyecandytest.png" id="22_atr84"]
+[ext_resource type="Texture2D" uid="uid://dyabxneqpottm" path="res://assets/iris/Level3/Brick tiles.png" id="23_qyu38"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lygnx"]
 shader = ExtResource("3_rfnoc")
@@ -54,6 +55,19 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jq8y1"]
 size = Vector2(10, 20)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_atr84"]
+texture = ExtResource("23_qyu38")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_0x8ft"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_atr84")
 
 [node name="Level3" type="Node2D" unique_id=105823598]
 script = ExtResource("1_thegt")
@@ -321,6 +335,9 @@ z_index = -1
 position = Vector2(-312, 549)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("19_x008a")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=312528320]
+tile_set = SubResource("TileSet_0x8ft")
 
 [editable path="Coin/Coin"]
 [editable path="Coin/Coin2"]
