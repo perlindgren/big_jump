@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var acceleration: float = 1500.0
 @export var air_acceleration: float = 500.0
 @export var friction: float = 800.0
-@export var air_friction: float = 800.0
+@export var air_friction: float = 100.0
 @export var max_speed: float = 4000.0
 @export var rotation_speed: float = 0.05
 @export var player_scale = 0.2
@@ -168,7 +168,7 @@ func _physics_process(delta: float) -> void:
 			velocity = Vector2.ZERO
 	else:
 		# Apply air friction if there is no input
-		velocity.normalized() * air_friction * delta 
+		velocity -= velocity.normalized() * air_friction * delta 
 
 	# Handle rotation
 	if rot_clockwise_just_pressed:
