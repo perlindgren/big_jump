@@ -24,9 +24,6 @@ func _process(_delta: float) -> void :
 		var dict: Dictionary = {"pos" : position }
 		save_game_to_steam(dict)
 		
-		
-		
-		
 	if Input.is_action_just_pressed(&"load"):
 		print("load")
 		var cfg: ConfigFile = ConfigFile.new()

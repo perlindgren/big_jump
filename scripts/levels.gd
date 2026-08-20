@@ -5,7 +5,10 @@ extends Node2D
 @export var next_level_time : float = 4
 const flag = preload("res://scenes/flag.tscn")
 
-@onready var player = %Player
+@onready var player : Player = %"Player"
+@onready var player_ghost : Player = %"Ghost"
+
+
 var coin_tween : Tween
 var last_coin_update : int = 0
 var level_instance 
@@ -67,20 +70,24 @@ func restart() -> void:
 	GameState.spawn_position = level_instance.flags[0].position
 	GameState.player_direction = level_instance.flags[0].player_direction
 	print("level_instance.flags[0].position", level_instance.flags[0].position)
-	GameState.clear_recording() # if not in replay mode
+	if player.mode == GameState.mode_states.RECORD:
+		GameState.recording = {} 
 	GameState.player_active = false # prevent collisions
 	GameState.frames = 0
 	GameState.coins = 0
 	GameState.coins_display = 0
 	player.respawn()
+	print("Levels: player_ghost", player_ghost)
 
 func _on_restart() -> void:
 	print("levels: on_restart")
+	GameState.recording = {}
+	player.mode = GameState.mode_states.RECORD
 	instantiate_level()
 
 func _on_replay() -> void:
 	print("levels: on_replay")
-	GameState.mode = GameState.mode_states.REPLAY
+	player.mode = GameState.mode_states.REPLAY
 	print("levels: recording ", GameState.recording)
 	instantiate_level()
 	

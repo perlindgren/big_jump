@@ -1,6 +1,8 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
-@export var jump_velocity: float = 1000.0
+@export var is_player = true
+@export var mode : GameState.mode_states = GameState.mode_states.RECORD
+@export var jump_max_velocity: float = 1000.0
 @export var jump_accum_increment : float = 50.0
 @export var acceleration: float = 1500.0
 @export var air_acceleration: float = 500.0
@@ -17,7 +19,6 @@ extends CharacterBody2D
 var jump_engaged : bool = false
 var jump_accum : float = 0.0
 var is_live : bool = true
-var has_moved : bool = false
 var is_jump_pressed : bool = false
 var left : float = 0.0
 var right : float = 0.0
@@ -59,10 +60,6 @@ func _physics_process(delta: float) -> void:
 		# death animation
 		return
 		
-	# Update global state
-	# GameState.player_position = position
-	# GameState.player_velocity = velocity
-	
 	# Check that we meet timing, not sure if this is entirely correct way
 	if delta != 1.0/60.0:
 		GameState.missed_frames += 1
@@ -81,9 +78,10 @@ func _physics_process(delta: float) -> void:
 		else:
 			# print("-- respawn in progress --")
 			velocity += get_gravity() * delta	
-			set_player_direction(0.0)
+			set_player_direction(0.0) # complete turning
 		return
 	
+	GameState.mode = mode
 	# Record/Playback input actions
 	var jump_just_pressed: bool = GameState.record_input(input_state.JUMP_JUST_PRESSED, Input.is_action_just_pressed(&"jump"))
 	var jump_just_released: bool = GameState.record_input(input_state.JUMP_JUST_RELEASED, Input.is_action_just_released(&"jump"))
@@ -99,18 +97,20 @@ func _physics_process(delta: float) -> void:
 	var place_flag_just_pressed: bool = GameState.record_input(input_state.PLACE_FLAG_JUST_PRESSED, Input.is_action_just_pressed(&"flag"))
 	var flip_just_pressed: bool = GameState.record_input(input_state.FLIP_JUST_PRESSED, Input.is_action_just_pressed(&"flip"))
 	
-	# Handle flag
-	if place_flag_just_pressed:
-		print("place_flag_just_pressed")
-		Signals.flag.emit(position)
+	# Handle player (is_player is true)
+	if is_player:
+		if place_flag_just_pressed:
+			print("place_flag_just_pressed")
+			Signals.flag.emit(position)
 
-	# Handle re-start and replay
-	if jump_just_pressed or left_just_pressed or right_just_pressed or rot_clockwise_just_pressed or rot_counter_clockwise_just_pressed:
-		has_moved = true
-		# print("has moved")
+		# Handle re-start and replay
+		if jump_just_pressed or left_just_pressed or right_just_pressed or rot_clockwise_just_pressed or rot_counter_clockwise_just_pressed:
+			GameState.player_has_moved = true
+			# print("has moved")
 		
-	if GameState.is_mode_replay() or has_moved:
-		GameState.frames += 1
+		# Update frame counter 
+		if GameState.player_has_moved:
+			GameState.frames += 1
 	
 	# Add the gravity.
 	if not is_on_floor():
@@ -129,7 +129,7 @@ func _physics_process(delta: float) -> void:
 	if jump_just_pressed:
 		is_jump_pressed = true
 
-	if is_jump_pressed and jump_accum < jump_velocity:
+	if is_jump_pressed and jump_accum < jump_max_velocity:
 		jump_accum += jump_accum_increment
 
 	if cancel_jump_just_pressed:
@@ -208,7 +208,7 @@ func _physics_process(delta: float) -> void:
 		set_player_skew(-velocity.x/max_speed)
 		
 	# Compress when jumping
-	set_player_compress(jump_accum/jump_velocity)
+	set_player_compress(jump_accum/jump_max_velocity)
 	# GameState update
 	
 	#GameState.player_rotation += rotate_direction * rotation_speed
@@ -219,7 +219,7 @@ func _physics_process(delta: float) -> void:
 		#GameState.player_rotation += TAU
 	#
 	#GameState.player_jump_accum = jump_accum
-	sprite.modulate = Color(1.0, jump_accum/jump_velocity, 1.0)
+	sprite.modulate = Color(1.0, jump_accum/jump_max_velocity, 1.0)
 	sprite_mask.speed_scale = velocity.x/max_speed
 	
 	var old_is_on_any : bool = is_on_any()
@@ -284,7 +284,7 @@ func respawn() -> void:
 	jump_accum = 0.0
 	
 	is_live = true
-	has_moved = false
+	GameState.player_has_moved = false
 	is_jump_pressed = false
 	left = 0.0
 	right = 0.0 
@@ -334,6 +334,7 @@ func set_player_direction(direction: float) -> void:
 		dust.emitting = false
 
 func _ready() -> void:
+	print("Player:mode ", mode)
 	sprite_mask.play(&"mask_anim")
 	sprite_eye.play(&"eye_anim")
 	# audio_listener.make_current()

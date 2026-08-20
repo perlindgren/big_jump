@@ -115,6 +115,20 @@ alpha_curve = SubResource("CurveTexture_oprun")
 collision_layer = 256
 collision_mask = 7
 script = ExtResource("1_3vyb7")
+ghost = null
+mode = null
+jump_max_velocity = null
+jump_accum_increment = null
+acceleration = null
+air_acceleration = null
+friction = null
+air_friction = null
+max_speed = null
+rotation_speed = null
+player_scale = null
+max_skew = null
+shockwave_velocity = null
+direction_change_speed = null
 
 [node name="Splat" type="GPUParticles2D" parent="." unique_id=2009453505]
 z_index = 3

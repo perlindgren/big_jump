@@ -9,11 +9,19 @@
 [sub_resource type="GDScript" id="GDScript_tbgi4"]
 script/source = "extends Node2D
 
+#const player_scene : PackedScene = preload(\"res://scenes/player.tscn\")
+
+#var player_ghost : Player
 
 # Called when the node enters the scene tree for the first time.
-#func _ready() -> void:
-	##$Player.respawn()
-	#pass
+func _ready() -> void:
+	print(\"main: _ready\")
+	#player_ghost = player_scene.instantiate()
+	#player_ghost.mode = GameState.mode_states.REPLAY
+	#add_child(player_ghost)
+	#print(\"main: player_ghost path\", player_ghost.get_path())
+	
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -28,6 +36,36 @@ script = SubResource("GDScript_tbgi4")
 
 [node name="Player" parent="." unique_id=1635808929 instance=ExtResource("2_0wfyh")]
 unique_name_in_owner = true
+mode = 0
+jump_max_velocity = 1000.0
+jump_accum_increment = 50.0
+acceleration = 1500.0
+air_acceleration = 500.0
+friction = 800.0
+air_friction = 100.0
+max_speed = 4000.0
+rotation_speed = 0.05
+player_scale = 0.2
+max_skew = 3.141592653589793
+shockwave_velocity = 300.0
+direction_change_speed = 0.075
+
+[node name="Ghost" parent="." unique_id=833735206 instance=ExtResource("2_0wfyh")]
+unique_name_in_owner = true
+is_player = false
+mode = 3
+jump_max_velocity = 1000.0
+jump_accum_increment = 50.0
+acceleration = 1500.0
+air_acceleration = 500.0
+friction = 800.0
+air_friction = 100.0
+max_speed = 4000.0
+rotation_speed = 0.05
+player_scale = 0.2
+max_skew = 3.141592653589793
+shockwave_velocity = 300.0
+direction_change_speed = 0.075
 
 [node name="HUD" parent="." unique_id=785256614 instance=ExtResource("3_sugp2")]
 
